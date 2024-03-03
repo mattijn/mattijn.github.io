@@ -1,0 +1,10 @@
+#vg-tooltip-element.vg-tooltip {
+    font-size: 14px;
+}
+.cell-output-display {
+	margin: auto;
+}
+.vega-embed {
+	flex-direction: column-reverse;
+}
+
