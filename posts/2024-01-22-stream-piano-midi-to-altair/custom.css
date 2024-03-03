@@ -1,10 +1,16 @@
 #vg-tooltip-element.vg-tooltip {
     font-size: 14px;
 }
-.cell-output-display {
+
+/* .cell-output-display {
 	margin: auto;
-}
+} */
+
 .vega-embed {
 	flex-direction: column-reverse;
 }
 
+.page-columns .column-screen {
+    grid-column: body-content-start / body-content-end;
+    
+}

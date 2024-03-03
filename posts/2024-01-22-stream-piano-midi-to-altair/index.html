@@ -195,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="stream-data-from-a-piano-to-a-vega-altair-chart-using-midi">Stream data from a piano to a Vega-Altair chart using MIDI</h2>
 <p>I came to realise that playing a piano is a great example of streaming data. And since there is currently much activity around the <code>JupyterChart</code> object within Vega-Altair. Let’s see how far we can bring this combination into practice.</p>
 <p>Lets start with a video of the final result</p>
-<video width="100%" src="altair_streaming_data_webmidi.webm" controls="">
+<video width="100%" src="altair_streaming_data_webmidi.mp4" controls="">
 </video>
 <p>Whoop! Whoop. It actually works. Lets break down what we see in the video.</p>
 <ul>
@@ -235,70 +235,70 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>anym</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display column-screen" data-execution_count="3">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"b03275533f9f48458032c0589baa9d8d","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"e0e8fb16301a408f84aaac00f85d5431","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 </div>
 <p><img style="width:157px;" src="webmidi_enabled.png"></p>
-<div id="5e5aa8f4-b969-4103-9c61-e4939cf299a9" class="cell page-columns page-full" data-execution_count="16">
+<div id="5e5aa8f4-b969-4103-9c61-e4939cf299a9" class="cell page-columns page-full" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>anym.enabled</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display column-screen" data-execution_count="16">
+<div class="cell-output cell-output-display column-screen" data-execution_count="4">
 <pre><code>True</code></pre>
 </div>
 </div>
-<div id="f0560216-fe98-4714-abaf-185c128f486c" class="cell page-columns page-full" data-execution_count="17">
+<div id="f0560216-fe98-4714-abaf-185c128f486c" class="cell page-columns page-full" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>anym.inputs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display column-screen" data-execution_count="17">
+<div class="cell-output cell-output-display column-screen" data-execution_count="5">
 <pre><code>[{'name': 'USB-MIDI',
   'manufacturer': 'Kawai Musical Instruments Mfg. Co., Ltd'}]</code></pre>
 </div>
 </div>
 <p>By default it add a listener to the first input device it detects <code>target_name</code>. The listener will update once a note on the musical instrument is played.</p>
-<div id="0c81b606-360b-4d31-90c3-4dbe64f30c71" class="cell page-columns page-full" data-execution_count="18">
+<div id="0c81b606-360b-4d31-90c3-4dbe64f30c71" class="cell page-columns page-full" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>anym.target_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display column-screen" data-execution_count="18">
+<div class="cell-output cell-output-display column-screen" data-execution_count="6">
 <pre><code>'USB-MIDI'</code></pre>
 </div>
 </div>
 <p>So if I play a note on the piano, information on of this note is captured and stored in the <code>noteon</code> attribute</p>
-<div id="9ecc5398-44b6-4940-a99d-39d8581978b4" class="cell page-columns page-full" data-execution_count="19">
+<div id="9ecc5398-44b6-4940-a99d-39d8581978b4" class="cell page-columns page-full" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>anym.noteon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display column-screen" data-execution_count="19">
-<pre><code>{'id': 'D7',
- 'attack': 0.5590551181102362,
- 'ts': 718244,
- 'name': 'D',
- 'octave': 7,
+<div class="cell-output cell-output-display column-screen" data-execution_count="7">
+<pre><code>{'id': 'C4',
+ 'attack': 0.3779527559055118,
+ 'ts': 16858509.699999988,
+ 'name': 'C',
+ 'octave': 4,
  'accidental': 'dW5kZWZpbmVk'}</code></pre>
 </div>
 </div>
 <p>The <code>noteon</code> attribute only provides information on the last played note, I also have configured another attribute named <code>noteons</code>. This attribute stores the last 100 played notes. This is a list that is empty by initiation and then upon playing the piano growing to a list of 100 elements and after that stays at a length of 100. The new notes are added and the oldest notes are removed using shifting.</p>
-<div id="bf86a503-92de-4bcc-8277-e91a5a01148f" class="cell page-columns page-full" data-execution_count="20">
+<div id="bf86a503-92de-4bcc-8277-e91a5a01148f" class="cell page-columns page-full" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>anym.noteons[<span class="dv">0</span>:<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display column-screen" data-execution_count="20">
+<div class="cell-output cell-output-display column-screen" data-execution_count="8">
 <pre><code>[{'id': 'C4',
-  'attack': 0.4015748031496063,
-  'ts': 440034,
+  'attack': 0.3779527559055118,
+  'ts': 16858509.699999988,
   'name': 'C',
   'octave': 4,
   'accidental': 'dW5kZWZpbmVk'},
- {'id': 'D4',
-  'attack': 0.49606299212598426,
-  'ts': 449725,
-  'name': 'D',
+ {'id': 'E4',
+  'attack': 0.5039370078740157,
+  'ts': 16863480.699999988,
+  'name': 'E',
   'octave': 4,
   'accidental': 'dW5kZWZpbmVk'},
- {'id': 'E4',
-  'attack': 0.3543307086614173,
-  'ts': 450594,
-  'name': 'E',
+ {'id': 'G4',
+  'attack': 0.48031496062992124,
+  'ts': 16864648.699999988,
+  'name': 'G',
   'octave': 4,
   'accidental': 'dW5kZWZpbmVk'}]</code></pre>
 </div>
 </div>
 <p>Now that we have configured some traitlets that updates once I play the piano we can connect the stream to a <code>JupyterChart</code> class.</p>
 <p>We define the following Vega-Altair specification with an empty DataFrame as input source:</p>
-<div id="5874bb59-089b-4dc7-bc04-6316ab5a878c" class="cell" data-execution_count="21">
+<div id="5874bb59-089b-4dc7-bc04-6316ab5a878c" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame.from_records([])</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>bar_chart <span class="op">=</span> alt.Chart(df).mark_bar().encode(</span>
@@ -309,28 +309,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>This is a bar chart with on the <code>x</code>-encoding channel the field <code>id</code>, see <code>anym.noteons</code> above and observe that this refers to the field representing the tone identifier of the piano key. The <code>y</code>-encoding channel and <code>color</code>-encoding channel represent the count of the tone played.</p>
 <p>As the input DataFrame is still empty the chart will look as follows:</p>
-<div id="722663e3-4373-457a-bbc3-92d5df2fe930" class="cell page-columns page-full" data-execution_count="22">
+<div id="722663e3-4373-457a-bbc3-92d5df2fe930" class="cell page-columns page-full" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>bar_chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display column-screen" data-execution_count="22">
+<div class="cell-output cell-output-display column-screen" data-execution_count="10">
 
 <style>
-  #altair-viz-73a21d25216444eaa64979a4ab6f32df.vega-embed {
+  #altair-viz-41480de938ee42188926626107f04201.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-73a21d25216444eaa64979a4ab6f32df.vega-embed details,
-  #altair-viz-73a21d25216444eaa64979a4ab6f32df.vega-embed details summary {
+  #altair-viz-41480de938ee42188926626107f04201.vega-embed details,
+  #altair-viz-41480de938ee42188926626107f04201.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-73a21d25216444eaa64979a4ab6f32df"></div>
+<div id="altair-viz-41480de938ee42188926626107f04201"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-73a21d25216444eaa64979a4ab6f32df") {
-      outputDiv = document.getElementById("altair-viz-73a21d25216444eaa64979a4ab6f32df");
+    if (outputDiv.id !== "altair-viz-41480de938ee42188926626107f04201") {
+      outputDiv = document.getElementById("altair-viz-41480de938ee42188926626107f04201");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -381,22 +381,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>As we like to connect our piano stream to the chart, we need to know the name identifier of our dataset within the Altair specification. We extract the name as follows:</p>
-<div id="f113edd8-c150-466c-baf0-6a5817619232" class="cell page-columns page-full" data-execution_count="23">
+<div id="f113edd8-c150-466c-baf0-6a5817619232" class="cell page-columns page-full" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>data_name <span class="op">=</span> bar_chart.to_dict()[<span class="st">'data'</span>][<span class="st">'name'</span>]</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>data_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display column-screen" data-execution_count="23">
+<div class="cell-output cell-output-display column-screen" data-execution_count="11">
 <pre><code>'data-4f53cda18c2baa0c0354bb5f9a3ecbe5'</code></pre>
 </div>
 </div>
 <p>This is a hashed representation of the dataset upon initiating of the Altair specification. So even if I run the cell of <code>bar_chart</code> again, it will not change the identifier of our dataset within the Altair specification.</p>
 <p>To update this dataset within the <code>bar_chart</code> to the piano stream I need to define it as an <code>altair.JupyterChart</code>. This makes it possible to update the chart after it is displayed.</p>
-<div id="3d8f0a63-80e8-481a-a5d0-318ea6eaa7a2" class="cell" data-execution_count="24">
+<div id="3d8f0a63-80e8-481a-a5d0-318ea6eaa7a2" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>jchart <span class="op">=</span> alt.JupyterChart(bar_chart)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next up is the definition of a function that is called when there is a change observed for the <code>anym.noteons</code> attribute.</p>
 <p>So this function is called every time a new piano key is pressed and the tone is added to the list of <code>anym.noteons</code>. The function <code>change_noteons</code> takes the <code>anym.noteons</code> and replaces the data variable defined within the <code>jchart</code> object.</p>
-<p>This is currently using a non-public interface to send updates in the <code>JupyterChart</code> object</p>
-<div id="75971142-79f8-4333-9239-c6001f5e523d" class="cell" data-execution_count="27">
+<div class="callout callout-style-default callout-note callout-titled" title="Note">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is currently using a non-public interface, <code>jchart._py_to_js_updates</code>, to update the <code>JupyterChart</code> object.</p>
+</div>
+</div>
+<div id="75971142-79f8-4333-9239-c6001f5e523d" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> change_noteons(change):</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.DataFrame.from_records(anym.noteons)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    jchart._py_to_js_updates <span class="op">=</span> [{</span>
@@ -413,11 +425,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>jchart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display column-screen" data-execution_count="14">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"d33ef9a2d4c84e6a93b64e9b720b9e7b","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"53e5d851c2bc457ebe9ed91283fe18a2","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 </div>
-<p><img style="width:673px;" src="jchart_example.png"></p>
+<p><img style="max-width:100%; max-height:325px" src="jchart_example.gif"></p>
 <p>Awesome. That is fun. Before we continue. I forgot to explain one part. In our <code>AnyMidi</code> class definition is the line <code>_esm = "index.js"</code>, this is in fact a referral to a file containing JavaScript code. For a better understanding I also will briefly go through this file. Some elements I will skip.</p>
 <p>The file starts with the following</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { WebMidi } <span class="im">from</span> <span class="st">"https://esm.sh/webmidi@3.1.8"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -449,8 +461,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">registerListener</span>(newTarget)<span class="op">;</span></span>
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    } </span>
 <span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If a change is detected in the <code>target_name</code> the JavaScript code will execute a function. In this function the <code>newTarget</code> is defined by getting the new <code>target_name</code> (<code>const newTarget = model.get("target_name")</code> and then a new listener is registered to this <code>newTarget</code>.</p>
-<p>If an error occurs in the JavaScript side of things we like to tunnel back this to our Python notebook. We use the <code>el</code> element for this. For example to define an <code>innerHTML</code> property that pipes back the <code>${error.message}</code>:</p>
+<p>If a change is detected in the <code>target_name</code> the JavaScript code will execute a function. In this function the <code>newTarget</code> is defined by getting the new <code>target_name</code>, through : <code>const newTarget = model.get("target_name")</code> and then a new listener is registered to this <code>newTarget</code>.</p>
+<p>If an error occurs in the JavaScript side of things we like to tunnel this back to our Python notebook. We use the <code>el</code> element for this. For example to define an <code>innerHTML</code> property that pipes back the <code>${error.message}</code>:</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> showError <span class="op">=</span> error <span class="kw">=&gt;</span> {</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    el<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="vs">`&lt;div style="color:red;"&gt;</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;p&gt;JavaScript Error: </span><span class="sc">${</span>error<span class="op">.</span><span class="at">message</span><span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
