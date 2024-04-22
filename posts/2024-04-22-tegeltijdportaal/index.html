@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="nl" xml:lang="nl"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Mattijn van Hoek">
+<meta name="dcterms.date" content="2024-04-22">
+
+<title>mattijn.github.io - De 🌀 Tegeltijdportaal</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Geen resultaten",
+    "search-matching-documents-text": "Gevonden documenten",
+    "search-copy-link-title": "Kopieer link om te zoeken",
+    "search-hide-matches-text": "Extra overeenkomsten verbergen",
+    "search-more-match-text": "meer overeenkomst in dit document",
+    "search-more-matches-text": "meer overeenkomsten in dit document",
+    "search-clear-button-title": "Wissen",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Annuleren",
+    "search-submit-button-title": "Verzenden",
+    "search-label": "Zoeken"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="custom.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">mattijn.github.io</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Zoeken"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Schakel navigatie" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">De 🌀 <em>Tegeltijdportaal</em></h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Auteur</div>
+      <div class="quarto-title-meta-contents">
+               <p>Mattijn van Hoek </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Publicatiedatum</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">22 april 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
+
+
+
+
+
+<section id="de-tegeltijdportaal" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="de-tegeltijdportaal">De 🌀 <em>Tegeltijdportaal</em></h2>
+<p>Binnen de <a href="https://sandtracer-demo.hkvservices.nl/">tegeltijdportaal</a> maken we het mogelijk om het tijdsverloop van elke locatie in Nederland te zien met zeer hoge resolutie satellietdata. Dit doen we door gebruik te maken van voorgerenderde tegels vanuit het satellietdataportaal. Hiermee krijg je snel inzicht in de dynamiek van locaties. In dit artikel duiken we dieper in op welke manier we deze informatie inzichtelijk maken.</p>
+<p>Dit doen we in 3 stappen, namelijk:</p>
+<ul>
+<li>Wat bedoelen we met een 🔲 <em>Tegel definitie</em>?</li>
+<li>Hoe werkt de 🌀 <em>Tegeltijdportaal</em>?</li>
+<li>Op welke manier is <img style="width:15px;" src="solara.png"> <em>Solara</em> gebruikt?</li>
+</ul>
+<section id="wat-bedoelen-we-met-een-tegel-definitie" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="wat-bedoelen-we-met-een-tegel-definitie">Wat bedoelen we met een 🔲 <em>Tegel definitie</em>?</h3>
+<p>De nog altijd fascinerende tiendesprongen van Kees Boeke zijn je vast bekend sinds er in 1977 een film voor IBM werd gemaakt onder de naam <em>Powers of Ten</em>. <img src="powers_of_ten.png" alt="powers of ten" width="100%"></p>
+<p>Het laat een picknickend gezin zien in de haven van Chicago waar de camera steeds verder uitzoomt tot het hele universum te zien is, waarnaar het vervolgens weer inzoomt.<br>
+Waar de film vooral gaat over het begrip van de machten van 10 en de relatieve verhoudingen tussen kosmisch en microscopisch niveau is, gaat het mij hier nu vooral over het concept dat je een bepaalde mate van detail ziet op een bepaald zoom niveau, ondanks dat het beeld wel een vaste afmeting heeft.</p>
+<p>De satellietdata welke wordt ingekocht vanuit het satellietdataportaal heeft een hoge ruimtelijke resolutie. Recente opnames hebben bijvoorbeeld al een ruimtelijke resolutie van 30 centimeter. Om deze hele hoge resolutie fotos toegankelijker te maken gaan we de beelden net als de in de docu van de <em>Power of Ten</em> op delen in vaste zoomlevels. En op elk zoomlevel maken we tegels met vaste afmetingen. Op deze manier blijft een tegel altijd een vaste afmeting hebben, maar al naar gelang het gekozen zoomlevel zie je een hogere of lagere mate van detail.</p>
+<p><img src="localtileserver.gif" alt="drawing" width="400"></p>
+<p>Het tegelschema of protocol <em>WebMercatorQuad</em> is zo’n manier om de aarde in kleine vierkante rasters of tegels te verdelen. Elke heeft een vaak een vaste afmeting van 256x256 pixels. En elk zoomlevel heeft daarmee zijn eigen vooraf gedefinieerde ruimtelijke resolutie. PDOK heeft de volgende <a href="https://api.pdok.nl/lv/bag/ogc/v1_0/tileMatrixSets/WebMercatorQuad">tabel</a> beschikbaar om hier iets meer duiding aan te geven:</p>
+<div id="349fddf9-16f9-4850-b806-f62e96ddad23" class="cell page-columns page-full" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> requests.get(<span class="st">'https://api.pdok.nl/lv/bag/ogc/v1_0/tileMatrixSets/WebMercatorQuad?f=json'</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>pd.DataFrame.from_dict(r.json()[<span class="st">'tileMatrices'</span>]).set_index(<span class="st">'id'</span>)[<span class="dv">15</span>:<span class="dv">21</span>]</span></code><button title="Kopieer naar klembord" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display column-screen" data-execution_count="2">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">tileWidth</th>
+<th data-quarto-table-cell-role="th">tileHeight</th>
+<th data-quarto-table-cell-role="th">matrixWidth</th>
+<th data-quarto-table-cell-role="th">matrixHeight</th>
+<th data-quarto-table-cell-role="th">scaleDenominator</th>
+<th data-quarto-table-cell-role="th">cellSize</th>
+<th data-quarto-table-cell-role="th">pointOfOrigin</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">15</td>
+<td>256</td>
+<td>256</td>
+<td>32768</td>
+<td>32768</td>
+<td>17061.836671</td>
+<td>4.777314</td>
+<td>[-20037508.3427892, 20037508.3427892]</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">16</td>
+<td>256</td>
+<td>256</td>
+<td>65536</td>
+<td>65536</td>
+<td>8530.918335</td>
+<td>2.388657</td>
+<td>[-20037508.3427892, 20037508.3427892]</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">17</td>
+<td>256</td>
+<td>256</td>
+<td>131072</td>
+<td>131072</td>
+<td>4265.459168</td>
+<td>1.194329</td>
+<td>[-20037508.3427892, 20037508.3427892]</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">18</td>
+<td>256</td>
+<td>256</td>
+<td>262144</td>
+<td>262144</td>
+<td>2132.729584</td>
+<td>0.597164</td>
+<td>[-20037508.3427892, 20037508.3427892]</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">19</td>
+<td>256</td>
+<td>256</td>
+<td>524288</td>
+<td>524288</td>
+<td>1066.364792</td>
+<td>0.298582</td>
+<td>[-20037508.3427892, 20037508.3427892]</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">20</td>
+<td>256</td>
+<td>256</td>
+<td>1048576</td>
+<td>1048576</td>
+<td>533.182396</td>
+<td>0.149291</td>
+<td>[-20037508.3427892, 20037508.3427892]</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<p>Ik heb hier enkel de rijen die overeenkomen met zoomlevels 15 tot en met 20 getoond. Het gaat mij vooral om kolom <code>cellSize</code> welke aangeeft wat de ruimtelijke resolutie is van een unieke pixel binnen elk zoomniveau. Hier valt bijvoorbeeld te zien dat op zoomlevel 17 de ruimtelijke resolutie van een enkele pixel ~1.19 meter is en zoomlevel 19 de ruimtelijke resolutie van een enkele pixel ~0.29 is.</p>
+<p>Meer info over deze 2 dimensionale tile matrix set standaard is ook te vinden via <a href="https://docs.ogc.org/is/17-083r2/17-083r2.html">de website van OGC</a>. En daarnaast <a href="https://www.youtube.com/watch?v=1hiPoTFn1CA">deze video-presentatie</a> van Jachym hoe je om kan gaan met grote hoeveelheden raster data via tegel definities met onder andere open source sofware.</p>
+<p>Om iets meer gevoel te krijgen met het effect van de zoom niveaus kan je de slider in het volgende figuur heen en weer bewegen. Het laat, gegeven een zoom level, zien hoe groot een tegel is voor het inliggende coordinaat van 🌍 <em>Locatie</em> HKV in Amersfoort.</p>
+<div id="fa72aca9-648c-4ee8-a14a-1ea73cda6094" class="cell page-columns page-full" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>gdf_tile <span class="op">=</span> gpd.read_file(<span class="st">'zoom_tegel_HKV_amersfoort.geo.json'</span>, driver<span class="op">=</span><span class="st">'GeoJSON'</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># topologisch gesimplificeerd met https://github.com/mattijn/topojson</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>gdf_prov <span class="op">=</span> gpd.read_file(<span class="st">'provincies_2023.simp.geo.json'</span>, driver<span class="op">=</span><span class="st">'GeoJSON'</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>xmin, ymin, xmax, ymax <span class="op">=</span> gdf_prov.total_bounds</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># fit object should be a GeoJSON-like Feature or FeatureCollection</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>extent_NL <span class="op">=</span> {<span class="st">"type"</span>: <span class="st">"Feature"</span>, <span class="st">"geometry"</span>: {<span class="st">"type"</span>: <span class="st">"Polygon"</span>, <span class="st">"coordinates"</span>: [[[xmax, ymax], [xmax, ymin], [xmin, ymin], [xmin, ymax], [xmax, ymax]]]}, <span class="st">"properties"</span>: {}}</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>slider <span class="op">=</span> alt.binding_range(<span class="bu">min</span><span class="op">=</span><span class="dv">8</span>, <span class="bu">max</span><span class="op">=</span><span class="dv">17</span>, step<span class="op">=</span><span class="dv">1</span>, name<span class="op">=</span><span class="st">'zoom level'</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="bu">filter</span> <span class="op">=</span> alt.param(bind<span class="op">=</span>slider, value<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> alt.layer(</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    alt.Chart(gdf_prov).mark_geoshape(filled<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    alt.Chart().mark_circle(color<span class="op">=</span><span class="st">'black'</span>).encode(</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        latitude<span class="op">=</span>alt.datum(<span class="fl">52.1515</span>), </span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        longitude<span class="op">=</span>alt.datum(<span class="fl">5.3790</span>),</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        href<span class="op">=</span>alt.value(<span class="st">'https://www.hkv.nl'</span>)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    alt.Chart(gdf_tile).mark_geoshape(fill<span class="op">=</span><span class="st">'orange'</span>, opacity<span class="op">=</span><span class="fl">0.8</span>).transform_filter(alt.datum.zoom_level <span class="op">==</span> <span class="bu">filter</span>),</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    alt.Chart(gdf_tile).mark_geoshape(clip<span class="op">=</span><span class="va">True</span>, filled<span class="op">=</span><span class="va">False</span>, stroke<span class="op">=</span><span class="st">'black'</span>, strokeWidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>).project(<span class="bu">type</span><span class="op">=</span><span class="st">'mercator'</span>, fit<span class="op">=</span>extent_NL).add_params(<span class="bu">filter</span>)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>chart</span></code><button title="Kopieer naar klembord" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display column-screen" data-execution_count="3">
+
+<style>
+  #altair-viz-e32246ea759b4d1f8faa8acb615579ba.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-e32246ea759b4d1f8faa8acb615579ba.vega-embed details,
+  #altair-viz-e32246ea759b4d1f8faa8acb615579ba.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-e32246ea759b4d1f8faa8acb615579ba"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-e32246ea759b4d1f8faa8acb615579ba") {
+      outputDiv = document.getElementById("altair-viz-e32246ea759b4d1f8faa8acb615579ba");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.17.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.17.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "layer": [{"data": {"name": "data-70358e88e9f5b21ab520bba46cfcc1b2"}, "mark": {"type": "geoshape", "filled": false}}, {"data": {"name": "empty"}, "mark": {"type": "circle", "color": "black"}, "encoding": {"href": {"value": "https://www.hkv.nl"}, "latitude": {"datum": 52.1515}, "longitude": {"datum": 5.379}}}, {"data": {"name": "data-274746e9b321d428e40f32883bb2aace"}, "mark": {"type": "geoshape", "fill": "orange", "opacity": 0.8}, "transform": [{"filter": "(datum.zoom_level === param_1)"}]}, {"data": {"name": "data-274746e9b321d428e40f32883bb2aace"}, "mark": {"type": "geoshape", "clip": true, "filled": false, "stroke": "black", "strokeWidth": 1}}], "params": [{"name": "param_1", "bind": {"input": "range", "max": 17, "min": 8, "name": "zoom level", "step": 1}, "value": 8}], "projection": {"fit": {"type": "Feature", "geometry": {"type": "Polygon", "coordinates": [[[7.227476512276255, 53.55410763185897], [7.227476512276255, 50.75043523040504], [3.358469533685291, 50.75043523040504], [3.358469533685291, 53.55410763185897], [7.227476512276255, 53.55410763185897]]]}, "properties": {}}, "type": "mercator"}, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-70358e88e9f5b21ab520bba46cfcc1b2": [{"statcode": "PV20", "jrstatcode": "2023PV20", "statnaam": "Groningen", "rubriek": "provincie", "id": 1, "type": "Feature", "geometry": {"type": "MultiPolygon", "coordinates": [[[[7.210172159829479, 53.23904736320768], [7.206208807502975, 53.23910749725229], [7.210409254465643, 53.24466451708135], [7.210172159829479, 53.23904736320768]]], [[[6.213284868416557, 53.365249398334136], [6.213230944310278, 53.36244001569115], [6.20930859848936, 53.3652766407131], [6.213284868416557, 53.365249398334136]]], [[[6.209469640592606, 53.3737047785427], [6.209415951869287, 53.37089540208547], [6.205492586343149, 53.37373189628166], [6.209469640592606, 53.3737047785427]]], [[[6.205439157183532, 53.37092251756898], [6.20930859848936, 53.3652766407131], [6.181578269875247, 53.3710824504722], [6.193614047695534, 53.37662184345549], [6.205439157183532, 53.37092251756898]]], [[[6.189793954281499, 53.3850765750912], [6.185815833024881, 53.385103044438765], [6.185868003323783, 53.38791242012156], [6.189793954281499, 53.3850765750912]]], [[[6.225706333429593, 53.39045113772293], [6.22172774418571, 53.390478795014445], [6.217749149099436, 53.39050632080318], [6.229739960893632, 53.393232694098224], [6.225706333429593, 53.39045113772293]]], [[[7.091296783557696, 52.83889660135638], [7.04151743104217, 52.87332474909679], [7.014004256825912, 52.873703104342106], [7.047049455416435, 52.91540635804127], [6.742328933681981, 53.115974246140425], [6.695063830836893, 53.12211999710182], [6.635275858100706, 53.105896889328974], [6.530939031960497, 53.196861048560066], [6.479594113915944, 53.20295966768501], [6.40769671043939, 53.17830297549437], [6.346258431259924, 53.08607961625017], [6.314833954002937, 53.09475733995565], [6.259909735606613, 53.11484030043482], [6.204563640846742, 53.115230756780655], [6.177248547393174, 53.13508378865487], [6.177812458295944, 53.16598943687291], [6.230305521810044, 53.219020260156086], [6.218849570014751, 53.24157926851884], [6.295599399660675, 53.30845977204794], [6.288362287479836, 53.34223204774729], [6.232779754830942, 53.34544555836892], [6.256909902964214, 53.359322342694], [6.18571151582164, 53.37948428457047], [6.201728284236633, 53.38499637814594], [6.186181188987656, 53.40476861448988], [6.237697629572949, 53.39317671734755], [6.190266107208074, 53.41036083393396], [6.190266107208074, 53.41036083393396], [6.254066024411648, 53.41553773133713], [6.309315549057066, 53.39264925480346], [6.369573224622994, 53.417460342249896], [6.569075470259708, 53.4325260976988], [6.697442225404472, 53.462106374572315], [6.833011967725158, 53.46336565797315], [6.820495010496016, 53.446655655362875], [6.856150477878373, 53.44060616748194], [6.836427419075926, 53.44646500946156], [6.840886095027604, 53.46046097768547], [6.884027793460028, 53.44026291746884], [6.87499239588465, 53.409465011275636], [6.900673636802106, 53.34732377235335], [7.006906277944726, 53.317838121657026], [6.927786641427944, 53.3273087171896], [7.045966421645187, 53.300444125222974], [7.097900242032059, 53.308146614099755], [7.084111209958558, 53.260567840295394], [7.210172159829479, 53.23904736320768], [7.208041481123301, 53.18849247823068], [7.227476512276255, 53.17976447165014], [7.203611071920818, 53.17731796272703], [7.17823745521272, 53.138353652199804], [7.20090432622295, 53.11271840506201], [7.21628108448963, 53.00849452473189], [7.091296783557696, 52.83889660135638]]], [[[6.729407582689983, 53.46456437502617], [6.729495460566978, 53.4673732626512], [6.729407582689983, 53.46456437502617], [6.729407582689983, 53.46456437502617]]], [[[6.423697636480157, 53.51534692413442], [6.415785083680288, 53.51822434385687], [6.415987487504212, 53.52665161015504], [6.42396958060454, 53.52658326243873], [6.423697636480157, 53.51534692413442]]], [[[6.595497885762953, 53.52217711891896], [6.599408819218378, 53.519328127517625], [6.587595721023949, 53.525065766145474], [6.595577135685214, 53.52498606578712], [6.595497885762953, 53.52217711891896]]], [[[6.576091433964793, 53.54203804314402], [6.608029653441056, 53.541719082158956], [6.619844572442361, 53.53597947303604], [6.579927204579707, 53.536380748539145], [6.576091433964793, 53.54203804314402]]], [[[6.50444846320125, 53.55115179078185], [6.531950144820252, 53.53403586298964], [6.488475426240243, 53.551298629451104], [6.508000301061301, 53.53426076423686], [6.472146187023933, 53.53739823613733], [6.479556809143453, 53.51485386878833], [6.460310991802402, 53.543123422298144], [6.488547721882895, 53.55410763185897], [6.50444846320125, 53.55115179078185]]]]}}, {"statcode": "PV21", "jrstatcode": "2023PV21", "statnaam": "Frysl\u00e2n", "rubriek": "provincie", "id": 2, "type": "Feature", "geometry": {"type": "MultiPolygon", "coordinates": [[[[5.374294744563391, 53.07306130202906], [5.386144267226255, 53.07025208477866], [5.394041134672606, 53.05620238547849], [5.374299690469774, 53.05620191215832], [5.374294744563391, 53.07306130202906]]], [[[5.259228752957793, 53.2500121300396], [5.251296787153262, 53.250003425417454], [5.247312627683099, 53.25561832012857], [5.267152923963661, 53.252830035569716], [5.259228752957793, 53.2500121300396]]], [[[5.159828218716056, 53.297630405375486], [5.159828218716056, 53.297630405375486], [5.159828218716056, 53.297630405375486], [5.159828218716056, 53.297630405375486]]], [[[5.159828218716056, 53.297630405375486], [5.120229135649373, 53.28069076615276], [5.112255806935333, 53.28629222237911], [5.128048649348703, 53.300375816607186], [5.159828218716056, 53.297630405375486]]], [[[5.10025457172103, 53.30031270628458], [4.973520541276875, 53.266226667148146], [4.97764778425694, 53.24938226919012], [4.918525998384712, 53.21544866565731], [4.843305726757524, 53.209511785706184], [5.001091438770079, 53.28879629343894], [5.064456429189808, 53.308651048539375], [5.10025457172103, 53.30031270628458]]], [[[6.177137272972733, 53.345823971783254], [6.177085737843635, 53.34301454955721], [6.173111491763216, 53.34304059194265], [6.177137272972733, 53.345823971783254]]], [[[6.169443455059964, 53.35992302039993], [6.165467642319214, 53.35994881300621], [6.165569256068738, 53.36556763402961], [6.169443455059964, 53.35992302039993]]], [[[6.182357160995976, 53.413223032916534], [6.186337887242422, 53.41319667312715], [6.182357160995976, 53.413223032916534], [6.182357160995976, 53.413223032916534]]], [[[6.190266107208074, 53.41036083393396], [6.190266107208074, 53.41036083393396], [6.178376429175644, 53.41324926111169], [6.15837185551411, 53.40775969501313], [6.153840432582906, 53.376881870042865], [6.180697634675179, 53.323322357705784], [6.160734574452275, 53.317832928910576], [6.180645902187883, 53.32051291546866], [6.181008191828768, 53.340178953015496], [6.19282499824316, 53.33448080973614], [6.196745639664707, 53.33164469504463], [6.200771874427756, 53.33442729378879], [6.181319027356341, 53.35703544818292], [6.196904061805923, 53.34007295379612], [6.205118749829292, 53.35406618618674], [6.236532532990644, 53.33417997340167], [6.224830897936319, 53.3455011933744], [6.220965257263614, 53.35114760088543], [6.288362287479836, 53.34223204774729], [6.295599399660675, 53.30845977204794], [6.218849570014751, 53.24157926851884], [6.230305521810044, 53.219020260156086], [6.177812458295944, 53.16598943687291], [6.177248547393174, 53.13508378865487], [6.204563640846742, 53.115230756780655], [6.259909735606613, 53.11484030043482], [6.314833954002937, 53.09475733995565], [6.306633521105514, 53.08077038727683], [6.369516525105534, 53.06622053607422], [6.360926145592623, 53.03537972728253], [6.426528378653058, 52.97300430895255], [6.39409704264042, 52.933939383852604], [6.3344351082971, 52.906325612750784], [6.303373623785014, 52.9262393237463], [6.25613987483547, 52.92659238681893], [6.121077225212934, 52.85443510606463], [6.054012878270318, 52.837967954224084], [6.061696191266328, 52.826684041643624], [6.030112140158492, 52.8156178658983], [5.994774695223243, 52.815803243875834], [5.971554031608282, 52.84121075054265], [5.880748918229536, 52.80227922406642], [5.818082850661797, 52.81657302067512], [5.794418805460878, 52.80541568958085], [5.747589550594588, 52.83928797130303], [5.71223181397374, 52.839389619771126], [5.657265270303037, 52.84514701321826], [5.645560795931831, 52.85922337973886], [5.543278196153957, 52.83411044210997], [5.452958714267285, 52.853865122878226], [5.413657004641669, 52.851070293878216], [5.366489447790569, 52.87355200793793], [5.350750694366909, 52.88759851088472], [5.405822866617408, 52.91008283465674], [5.394023077411725, 52.94380426538366], [5.433434030372806, 52.9718953462189], [5.409784294582201, 52.96066226105079], [5.405882345270237, 53.04777137920929], [5.394037514696303, 53.03372306361311], [5.374302985290625, 53.04496227058967], [5.401936748829807, 53.05339175636045], [5.378240580191435, 53.09273083495189], [5.338755730527101, 53.064622558600014], [5.334796538756867, 53.07305058199628], [5.338755730527101, 53.064622558600014], [5.295310239305, 53.06740705021594], [5.16532789789344, 52.999798465086556], [5.16532789789344, 52.999798465086556], [5.378240010440071, 53.095540707664256], [5.409877131245606, 53.13768664932043], [5.401979272759009, 53.177025326209645], [5.4059373497463, 53.17421496777826], [5.413851962320676, 53.16859385151556], [5.449555830716116, 53.22196642640619], [5.588641924321721, 53.30048579042747], [5.879582338411802, 53.39517483928255], [5.931241205208162, 53.38933307379955], [6.190266107208074, 53.41036083393396]]], [[[5.541497826416104, 53.44103656429332], [5.469727815424321, 53.40739245865767], [5.382157379638749, 53.40180159182467], [5.191361544670675, 53.34825992484892], [5.151596085511997, 53.35099830380197], [5.203082551525361, 53.39604195605495], [5.493701429249639, 53.44389790897197], [5.541497826416104, 53.44103656429332]]], [[[5.732890295381572, 53.46311557761506], [5.932238574283575, 53.46799774391867], [5.96006527662446, 53.462249486038516], [5.772468760912502, 53.43209026998118], [5.728748110395252, 53.44346051712415], [5.680807967551194, 53.42391998105549], [5.617186164933104, 53.440915743409214], [5.617261472900458, 53.454963334444905], [5.66120278525061, 53.4717285802846], [5.732890295381572, 53.46311557761506]]], [[[6.379612054717777, 53.50728880068598], [6.327750739639806, 53.50770449925048], [6.203328032572377, 53.46927613353934], [6.159533247023164, 53.47237442881983], [6.143340670189419, 53.45842897781493], [6.115541252675579, 53.46421950313713], [6.152011616342273, 53.4977089070696], [6.387853024365755, 53.51845934344085], [6.379612054717777, 53.50728880068598]]]]}}, {"statcode": "PV22", "jrstatcode": "2023PV22", "statnaam": "Drenthe", "rubriek": "provincie", "id": 3, "type": "Feature", "geometry": {"type": "MultiPolygon", "coordinates": [[[[7.091296783557696, 52.83889660135638], [7.040242054535985, 52.63162533101771], [6.790594407655193, 52.65169942205457], [6.711611585294153, 52.62731062148221], [6.708377668085142, 52.64983108065406], [6.615141186481111, 52.67331475989341], [6.512677876209967, 52.646224141116285], [6.519703598108257, 52.61524218247627], [6.469105404266485, 52.62414511956033], [6.453197460168153, 52.61304707913122], [6.430082599535682, 52.62730446794619], [6.382853490154029, 52.61365745091518], [6.32542999127017, 52.670332656625966], [6.270532288495597, 52.66513243066501], [6.216124413642343, 52.68519651575224], [6.16122086871521, 52.67994586797429], [6.123303721033763, 52.753253765047994], [6.202501047754095, 52.794891673766784], [6.121077225212934, 52.85443510606463], [6.25613987483547, 52.92659238681893], [6.303373623785014, 52.9262393237463], [6.3344351082971, 52.906325612750784], [6.39409704264042, 52.933939383852604], [6.426528378653058, 52.97300430895255], [6.360926145592623, 53.03537972728253], [6.369516525105534, 53.06622053607422], [6.306633521105514, 53.08077038727683], [6.314833954002937, 53.09475733995565], [6.346258431259924, 53.08607961625017], [6.40769671043939, 53.17830297549437], [6.479594113915944, 53.20295966768501], [6.530939031960497, 53.196861048560066], [6.635275858100706, 53.105896889328974], [6.695063830836893, 53.12211999710182], [6.742328933681981, 53.115974246140425], [7.047049455416435, 52.91540635804127], [7.014004256825912, 52.873703104342106], [7.04151743104217, 52.87332474909679], [7.091296783557696, 52.83889660135638]]]]}}, {"statcode": "PV23", "jrstatcode": "2023PV23", "statnaam": "Overijssel", "rubriek": "provincie", "id": 4, "type": "Feature", "geometry": {"type": "MultiPolygon", "coordinates": [[[[5.796348968216214, 52.59183260626754], [5.788484702909124, 52.58623886201136], [5.784629387246293, 52.5918724113766], [5.79246830577134, 52.59465620394803], [5.796348968216214, 52.59183260626754]]], [[[5.80806852450348, 52.59179164491471], [5.812002145460197, 52.594587929421365], [5.815881547966759, 52.591763694991045], [5.808041669829712, 52.58898144666742], [5.800308214069725, 52.59743947633623], [5.80806852450348, 52.59179164491471]]], [[[5.835585736417973, 52.60855267268629], [5.831507560203342, 52.5917062534984], [5.800360953842399, 52.603059864204674], [5.808229735234338, 52.60865279497167], [5.835585736417973, 52.60855267268629]]], [[[6.711611585294153, 52.62731062148221], [6.718239578918444, 52.58788840116133], [6.768216284058957, 52.562022031268], [6.682099634141449, 52.5545609224967], [6.704507263983495, 52.520586876721254], [6.695708884687322, 52.486956603095216], [6.757354796769561, 52.46377469114059], [6.854618140322781, 52.459799517665104], [6.854245281633245, 52.44856113134092], [6.94338418489268, 52.43618062060077], [6.987411533958506, 52.469323978001974], [7.073127091421399, 52.366943189991844], [7.027581074280687, 52.291688489652856], [7.060375434835271, 52.23500919812924], [6.986365359549894, 52.22479095746698], [6.949929058383453, 52.18030383990433], [6.907174211981533, 52.17524057913795], [6.855027399845438, 52.11968269401798], [6.762196962948877, 52.117991324390594], [6.662045696383383, 52.13036044720095], [6.674614219109462, 52.16395370698321], [6.643905150345715, 52.17271728979628], [6.612643329946702, 52.16180305749987], [6.589964523456713, 52.1817118985793], [6.493074453211221, 52.17703840229646], [6.417173751132499, 52.24237109234646], [6.351291199057426, 52.24292730849775], [6.319933625299788, 52.22631534707897], [6.176688272125669, 52.232981280230376], [6.164769388136302, 52.21619685000806], [6.100272364493302, 52.30092061813234], [6.065602861170078, 52.31798777593625], [6.093404484128852, 52.35717209039434], [6.078036818785125, 52.36850478183644], [6.120976125447048, 52.37948827872915], [6.129080642467009, 52.399111168689785], [6.109771431339408, 52.40766201848244], [6.099095164702202, 52.46955660736408], [6.029546296621032, 52.50929957685586], [5.966717543822806, 52.47589860532549], [5.923825073703584, 52.473290169803064], [5.885340234829775, 52.515613692139205], [5.86587197514798, 52.51850421511199], [5.862002202099558, 52.52133011799388], [5.862002202099558, 52.52133011799388], [5.858341973170386, 52.54382742887442], [5.858371996366407, 52.54663764097997], [5.815799501040876, 52.58333310153033], [5.83923401754863, 52.58324618988211], [5.80408220366837, 52.58337482343155], [5.843139759852906, 52.583231255074175], [5.843430836995545, 52.611333083925345], [5.886484965779973, 52.61678049699415], [5.933354205723295, 52.613763965071], [6.01970165277523, 52.63862840390465], [5.980861332998925, 52.658500783222], [5.934052644434402, 52.669966387917896], [5.965729753912254, 52.697919072762325], [5.923306999043758, 52.751512038393265], [5.860879335759923, 52.77987858150207], [5.817778633599402, 52.78566251175775], [5.794418805460878, 52.80541568958085], [5.818082850661797, 52.81657302067512], [5.880748918229536, 52.80227922406642], [5.971554031608282, 52.84121075054265], [5.994774695223243, 52.815803243875834], [6.030112140158492, 52.8156178658983], [6.061696191266328, 52.826684041643624], [6.054012878270318, 52.837967954224084], [6.121077225212934, 52.85443510606463], [6.202501047754095, 52.794891673766784], [6.123303721033763, 52.753253765047994], [6.16122086871521, 52.67994586797429], [6.216124413642343, 52.68519651575224], [6.270532288495597, 52.66513243066501], [6.32542999127017, 52.670332656625966], [6.382853490154029, 52.61365745091518], [6.430082599535682, 52.62730446794619], [6.453197460168153, 52.61304707913122], [6.469105404266485, 52.62414511956033], [6.519703598108257, 52.61524218247627], [6.512677876209967, 52.646224141116285], [6.615141186481111, 52.67331475989341], [6.708377668085142, 52.64983108065406], [6.711611585294153, 52.62731062148221]]]]}}, {"statcode": "PV24", "jrstatcode": "2023PV24", "statnaam": "Flevoland", "rubriek": "provincie", "id": 5, "type": "Feature", "geometry": {"type": "MultiPolygon", "coordinates": [[[[5.862002202099558, 52.52133011799388], [5.862002202099558, 52.52133011799388], [5.862002202099558, 52.52133011799388], [5.862002202099558, 52.52133011799388]]], [[[5.862002202099558, 52.52133011799388], [5.858101945730898, 52.52134566689179], [5.862062679199453, 52.52695056674836], [5.862032438437321, 52.52414034326812], [5.862002202099558, 52.52133011799388]]], [[[5.534560040049133, 52.57839485774219], [5.530645480470845, 52.57558938304259], [5.526749233395586, 52.57840430321488], [5.530663795276822, 52.581209904493505], [5.534560040049133, 52.57839485774219]]], [[[5.757283606298081, 52.59196079343324], [5.737750830674019, 52.59202006927803], [5.733932783296159, 52.60327239207239], [5.75347055605118, 52.60321373933441], [5.757283606298081, 52.59196079343324]]], [[[5.886484965779973, 52.61678049699415], [5.843430836995545, 52.611333083925345], [5.886484965779973, 52.61678049699415], [5.886484965779973, 52.61678049699415]]], [[[6.011920430105329, 52.641479862403045], [6.000227114271847, 52.644351048216016], [6.000266291457629, 52.64716113984728], [6.012000277712229, 52.64710003756747], [6.011920430105329, 52.641479862403045]]], [[[5.794418805460878, 52.80541568958085], [5.817778633599402, 52.78566251175775], [5.860879335759923, 52.77987858150207], [5.923306999043758, 52.751512038393265], [5.965729753912254, 52.697919072762325], [5.934052644434402, 52.669966387917896], [5.980861332998925, 52.658500783222], [5.964953343755354, 52.638907174246604], [5.83170612376398, 52.611377539526764], [5.640183029500321, 52.609129655288775], [5.807934290478816, 52.57774063502582], [5.858371996366407, 52.54663764097997], [5.858341973170386, 52.54382742887442], [5.818467700281744, 52.456858126895014], [5.818467700281744, 52.456858126895014], [5.748020701820632, 52.41493788713991], [5.646707559844084, 52.3899098129268], [5.615452597348423, 52.36187021260436], [5.615452597348423, 52.36187021260436], [5.564953003238652, 52.367577712643204], [5.541583102218835, 52.35355850674285], [5.55311365933625, 52.319817850564625], [5.529673400882784, 52.27488140705934], [5.471471161931676, 52.26369550990996], [5.471471161931676, 52.26369550990996], [5.40166787655098, 52.25248294214536], [5.312417174546755, 52.3030483352819], [5.312417174546755, 52.3030483352819], [5.219152094474101, 52.333867417943466], [5.137638491098668, 52.32529235754179], [5.137638491098668, 52.32529235754179], [5.125658266582202, 52.38147484673551], [5.432949080608449, 52.51103064410436], [5.429076381121624, 52.53913510634555], [5.468152562925738, 52.57002796469801], [5.397887836998375, 52.648742095622964], [5.350924866276964, 52.67683921726317], [5.288266801949669, 52.69085468123044], [5.288266801949669, 52.69085468123044], [5.362668900089079, 52.67403200089065], [5.4564739683162, 52.592517503249844], [5.468152562925738, 52.57002796469801], [5.440802736204413, 52.5559921048268], [5.425172015610536, 52.536326130440564], [5.432966617737648, 52.52789247517532], [5.456407602757999, 52.55036344178084], [5.499346937378582, 52.5531408710595], [5.55804695813123, 52.592414704664876], [5.651958067792777, 52.61753475904592], [5.589610247873291, 52.65981092250015], [5.59401251473409, 52.76378016425355], [5.665034302619508, 52.83107867108674], [5.71223181397374, 52.839389619771126], [5.747589550594588, 52.83928797130303], [5.794418805460878, 52.80541568958085]]]]}}, {"statcode": "PV25", "jrstatcode": "2023PV25", "statnaam": "Gelderland", "rubriek": "provincie", "id": 6, "type": "Feature", "geometry": {"type": "MultiPolygon", "coordinates": [[[[5.607679975712759, 52.36188495865848], [5.599907348236951, 52.36189919424155], [5.592134715126764, 52.361912919352775], [5.599920836350628, 52.36470957800446], [5.607679975712759, 52.36188495865848]]], [[[6.762196962948877, 52.117991324390594], [6.749575951320002, 52.08440734425964], [6.695023565957656, 52.06816044578566], [6.686487453227431, 52.04014624944488], [6.75172241505941, 52.02816451343233], [6.827765310035208, 51.993526819401325], [6.830894795692816, 51.97100068399083], [6.751898324507852, 51.907292253729864], [6.720795821365269, 51.89640567861841], [6.67521648212352, 51.916590799068885], [6.473600280873291, 51.85397871311756], [6.389515905050632, 51.874402549451], [6.399971523072866, 51.82652882381174], [6.346695575380446, 51.84946307443982], [6.304437679794386, 51.849800926082175], [6.277990843421676, 51.872490845178085], [6.216388613037717, 51.86732054929933], [6.170856962269086, 51.90136213559525], [6.117010060629791, 51.90170903755255], [6.105336611832599, 51.89334884807604], [6.166328870932617, 51.86204196073191], [6.165939821249119, 51.83955857161465], [6.062613281193306, 51.865495230288744], [6.000662042828081, 51.83210686184562], [5.962329917470412, 51.837922421686244], [5.946652091099653, 51.81270191005062], [5.992150939861628, 51.77031524419727], [5.953517373448363, 51.74802247316568], [5.934282985748277, 51.742492407489195], [5.892499605911807, 51.77640859773303], [5.869455374313602, 51.773694963992774], [5.865441139950758, 51.75684718144972], [5.7580638576513, 51.754425519004535], [5.639558575261551, 51.816575396057466], [5.589699448102756, 51.82791471192147], [5.535899762445512, 51.81675269285399], [5.489860988180836, 51.830855296672425], [5.462944758162314, 51.81120127240227], [5.401527164321688, 51.819656871777774], [5.359330792643821, 51.75782007824737], [5.301854511336487, 51.738117718013], [5.129390530683835, 51.73786546089878], [5.136868740635811, 51.77160979278323], [5.094570467942239, 51.78837596037819], [5.071608748510442, 51.779884428933514], [5.002200432536452, 51.82183737275103], [5.025260667540471, 51.8191000648339], [5.032762664849758, 51.84160827100002], [4.998166786040366, 51.844309421708445], [4.994178150326189, 51.86116011334436], [5.028787217935371, 51.858460154814594], [5.059529187985836, 51.85854993085652], [5.055582956096641, 51.87259210394608], [5.113156936097588, 51.88679367601695], [5.181998831380775, 51.96844181691899], [5.212849148724397, 51.960059760250644], [5.235891786632831, 51.979765790966916], [5.324550252235233, 51.95455097288777], [5.436263789623611, 51.98547376355413], [5.486355304878468, 51.982631554409856], [5.605619391541359, 51.94312199282261], [5.628764865156387, 51.95150851089082], [5.590627191574974, 52.033087785936715], [5.559819345986986, 52.04718985935159], [5.548455269724994, 52.106227520164225], [5.521322303636439, 52.07815614551356], [5.48268773129176, 52.06976220297458], [5.4595403603013, 52.08102090768338], [5.513758282617298, 52.134375206068356], [5.479023334705661, 52.16532305292219], [5.440338049827569, 52.170967877283886], [5.440378383229115, 52.20469377429772], [5.393909548607182, 52.22156850354928], [5.405542316816484, 52.24686147639086], [5.471471161931676, 52.26369550990996], [5.471471161931676, 52.26369550990996], [5.525759614025438, 52.263644247622544], [5.5608679386661, 52.316996277488606], [5.623165372375971, 52.35061341960674], [5.615452597348423, 52.36187021260436], [5.615452597348423, 52.36187021260436], [5.740104421732881, 52.39809936006186], [5.810463316078248, 52.43440391095244], [5.818467700281744, 52.456858126895014], [5.818467700281744, 52.456858126895014], [5.86587197514798, 52.51850421511199], [5.885340234829775, 52.515613692139205], [5.923825073703584, 52.473290169803064], [5.966717543822806, 52.47589860532549], [6.029546296621032, 52.50929957685586], [6.099095164702202, 52.46955660736408], [6.109771431339408, 52.40766201848244], [6.129080642467009, 52.399111168689785], [6.120976125447048, 52.37948827872915], [6.078036818785125, 52.36850478183644], [6.093404484128852, 52.35717209039434], [6.065602861170078, 52.31798777593625], [6.100272364493302, 52.30092061813234], [6.164769388136302, 52.21619685000806], [6.176688272125669, 52.232981280230376], [6.319933625299788, 52.22631534707897], [6.351291199057426, 52.24292730849775], [6.417173751132499, 52.24237109234646], [6.493074453211221, 52.17703840229646], [6.589964523456713, 52.1817118985793], [6.612643329946702, 52.16180305749987], [6.643905150345715, 52.17271728979628], [6.674614219109462, 52.16395370698321], [6.662045696383383, 52.13036044720095], [6.762196962948877, 52.117991324390594]]]]}}, {"statcode": "PV26", "jrstatcode": "2023PV26", "statnaam": "Utrecht", "rubriek": "provincie", "id": 7, "type": "Feature", "geometry": {"type": "MultiPolygon", "coordinates": [[[[5.304701670174579, 52.277749245530586], [5.405542316816484, 52.24686147639086], [5.393909548607182, 52.22156850354928], [5.440378383229115, 52.20469377429772], [5.440338049827569, 52.170967877283886], [5.479023334705661, 52.16532305292219], [5.513758282617298, 52.134375206068356], [5.4595403603013, 52.08102090768338], [5.48268773129176, 52.06976220297458], [5.521322303636439, 52.07815614551356], [5.548455269724994, 52.106227520164225], [5.559819345986986, 52.04718985935159], [5.590627191574974, 52.033087785936715], [5.628764865156387, 51.95150851089082], [5.605619391541359, 51.94312199282261], [5.486355304878468, 51.982631554409856], [5.436263789623611, 51.98547376355413], [5.324550252235233, 51.95455097288777], [5.235891786632831, 51.979765790966916], [5.212849148724397, 51.960059760250644], [5.181998831380775, 51.96844181691899], [5.113156936097588, 51.88679367601695], [5.055582956096641, 51.87259210394608], [5.059529187985836, 51.85854993085652], [5.028787217935371, 51.858460154814594], [5.028608174462957, 51.88094481919856], [4.99792391774446, 51.87241521292643], [4.993809798572645, 51.90331865506203], [4.974628602359867, 51.89763159792425], [4.927930685771551, 51.95086067230242], [4.878032406326298, 51.93660201007744], [4.819510942648852, 51.998168351917045], [4.857957754755493, 52.006779390891225], [4.846256004229915, 52.01796870618679], [4.803873158148524, 52.01495571538222], [4.807511111336039, 52.031837463960905], [4.872669556796451, 52.06867804491977], [4.830236882825137, 52.06567451088073], [4.825847632516532, 52.10781265859837], [4.790883681406341, 52.12169397181146], [4.821556762536664, 52.14151913663971], [4.87572709570409, 52.13895587581954], [4.890944448024446, 52.16150532451736], [4.801447595347113, 52.20044285305048], [4.79336647374462, 52.22569739710748], [4.870526767733587, 52.254165254826475], [4.909325066357574, 52.25151800445059], [4.924539311848847, 52.27968347376313], [4.967208998873666, 52.27984274318844], [5.013569267671072, 52.30248204890753], [5.025395468535343, 52.280035103642895], [5.064145932360956, 52.285768244928235], [5.02158564852177, 52.27159196782953], [5.05676243998866, 52.235159279518406], [5.02216193819932, 52.20133143041897], [5.045675377619782, 52.16486505493772], [5.192653803298219, 52.176440806416664], [5.265904275792376, 52.280526297783744], [5.304701670174579, 52.277749245530586]]]]}}, {"statcode": "PV27", "jrstatcode": "2023PV27", "statnaam": "Noord-Holland", "rubriek": "provincie", "id": 8, "type": "Feature", "geometry": {"type": "MultiPolygon", "coordinates": [[[[5.32795686904747, 52.29181537519746], [5.316316252848218, 52.29180898434124], [5.316311780787959, 52.294619420792166], [5.324072681883093, 52.29462380908164], [5.32795686904747, 52.29181537519746]]], [[[5.040495703270954, 52.33347895430183], [5.036611913452798, 52.33346751292442], [5.032683259432829, 52.33907668599721], [5.040473763394984, 52.33628932794682], [5.040495703270954, 52.33347895430183]]], [[[5.106449404373079, 52.34489549112242], [5.110334215234145, 52.34490464030416], [5.098661525905191, 52.34768719025436], [5.102546579054798, 52.34769659531225], [5.106449404373079, 52.34489549112242]]], [[[5.0792557817384, 52.3448278753625], [5.087006378002906, 52.34765820969994], [5.0792557817384, 52.3448278753625], [5.0792557817384, 52.3448278753625]]], [[[5.009329802669021, 52.34462530708461], [4.997650888619253, 52.34739788435201], [5.005420881590281, 52.347423200119216], [5.009329802669021, 52.34462530708461]]], [[[5.071346240506662, 52.36447999667942], [5.067459726450803, 52.36446956599699], [5.071346240506662, 52.36447999667942], [5.071346240506662, 52.36447999667942]]], [[[5.013025064560445, 52.36712048533324], [5.001364894429859, 52.36708306427418], [5.013025064560445, 52.36712048533324], [5.013025064560445, 52.36712048533324]]], [[[5.012977656306607, 52.372741179434584], [5.012977656306607, 52.372741179434584], [5.012977656306607, 52.372741179434584], [5.012977656306607, 52.372741179434584], [5.012977656306607, 52.372741179434584]]], [[[4.579828726865888, 52.46332594830389], [4.57203887262422, 52.46327264434531], [4.571987078999053, 52.46608275291711], [4.579777428176066, 52.466136061244335], [4.579828726865888, 52.46332594830389]]], [[[5.147005755953102, 52.7468571958405], [5.147021136436522, 52.744047063738584], [5.143085378032818, 52.74684922923531], [5.147005755953102, 52.7468571958405]]], [[[5.237011377455377, 52.794776943163825], [5.221302009313838, 52.797566252068805], [5.221270092469111, 52.80599655488894], [5.237011377455377, 52.794776943163825]]], [[[4.68093323629464, 52.96138837466186], [4.661095597339348, 52.969699758586714], [4.676581408162215, 52.98665322034563], [4.712231394219005, 52.97561953909178], [4.68093323629464, 52.96138837466186]]], [[[5.288266801949669, 52.69085468123044], [5.288266801949669, 52.69085468123044], [5.245215562912407, 52.685190757774], [5.22967677247789, 52.65144867764367], [5.159408452563009, 52.62323253326741], [5.128150108434561, 52.62035830069844], [5.088906892051773, 52.64274832498288], [5.018601913900165, 52.63131021059463], [5.030855116092996, 52.566711164391926], [5.085937918599877, 52.50503674973252], [5.058771111589386, 52.48810263583889], [5.066708461781566, 52.468451886007465], [5.035543339756303, 52.46836357884775], [5.05508481677277, 52.459988825444185], [5.051339223957021, 52.44030568751744], [5.09030868091735, 52.43478893447285], [5.094089764316053, 52.45166055728679], [5.105665054678182, 52.46855074883637], [5.113491168006589, 52.46294835884627], [5.132967078564472, 52.46299170250567], [5.140773104187848, 52.460197823344465], [5.094108372856698, 52.448850238506935], [5.090289838785589, 52.437599260914745], [5.067115054538182, 52.41224550848322], [5.012977656306607, 52.372741179434584], [4.974053236916091, 52.378232620785354], [4.97415792136026, 52.36699128132882], [5.020891329092382, 52.355903379166925], [5.032728125950487, 52.33345594403786], [5.094831991662552, 52.33924651478646], [5.137638491098668, 52.32529235754179], [5.137638491098668, 52.32529235754179], [5.164918650544792, 52.305673686614725], [5.250275026945689, 52.31704494915757], [5.293023144438717, 52.29741363265645], [5.312417174546755, 52.3030483352819], [5.312417174546755, 52.3030483352819], [5.304701670174579, 52.277749245530586], [5.265904275792376, 52.280526297783744], [5.192653803298219, 52.176440806416664], [5.045675377619782, 52.16486505493772], [5.02216193819932, 52.20133143041897], [5.05676243998866, 52.235159279518406], [5.02158564852177, 52.27159196782953], [5.064145932360956, 52.285768244928235], [5.025395468535343, 52.280035103642895], [5.013569267671072, 52.30248204890753], [4.967208998873666, 52.27984274318844], [4.924539311848847, 52.27968347376313], [4.909325066357574, 52.25151800445059], [4.870526767733587, 52.254165254826475], [4.79336647374462, 52.22569739710748], [4.735540547715368, 52.20571862358988], [4.723546409292171, 52.23094685491381], [4.704129905571363, 52.233646731060645], [4.619222158653305, 52.21345114940872], [4.557148549573028, 52.21865235378792], [4.567838592043222, 52.269317613143244], [4.60971007881707, 52.31456929423575], [4.563231839109354, 52.308633528739115], [4.492972521962558, 52.327797165026695], [4.560826610994221, 52.437900733096356], [4.552617355572522, 52.46032704578317], [4.540987197725209, 52.45743412318423], [4.53709281784728, 52.45740626007782], [4.533144191246542, 52.460188358615], [4.533089930943675, 52.46299844646063], [4.587720187827602, 52.457758500625495], [4.606944663676192, 52.47193885955253], [4.599103166790803, 52.47469745295315], [4.568039863838415, 52.46886601140877], [4.540772120155868, 52.468674489380135], [4.564144455322539, 52.46883903508533], [4.59450181504535, 52.514012938817196], [4.641204293052575, 52.75038395546702], [4.728206981311295, 52.96165835232853], [4.783282626718302, 52.96756940196214], [4.775481374989502, 52.961909630106256], [4.779538464865417, 52.95350014790639], [4.787454731756487, 52.95073007264769], [4.779460117828503, 52.95911986882653], [4.803020721977312, 52.96485743729663], [4.807633093350367, 52.91429868565027], [4.882696347817315, 52.88934858220899], [4.968820893135769, 52.93183230351089], [5.023844691181206, 52.943252403640514], [5.03966384272973, 52.93486936880837], [5.16532789789344, 52.999798465086556], [5.16532789789344, 52.999798465086556], [5.039775723579558, 52.920819517326365], [5.111050119680422, 52.85356408112146], [5.119477413905052, 52.7608493249521], [5.154891144325524, 52.73844233558754], [5.194013300796839, 52.75537313349687], [5.260681118991356, 52.75265237262418], [5.307808339673534, 52.71054059811501], [5.288266801949669, 52.69085468123044]], [[5.103736448574375, 52.76924338518833], [5.107658819700206, 52.76925264849167], [5.103718280880242, 52.77205349091094], [5.103736448574375, 52.76924338518833]], [[4.962363269930979, 52.38100168470314], [4.958475346746233, 52.38098767369987], [4.974105586769279, 52.372611954279925], [4.974027056264114, 52.381042951612606], [4.962363269930979, 52.38100168470314]], [[4.970244809965858, 52.36978799511642], [4.95861113917617, 52.366936026032825], [4.966437829000254, 52.36134323405274], [4.970297629483823, 52.364167321182144], [4.970244809965858, 52.36978799511642]], [[4.970297629483823, 52.364167321182144], [5.001560296651883, 52.34460024848729], [5.017122744028653, 52.34183949231988], [4.978070539117978, 52.36419443608572], [4.970297629483823, 52.364167321182144]]], [[[4.879591333504037, 53.156283707914255], [4.907541184791294, 53.133919777914606], [4.89631150936313, 53.07767615187809], [4.794644299624942, 53.00134665420041], [4.747202992873765, 53.0095323038292], [4.775007684910453, 52.9956277120516], [4.731808422922918, 52.9841586133065], [4.70754527296418, 53.02336370026197], [4.73427513145758, 53.08252232869479], [4.839663622372089, 53.18420668453689], [4.859462733959376, 53.18429540403945], [4.879591333504037, 53.156283707914255]]]]}}, {"statcode": "PV28", "jrstatcode": "2023PV28", "statnaam": "Zuid-Holland", "rubriek": "provincie", "id": 9, "type": "Feature", "geometry": {"type": "MultiPolygon", "coordinates": [[[[4.5437856872357, 51.69576347075521], [4.570535499083161, 51.69876383010956], [4.5437856872357, 51.69576347075521], [4.5437856872357, 51.69576347075521]]], [[[4.344445567918539, 51.705401975885415], [4.33685231653974, 51.70252325486494], [4.336787041759656, 51.70533355336363], [4.340616301496408, 51.70536782720978], [4.344445567918539, 51.705401975885415]]], [[[4.367421305475522, 51.705604239332814], [4.363591999454403, 51.70557084168981], [4.36735792487488, 51.70841455888859], [4.367421305475522, 51.705604239332814]]], [[[4.312809943388453, 51.747279400534886], [4.355356225972526, 51.730796442171], [4.309446546522403, 51.727572330568236], [4.259081400379364, 51.74958552458268], [4.312809943388453, 51.747279400534886]]], [[[3.886858338489136, 51.75946736614102], [3.883118657235272, 51.75660836230866], [3.879191750244558, 51.75936899328243], [3.883025039549717, 51.7594182423702], [3.886858338489136, 51.75946736614102]]], [[[3.955324545688955, 51.77718986719171], [3.966917747701142, 51.774519827701994], [3.905656095836158, 51.77095071054086], [3.935788580210573, 51.788193865359986], [3.955324545688955, 51.77718986719171]]], [[[4.150376814650284, 51.79908588617379], [4.142702805212227, 51.79900472452801], [4.138865812464005, 51.79896395546983], [4.15029973592324, 51.8018960067123], [4.150376814650284, 51.79908588617379]]], [[[3.966209805988767, 51.79699947486885], [3.958447589954789, 51.799716211246924], [3.966032693365115, 51.80261937656365], [3.966209805988767, 51.79699947486885]]], [[[4.79336647374462, 52.22569739710748], [4.801447595347113, 52.20044285305048], [4.890944448024446, 52.16150532451736], [4.87572709570409, 52.13895587581954], [4.821556762536664, 52.14151913663971], [4.790883681406341, 52.12169397181146], [4.825847632516532, 52.10781265859837], [4.830236882825137, 52.06567451088073], [4.872669556796451, 52.06867804491977], [4.807511111336039, 52.031837463960905], [4.803873158148524, 52.01495571538222], [4.846256004229915, 52.01796870618679], [4.857957754755493, 52.006779390891225], [4.819510942648852, 51.998168351917045], [4.878032406326298, 51.93660201007744], [4.927930685771551, 51.95086067230242], [4.974628602359867, 51.89763159792425], [4.993809798572645, 51.90331865506203], [4.99792391774446, 51.87241521292643], [5.028608174462957, 51.88094481919856], [5.028787217935371, 51.858460154814594], [4.994178150326189, 51.86116011334436], [4.998166786040366, 51.844309421708445], [5.032762664849758, 51.84160827100002], [5.025260667540471, 51.8191000648339], [5.002200432536452, 51.82183737275103], [4.917671224986077, 51.82715107748417], [4.85269124375742, 51.80157689881069], [4.772212906254529, 51.792750535937635], [4.722993976995536, 51.747510328926815], [4.642961917817444, 51.71892183287741], [4.642961917817444, 51.71892183287741], [4.642961917817444, 51.71892183287741], [4.635347334067475, 51.71606244247876], [4.635347334067475, 51.71606244247876], [4.627544831654377, 51.7244444651639], [4.532193575504873, 51.70130106293522], [4.409179386971003, 51.722825430699444], [4.402069014222866, 51.69746814979497], [4.394473399886468, 51.69459315657975], [4.363846382433384, 51.6943295657096], [4.356701823939295, 51.67177986770152], [4.280586632863266, 51.65421969407699], [4.15743115519274, 51.68110022153414], [4.157354777313811, 51.68391038424746], [4.12228131415635, 51.7060245867206], [4.04936399132393, 51.71083649383451], [3.992979373392549, 51.80013172621328], [3.889666214390701, 51.79042506714863], [3.856287504654796, 51.75626101521952], [3.871808158787017, 51.7508405120367], [3.840955632609136, 51.75605977450585], [3.840859392469004, 51.7588696101164], [3.863194640330746, 51.77883973604413], [3.86954107588936, 51.818277115752664], [4.010619617696464, 51.85093792476013], [4.034511443140194, 51.82310587892572], [4.064645689002841, 51.84312611263818], [4.028808581338212, 51.88488142209399], [4.050871916134816, 51.91886585539281], [3.98555989331658, 51.915294070834264], [3.964725193785178, 51.96564127853419], [4.002542060614612, 51.98858013459395], [4.095179222384012, 51.98401213974403], [4.254018915827174, 52.10370276125328], [4.26582020298652, 52.09538332160737], [4.257882171900587, 52.103739838428965], [4.402337317650834, 52.211841411495726], [4.492972521962558, 52.327797165026695], [4.563231839109354, 52.308633528739115], [4.60971007881707, 52.31456929423575], [4.567838592043222, 52.269317613143244], [4.557148549573028, 52.21865235378792], [4.619222158653305, 52.21345114940872], [4.704129905571363, 52.233646731060645], [4.723546409292171, 52.23094685491381], [4.735540547715368, 52.20571862358988], [4.79336647374462, 52.22569739710748]], [[4.05713036152067, 51.83741926927365], [4.042357013632217, 51.817574097925174], [4.193253991773707, 51.77423185421878], [4.279004600617622, 51.718855690706796], [4.329194293023224, 51.70245433724368], [4.39422662865436, 51.70583451794564], [4.405348582350857, 51.722793394427576], [4.24715698279664, 51.76633558370769], [4.231459915356422, 51.780236438768384], [4.246659908116041, 51.786007040531224], [4.157437742022356, 51.82164753436131], [4.05713036152067, 51.83741926927365]]]]}}, {"statcode": "PV29", "jrstatcode": "2023PV29", "statnaam": "Zeeland", "rubriek": "provincie", "id": 10, "type": "Feature", "geometry": {"type": "MultiPolygon", "coordinates": [[[[3.517986959526649, 51.405557891193936], [3.686689394226559, 51.37159403829494], [3.767795673461015, 51.33620337767467], [3.790188521465097, 51.34775746828342], [3.817454603697677, 51.32844964301758], [3.813173766570536, 51.34244790454648], [3.866629577958035, 51.334724462761216], [3.956895138211906, 51.36397922905231], [3.974591912433156, 51.406361829290574], [4.020405516969861, 51.4012856898714], [4.048101464085201, 51.36506306717759], [4.097665647571826, 51.359999985385535], [4.132560772431691, 51.335081558933794], [4.116587596523789, 51.36301890774733], [4.158844668725672, 51.346605838405296], [4.150714348065711, 51.36619706346083], [4.173368588044347, 51.372057280437495], [4.173667360816652, 51.3608163038777], [4.192300625577116, 51.37506393716102], [4.234825465669867, 51.347382189640506], [4.167867323201937, 51.29329104583673], [4.063005283229897, 51.2443569282236], [4.013731171453119, 51.24378552286259], [3.886247831860705, 51.20004255487862], [3.88930029770941, 51.22257135483116], [3.798772232369554, 51.210124921066104], [3.797213396707482, 51.255083254834254], [3.590425671154612, 51.30548849180148], [3.58361173734472, 51.28570363905713], [3.515222970577338, 51.28743499669329], [3.528314177368082, 51.24547394714112], [3.425997424300971, 51.243793491146825], [3.36680425262864, 51.29619877763722], [3.358469533685291, 51.31292284638975], [3.384172893848443, 51.33304837067175], [3.371047417330441, 51.37218279240781], [3.517986959526649, 51.405557891193936]]], [[[3.692245324867934, 51.52910577000553], [3.692350115126437, 51.52629604019566], [3.692245324867934, 51.52910577000553], [3.692245324867934, 51.52910577000553]]], [[[3.715333661021027, 51.523816045700386], [3.711520506011888, 51.52376140080736], [3.71883740274679, 51.53229984865085], [3.715333661021027, 51.523816045700386]]], [[[3.779363636166612, 51.54720459240874], [3.771633269402754, 51.54990915787061], [3.771533312252569, 51.55271897337621], [3.779363636166612, 51.54720459240874]]], [[[3.771733212275325, 51.54709934161473], [3.760287653228849, 51.54694053138461], [3.756371601233118, 51.54969714470105], [3.767717643926658, 51.55266615263938], [3.771733212275325, 51.54709934161473]]], [[[3.695640529625405, 51.54039997573184], [3.688116595289333, 51.53747954106418], [3.683775579027441, 51.55147258447372], [3.6954312559385, 51.54601943608029], [3.695640529625405, 51.54039997573184]]], [[[3.676038868850752, 51.5541707942212], [3.672117108913485, 51.55692455501526], [3.672010974279225, 51.559734254028626], [3.676038868850752, 51.5541707942212]]], [[[3.672010974279225, 51.559734254028626], [3.664378782369874, 51.55962198425731], [3.668194872878055, 51.559678181427685], [3.672010974279225, 51.559734254028626]]], [[[3.933672863654526, 51.73475766254972], [3.914516617636945, 51.734518484182566], [3.910593553398137, 51.73728018824143], [3.918165101225369, 51.740186415824596], [3.933672863654526, 51.73475766254972]]], [[[3.95247237187516, 51.74623353567551], [3.963969228051039, 51.74637370675296], [3.93732377580782, 51.74042500667687], [3.937143358988196, 51.74604488701851], [3.95247237187516, 51.74623353567551]]], [[[4.014473126080105, 51.724487943271725], [4.002895558490876, 51.7271627559531], [3.982868695242306, 51.755034769031205], [3.998114552760924, 51.75802744464722], [4.014473126080105, 51.724487943271725]]], [[[3.840955632609136, 51.75605977450585], [3.826206788280111, 51.738997593525895], [3.972074069775366, 51.73241664900639], [4.015666926781049, 51.685147553268905], [4.092775009634056, 51.66634832897994], [4.157354777313811, 51.68391038424746], [4.15743115519274, 51.68110022153414], [4.196958077834204, 51.63372245873011], [4.239012140365385, 51.63414267723793], [4.190202704542061, 51.59992194159784], [4.237256659394993, 51.552607819445186], [4.219403532827226, 51.50464422032507], [4.274768185970257, 51.42366679301072], [4.275932545142545, 51.37589133666815], [4.241789574028126, 51.37274980914505], [4.199098787395452, 51.40605451735618], [4.153755774501077, 51.394339584471254], [4.081099251876422, 51.407603518740515], [3.976657144043778, 51.46260894969345], [3.923701496609702, 51.45071231953823], [3.89888624427088, 51.39417543056986], [3.811720201058284, 51.38459634346856], [3.676244564842038, 51.44734572269914], [3.687350131772175, 51.45594187194226], [3.71832475640993, 51.442332784908395], [3.725424988110726, 51.45649036881223], [3.691052917644984, 51.45880702325434], [3.717500861679923, 51.46481098225199], [3.721000590450744, 51.4732947368115], [3.656891016878288, 51.45549413190595], [3.668525178956455, 51.45004353245891], [3.607945290604186, 51.44070138152516], [3.596085396473261, 51.45176517802397], [3.600443444629102, 51.437775385896444], [3.57760901325687, 51.437423358095465], [3.432948787995734, 51.52505504761763], [3.439852024882324, 51.542038861021204], [3.552468017268229, 51.58884312217906], [3.681981784262152, 51.599237616930324], [3.665850869804644, 51.621491257189966], [3.721932488174883, 51.65603759625529], [3.682526291287477, 51.68639371110744], [3.688913990842971, 51.720221070050414], [3.722760579128471, 51.737573944024156], [3.71157969985941, 51.72898103055326], [3.818446264148899, 51.74170508546634], [3.840859392469004, 51.7588696101164], [3.840955632609136, 51.75605977450585]], [[3.808522341798277, 51.69659366450271], [3.72534426166695, 51.667330891266374], [3.711395500434469, 51.63058627543718], [3.730506305552266, 51.630858467582726], [3.68877883375043, 51.6218264195579], [3.685906637155854, 51.596483548281455], [3.83849192875547, 51.60422634618321], [3.869335245123233, 51.59619734300594], [3.914165698660429, 51.62769281358915], [3.894869787749874, 51.63307048257484], [3.932645381791408, 51.64760164375078], [3.891139953145112, 51.63021173749454], [3.878456472908276, 51.66659334093412], [3.808522341798277, 51.69659366450271]], [[4.096600701903728, 51.66639056824349], [4.070801518232231, 51.632371129272194], [4.010064919299612, 51.61761676004419], [3.968117239406613, 51.61430431347853], [3.936829207819845, 51.63640923533529], [3.914165698660429, 51.62769281358915], [3.869335245123233, 51.59619734300594], [3.900996079866687, 51.56287062067402], [3.863489468444697, 51.54270963790429], [3.924530185152203, 51.54348974130724], [3.940417148530212, 51.524009797506345], [4.016858515610355, 51.519309454453264], [4.020925089421636, 51.5109238875959], [4.044049347797817, 51.50275895278052], [4.051673086291965, 51.50284639552945], [4.055484968209937, 51.502889930282066], [4.055567241544184, 51.50007981398619], [4.091393207554936, 51.44707307582199], [4.133737450012042, 51.43066950121931], [4.182918301853737, 51.44243164905265], [4.221132304193364, 51.43719786283735], [4.215953136564142, 51.490554755569455], [4.177544241796038, 51.50140712455147], [4.165580201288912, 51.520959584512724], [4.077709131841994, 51.525629599654074], [3.984445105214277, 51.5807684309742], [4.075193830767634, 51.61274333410473], [4.174771730846715, 51.60538493873101], [4.178292712585915, 51.61666528043984], [4.124869382030657, 51.61328997864468], [4.097561267865283, 51.632669139775984], [4.119948344915978, 51.65259069646626], [4.193135026197621, 51.63368350764246], [4.13899378448716, 51.6556063389773], [4.157965493990612, 51.66142905881577], [4.138838841669569, 51.661226645955495], [4.161714784100985, 51.66427933827197], [4.153757344779944, 51.67543964468216], [4.096600701903728, 51.66639056824349]], [[3.70801877221503, 51.515277382110796], [3.752657332006129, 51.54683403521344], [3.791006833273315, 51.54174185745311], [3.863489468444697, 51.54270963790429], [3.836305259386769, 51.55640775357275], [3.75998565892917, 51.555369939414526], [3.703790159102594, 51.52646148158096], [3.702331635620136, 51.56579781768608], [3.687380679274202, 51.55714758169459], [3.644219786438732, 51.58743575734389], [3.629055196119146, 51.584397406330226], [3.70801877221503, 51.515277382110796]]]]}}, {"statcode": "PV30", "jrstatcode": "2023PV30", "statnaam": "Noord-Brabant", "rubriek": "provincie", "id": 11, "type": "Feature", "geometry": {"type": "MultiPolygon", "coordinates": [[[[4.872494703180768, 51.41097076337427], [4.868689796701565, 51.41095391163078], [4.872494703180768, 51.41097076337427], [4.872494703180768, 51.41097076337427]]], [[[4.936984405673206, 51.430912976095115], [4.933177805108654, 51.430898226606146], [4.933149814059857, 51.43370889892583], [4.936956649373654, 51.43372364960447], [4.936984405673206, 51.430912976095115]]], [[[4.933149814059857, 51.43370889892583], [4.929342981605079, 51.4336940240138], [4.933121819021943, 51.4365195707484], [4.933149814059857, 51.43370889892583]]], [[[4.933121819021943, 51.4365195707484], [4.929314751785075, 51.436504694636504], [4.933121819021943, 51.4365195707484], [4.933121819021943, 51.4365195707484]]], [[[4.936928889118436, 51.43653432261685], [4.936928889118436, 51.43653432261685], [4.936928889118436, 51.43653432261685], [4.936928889118436, 51.43653432261685], [4.936928889118436, 51.43653432261685]]], [[[4.933093819994079, 51.43933024207043], [4.929286517941661, 51.439315364758585], [4.933093819994079, 51.43933024207043], [4.933093819994079, 51.43933024207043]]], [[[4.925507687431801, 51.43648969428139], [4.921671922513412, 51.43928523737527], [4.925450746057368, 51.442111031601385], [4.925507687431801, 51.43648969428139]]], [[[4.5437856872357, 51.69576347075521], [4.570535499083161, 51.69876383010956], [4.601118072426769, 51.70178384294896], [4.5437856872357, 51.69576347075521]]], [[[5.865441139950758, 51.75684718144972], [5.891902233878032, 51.7230075973056], [5.956854205976906, 51.708656026570274], [5.963797069384169, 51.652407070759615], [6.020741227166992, 51.621194089371926], [6.046598914835001, 51.559213757872456], [6.031210295952667, 51.55086720611116], [6.004761939738719, 51.570685527335385], [5.905262031448264, 51.551493629937944], [5.836700556452134, 51.56583134309827], [5.869836632975903, 51.45045752455561], [5.929963941641548, 51.382734028072264], [5.87639659119889, 51.35205246410898], [5.670947580793963, 51.31338344699529], [5.625180105693632, 51.274135214465446], [5.61736663279874, 51.22917850059075], [5.564275177360828, 51.22083920923186], [5.55686330406338, 51.265822654902074], [5.484869107482522, 51.29963466067788], [5.416519916506886, 51.26032132233442], [5.344449152517431, 51.27437109711144], [5.336874124645665, 51.26312501127283], [5.238272154397047, 51.260229947425955], [5.241922138344852, 51.305206854787286], [5.200094836626485, 51.32201181064368], [5.135582027135959, 51.31345806039181], [5.131596721819984, 51.347178636968415], [5.070490304234181, 51.39200097249997], [5.104477296493481, 51.43143896976499], [5.077563186612005, 51.470721277258775], [5.047083409138752, 51.47063647830409], [5.039334675883421, 51.487478194485945], [5.00538599017663, 51.445210685556944], [4.922130687718345, 51.394314496065405], [4.89909906407636, 51.413895913925295], [4.769725396198945, 51.41328280555615], [4.765690550192694, 51.43012627098007], [4.784685703700489, 51.43303672250133], [4.838183007812016, 51.4164359133075], [4.822578864076796, 51.44728024827213], [4.845292714253652, 51.458631102105706], [4.84121432313282, 51.481098426663394], [4.772317604643056, 51.50324235035933], [4.66650206662913, 51.44360989573446], [4.670574761857928, 51.4267699581289], [4.640218122976585, 51.42095783550869], [4.575323377886278, 51.431767665479065], [4.533610524490435, 51.42303728839605], [4.536314553152565, 51.48208535703322], [4.384574554574101, 51.44996069156658], [4.400171193072602, 51.43322814258722], [4.385192636511893, 51.4218567405716], [4.432094819444422, 51.36322098985801], [4.341010331734483, 51.356816965065406], [4.332956259720274, 51.376421067184666], [4.275932545142545, 51.37589133666815], [4.274768185970257, 51.42366679301072], [4.219403532827226, 51.50464422032507], [4.237256659394993, 51.552607819445186], [4.190202704542061, 51.59992194159784], [4.239012140365385, 51.63414267723793], [4.376273414544275, 51.652274325781995], [4.406141482446224, 51.68625888500998], [4.390954453945512, 51.68050893815914], [4.394473399886468, 51.69459315657975], [4.402069014222866, 51.69746814979497], [4.524963994030441, 51.67876149995387], [4.635347334067475, 51.71606244247876], [4.635347334067475, 51.71606244247876], [4.642961917817444, 51.71892183287741], [4.642961917817444, 51.71892183287741], [4.642961917817444, 51.71892183287741], [4.722993976995536, 51.747510328926815], [4.772212906254529, 51.792750535937635], [4.85269124375742, 51.80157689881069], [4.917671224986077, 51.82715107748417], [5.002200432536452, 51.82183737275103], [5.071608748510442, 51.779884428933514], [5.094570467942239, 51.78837596037819], [5.136868740635811, 51.77160979278323], [5.129390530683835, 51.73786546089878], [5.301854511336487, 51.738117718013], [5.359330792643821, 51.75782007824737], [5.401527164321688, 51.819656871777774], [5.462944758162314, 51.81120127240227], [5.489860988180836, 51.830855296672425], [5.535899762445512, 51.81675269285399], [5.589699448102756, 51.82791471192147], [5.639558575261551, 51.816575396057466], [5.7580638576513, 51.754425519004535], [5.865441139950758, 51.75684718144972]], [[4.948214778949831, 51.45063120780309], [4.940598275828857, 51.4506023136329], [4.933009798962398, 51.44776225300034], [4.940653362093249, 51.44498096980372], [4.948214778949831, 51.45063120780309]], [[4.948268925475092, 51.445009859312194], [4.944488444748699, 51.44218480284318], [4.948295992949487, 51.44219918430021], [4.948268925475092, 51.445009859312194]], [[4.940735962050568, 51.436548950241686], [4.936845584610483, 51.444966338638594], [4.917777789575005, 51.44770198365032], [4.914115680855636, 51.433633282035586], [4.940735962050568, 51.436548950241686]], [[4.917835686774501, 51.442080653261826], [4.917835686774501, 51.442080653261826], [4.917835686774501, 51.442080653261826], [4.917835686774501, 51.442080653261826], [4.917835686774501, 51.442080653261826]], [[4.933009798962398, 51.44776225300034], [4.933037809965144, 51.44495158319979], [4.933009798962398, 51.44776225300034], [4.933009798962398, 51.44776225300034]], [[4.929201792262521, 51.44774737208761], [4.929201792262521, 51.44774737208761], [4.929201792262521, 51.44774737208761], [4.929201792262521, 51.44774737208761], [4.929201792262521, 51.44774737208761]], [[4.929201792262521, 51.44774737208761], [4.933009798962398, 51.44776225300034], [4.929173542317023, 51.4505580401737], [4.929201792262521, 51.44774737208761]], [[4.925422269282725, 51.444921699501876], [4.925422269282725, 51.444921699501876], [4.925422269282725, 51.444921699501876], [4.925422269282725, 51.444921699501876], [4.925422269282725, 51.444921699501876]], [[4.940653362093249, 51.44498096980372], [4.940653362093249, 51.44498096980372], [4.940653362093249, 51.44498096980372], [4.940653362093249, 51.44498096980372], [4.940653362093249, 51.44498096980372]], [[4.940708432655601, 51.4393596239337], [4.940735962050568, 51.436548950241686], [4.944515743216733, 51.43937412848467], [4.940708432655601, 51.4393596239337]], [[4.933429545175697, 51.40560215391018], [4.929625058703316, 51.405587290988436], [4.937234034501106, 51.40561689269859], [4.93720631376522, 51.40842757053027], [4.933429545175697, 51.40560215391018]], [[4.940763487522497, 51.433738276049496], [4.944570328482415, 51.433752778260754], [4.940735962050568, 51.436548950241686], [4.940763487522497, 51.433738276049496]]]]}}, {"statcode": "PV31", "jrstatcode": "2023PV31", "statnaam": "Limburg", "rubriek": "provincie", "id": 12, "type": "Feature", "geometry": {"type": "MultiPolygon", "coordinates": [[[[5.953517373448363, 51.74802247316568], [6.045063745363823, 51.71662599262154], [6.025791896685038, 51.70830039356562], [6.032969775713644, 51.67453189572908], [6.116844929900854, 51.65436356058786], [6.093148635866448, 51.60672544917486], [6.198732465600687, 51.527336874490004], [6.224449837986787, 51.473749015502705], [6.204038369074913, 51.39800033365464], [6.226911845433353, 51.400648668485374], [6.226136455308822, 51.35849104612194], [6.168649970692237, 51.33078219238863], [6.068223718600538, 51.218978892241104], [6.082654466017558, 51.17110882378063], [6.166303112498428, 51.19306495431672], [6.181303806423172, 51.18453074373119], [6.139473741138114, 51.17356561624362], [6.177034154767743, 51.15645097491012], [6.093447146347668, 51.13450245056239], [5.998225921055921, 51.084447469371014], [5.956044201421917, 51.03406691847629], [5.937175498023321, 51.034157979993985], [5.914887005904107, 51.06518070902678], [5.865648780148055, 51.051340209552585], [5.906605289547882, 51.000569065063395], [5.898782721683313, 50.97530643937522], [5.955455120624437, 50.98628557770924], [6.02704218082352, 50.98310141415968], [6.004049336568356, 50.9551176764263], [6.01881088335053, 50.93255129567962], [6.093946341470633, 50.92087343025494], [6.073997272169723, 50.84510034068046], [6.055368010392596, 50.85645293366906], [6.017622797942433, 50.845421537478046], [6.024675465512749, 50.811652735040376], [5.975709843514425, 50.80066920393787], [6.027887545588866, 50.77228319394138], [6.020114558114007, 50.752650207997554], [5.96020495227803, 50.76139560208681], [5.900055405498635, 50.75043523040504], [5.88526350917613, 50.770175664655966], [5.847573084655626, 50.75346728694911], [5.843932659468246, 50.764724954484585], [5.810063208360313, 50.75361079723671], [5.772786430216132, 50.78184925999821], [5.738815032618188, 50.75666061909703], [5.682545717351108, 50.756818324181765], [5.694152671846589, 50.810192925114166], [5.652889133933997, 50.818727561930196], [5.645658653349597, 50.869338079468], [5.679573394649028, 50.880500435650546], [5.69856910637682, 50.90855876977127], [5.724914222923703, 50.90848485577413], [5.759125504994627, 50.950541950500075], [5.721536838100127, 50.9618998161107], [5.767029369558751, 50.99548915502099], [5.77478324574644, 51.02076072363316], [5.759783210601341, 51.032053140663265], [5.771338485355462, 51.060123471432654], [5.80154599293701, 51.060019457289876], [5.794267489754463, 51.090964130416154], [5.832106419931444, 51.09644680536785], [5.809639461504544, 51.1190172676724], [5.855266073307274, 51.14413956075913], [5.825217876930376, 51.16674329648581], [5.775873894554327, 51.15005410833771], [5.776111932340204, 51.17816133317602], [5.749678927611576, 51.186679225889215], [5.658788987749435, 51.18411651491081], [5.651297541370282, 51.198187720385505], [5.564275177360828, 51.22083920923186], [5.61736663279874, 51.22917850059075], [5.625180105693632, 51.274135214465446], [5.670947580793963, 51.31338344699529], [5.87639659119889, 51.35205246410898], [5.929963941641548, 51.382734028072264], [5.869836632975903, 51.45045752455561], [5.836700556452134, 51.56583134309827], [5.905262031448264, 51.551493629937944], [6.004761939738719, 51.570685527335385], [6.031210295952667, 51.55086720611116], [6.046598914835001, 51.559213757872456], [6.020741227166992, 51.621194089371926], [5.963797069384169, 51.652407070759615], [5.956854205976906, 51.708656026570274], [5.891902233878032, 51.7230075973056], [5.865441139950758, 51.75684718144972], [5.869455374313602, 51.773694963992774], [5.892499605911807, 51.77640859773303], [5.934282985748277, 51.742492407489195], [5.953517373448363, 51.74802247316568]]]]}}], "empty": [{}], "data-274746e9b321d428e40f32883bb2aace": [{"title": "XYZ tile Tile(x=131, y=84, z=8)", "zoom_level": 8, "type": "Feature", "geometry": {"type": "Polygon", "coordinates": [[[4.21875, 51.6180165487737], [4.21875, 52.48278022207821], [5.625, 52.48278022207821], [5.625, 51.6180165487737], [4.21875, 51.6180165487737]]]}}, {"title": "XYZ tile Tile(x=263, y=168, z=9)", "zoom_level": 9, "type": "Feature", "geometry": {"type": "Polygon", "coordinates": [[[4.921875, 52.05249047600099], [4.921875, 52.48278022207821], [5.625, 52.48278022207821], [5.625, 52.05249047600099], [4.921875, 52.05249047600099]]]}}, {"title": "XYZ tile Tile(x=527, y=337, z=10)", "zoom_level": 10, "type": "Feature", "geometry": {"type": "Polygon", "coordinates": [[[5.2734375, 52.05249047600099], [5.2734375, 52.26815737376817], [5.625, 52.26815737376817], [5.625, 52.05249047600099], [5.2734375, 52.05249047600099]]]}}, {"title": "XYZ tile Tile(x=1054, y=675, z=11)", "zoom_level": 11, "type": "Feature", "geometry": {"type": "Polygon", "coordinates": [[[5.2734375, 52.05249047600099], [5.2734375, 52.160454557747045], [5.44921875, 52.160454557747045], [5.44921875, 52.05249047600099], [5.2734375, 52.05249047600099]]]}}, {"title": "XYZ tile Tile(x=2109, y=1350, z=12)", "zoom_level": 12, "type": "Feature", "geometry": {"type": "Polygon", "coordinates": [[[5.361328125, 52.106505190756316], [5.361328125, 52.160454557747045], [5.44921875, 52.160454557747045], [5.44921875, 52.106505190756316], [5.361328125, 52.106505190756316]]]}}, {"title": "XYZ tile Tile(x=4218, y=2700, z=13)", "zoom_level": 13, "type": "Feature", "geometry": {"type": "Polygon", "coordinates": [[[5.361328125, 52.13348804077148], [5.361328125, 52.160454557747045], [5.4052734375, 52.160454557747045], [5.4052734375, 52.13348804077148], [5.361328125, 52.13348804077148]]]}}, {"title": "XYZ tile Tile(x=8436, y=5400, z=14)", "zoom_level": 14, "type": "Feature", "geometry": {"type": "Polygon", "coordinates": [[[5.361328125, 52.1469733406447], [5.361328125, 52.160454557747045], [5.38330078125, 52.160454557747045], [5.38330078125, 52.1469733406447], [5.361328125, 52.1469733406447]]]}}, {"title": "XYZ tile Tile(x=16873, y=10801, z=15)", "zoom_level": 15, "type": "Feature", "geometry": {"type": "Polygon", "coordinates": [[[5.372314453125, 52.1469733406447], [5.372314453125, 52.15371445951162], [5.38330078125, 52.15371445951162], [5.38330078125, 52.1469733406447], [5.372314453125, 52.1469733406447]]]}}, {"title": "XYZ tile Tile(x=33747, y=21602, z=16)", "zoom_level": 16, "type": "Feature", "geometry": {"type": "Polygon", "coordinates": [[[5.3778076171875, 52.150344027660935], [5.3778076171875, 52.15371445951162], [5.38330078125, 52.15371445951162], [5.38330078125, 52.150344027660935], [5.3778076171875, 52.150344027660935]]]}}, {"title": "XYZ tile Tile(x=67494, y=43205, z=17)", "zoom_level": 17, "type": "Feature", "geometry": {"type": "Polygon", "coordinates": [[[5.3778076171875, 52.150344027660935], [5.3778076171875, 52.152029275481496], [5.38055419921875, 52.152029275481496], [5.38055419921875, 52.150344027660935], [5.3778076171875, 52.150344027660935]]]}}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+<p>In oranje zie je de daadwerkelijke tegel op het gekozen zoom nivea met het inliggende coordinaat van 🌍 <em>Locatie</em> HKV in Amersfoort en zwart omlijnt zie je de range aan tegels voor de verschillende zoom niveaus van deze coordinaat. Voor een kaart met geheel Nederland in beeld zijn de tegels vanaf level 16 niet meer zichtbaar op deze kaart. Om de inhoud van deze tegels te tonen zul je eerst verder moeten inzoomen op het interesse gebied.</p>
+<p>Zoals je ziet volgen de tegels een vaste volgordelijkheid. Een specifieke locatie is daarmee altijd gekoppeld aan een eenzelfde tegel gegeven het zoom niveau. Zoals gezegd heeft de inhoud van elke tegel steeds een vaste afmeting. In ons geval is dit 256 x 256 pixels.</p>
+<p>Binnen het SBIR project met het thema biodiversiteit, subthema: natuur werken wij, vanuit het satellietataportaal, met tegels op 🔍 <em>Zoomlevel</em> 17. Deze tegels bevatten daarmee de data op het resolutie niveau die wij voor de gekozen toepassing toepasselijk vinden.</p>
+<p>Al met al is een gegeven 🔲 <em>Tegel definitie</em> dus een combinatie van een 🌍 <em>Locatie</em> en een 🔍 <em>Zoomlevel</em>.</p>
+</section>
+<section id="hoe-werkt-de-tegeltijdportaal" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="hoe-werkt-de-tegeltijdportaal">Hoe werkt de 🌀 <em>Tegeltijdportaal</em>?</h3>
+<p>Nu we weten wat een 🔲 <em>Tegel definitie</em> is, laten we iets meer ingaan op welke manier we dit koppelen aan de services binnen het satellietdataportaal. We beginnen met een schematische weergave van de de applicatie, die we vervolgens in stapjes, met bijbehorende code uitwerken.</p>
+<p>De applicatie werkt als volgt (voor simplificatie negeren we de quadkey als invoer):</p>
+<pre class="mermaid"><code>graph TB
+    style invoer fill:#f0f0f0,stroke:#333,stroke-width:2px
+    style tussenstap fill:#f0f0f0,stroke:#333,stroke-width:2px
+    style uitvoer fill:#f0f0f0,stroke:#333,stroke-width:2px
+
+    style in1 fill:#ffff,stroke:#333,stroke-width:1px
+    style in2 fill:#ffff,stroke:#333,stroke-width:1px
+    style in3 fill:#ffff,stroke:#333,stroke-width:1px    
+    style in4 fill:#ffff,stroke:#333,stroke-width:1px
+    style int2 fill:#ffff,stroke:#333,stroke-width:1px    
+    style int3 fill:#ffff,stroke:#333,stroke-width:1px        
+    style out1 fill:#ffff,stroke:#333,stroke-width:1px
+
+    style int1 fill:#F8D664,stroke:#333,stroke-width:1px
+    style out2 fill:#F8D664,stroke:#333,stroke-width:1px
+
+    subgraph invoer
+
+        in1[🌍 Locatie]
+        in2[📏 Sensor resolutie]
+        in3[🔍 Zoomlevel]
+        in4[🎨 Kleuren composiet]  
+    
+    end
+   
+    subgraph tussenstap
+        
+        int1[⚙️ Index service satellietdataportaal]
+        int2[🔲 Tegel definitie]
+        int3[⏱️ Beschikbaarheid opnamen]
+        int4[📑 Collectie tegels]
+    end
+  
+    subgraph uitvoer
+        
+        out1[📊 Tegeltijdgrafiek]
+        out2[⚙️ Tegel service satellietdataportaal]
+    end
+    in1 --&gt; int1
+    in2 --&gt; int1
+    in3 --&gt; int2
+    in1 --&gt; int2    
+    in4 --&gt; int3
+    
+
+    int1 --&gt; int3
+    int2 --&gt; int3
+    int3 --&gt; int4    
+    int4 --&gt; out1
+
+    out1 --&gt; out2 --&gt; out1   </code></pre>
+<p>Laten we beginnen met het bevragen van de ⚙️ <em>Index service satellietdataportaal</em> met de 🌍 <em>Locatie</em> en de 📏 <em>Sensor resolutie</em> input.</p>
+<div id="75ca42bf-1687-4bc2-b933-db36d1fee4f6" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> index_service_satellietdataportaal(longitude, latitude, resolutions):</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="st">"https://www.satellietdataportaal.nl/wp-admin/admin-ajax.php"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    post_data <span class="op">=</span> [</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'action'</span>, <span class="st">'sdp_api'</span>), </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'searchObject[geometry][type]'</span>, <span class="st">'Point'</span>),</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'searchObject[geometry][coordinates][]'</span>, longitude),</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'searchObject[geometry][coordinates][]'</span>, latitude)       </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> resolution <span class="kw">in</span> resolutions:</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        post_data.append((<span class="st">'searchObject[properties][filters][resolutionfilter][eq][]'</span>, resolution))</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    headers <span class="op">=</span> {<span class="st">'content-type'</span>: <span class="st">'application/x-www-form-urlencoded;charset=UTF-8'</span>}</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> requests.post(url<span class="op">=</span>url, data<span class="op">=</span>post_data, headers<span class="op">=</span>headers)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    feats <span class="op">=</span> r.json()[<span class="st">'data'</span>][<span class="st">'features'</span>]</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> feats:</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> gpd.GeoDataFrame()    </span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    gdf <span class="op">=</span> gpd.GeoDataFrame.from_features(feats)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> gdf</span></code><button title="Kopieer naar klembord" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We maken gebruik van een <code>index_service_satellietdataportaal</code> functie. Dit retourneert een geopandas GeoDataFrame gegeven een input op basis van longitude, latitude en gewenste resoluties. De 🌍 <em>Locatie</em> geven we op in decimale graden en de 📏 <em>Sensor resolutie</em> in meters.</p>
+<div id="f5f9738f-ef14-4655-b134-9e51a065b014" class="cell page-columns page-full" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>longitude <span class="op">=</span> <span class="fl">5.3790</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>latitude <span class="op">=</span> <span class="fl">52.1515</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>resolutions <span class="op">=</span> [<span class="fl">0.3</span>, <span class="fl">0.5</span>]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>gdf_layers <span class="op">=</span> index_service_satellietdataportaal(longitude, latitude, resolutions)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>gdf_layers.head()</span></code><button title="Kopieer naar klembord" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display column-screen" data-execution_count="5">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">geometry</th>
+<th data-quarto-table-cell-role="th">acquisitiondate</th>
+<th data-quarto-table-cell-role="th">acquisitiontime</th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">layers</th>
+<th data-quarto-table-cell-role="th">resolution</th>
+<th data-quarto-table-cell-role="th">sensorname</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>POLYGON ((4.43776 52.62078, 4.56662 52.61387, ...</td>
+<td>2024-01-19</td>
+<td>11:07:36</td>
+<td>20240119_110736_PNEO-03_1_1</td>
+<td>[{'composite': 'IRG', 'tile_link': 'https://ti...</td>
+<td>0.3</td>
+<td>Pleiades-NEO</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>POLYGON ((4.50446 52.59804, 4.74804 52.59910, ...</td>
+<td>2023-11-28</td>
+<td>11:07:59</td>
+<td>20231128_110759_PNEO-03_1_1</td>
+<td>[{'composite': 'RGB', 'tile_link': 'https://ti...</td>
+<td>0.3</td>
+<td>Pleiades-NEO</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>POLYGON ((4.56333 52.50745, 4.56340 52.50726, ...</td>
+<td>2023-09-18</td>
+<td>10:52:26</td>
+<td>20230918_105226_PNEO-04_1_39</td>
+<td>[{'composite': 'IRG', 'tile_link': 'https://ti...</td>
+<td>0.3</td>
+<td>Pleiades-NEO</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>POLYGON ((4.51417 52.44402, 4.61988 52.44304, ...</td>
+<td>2023-09-08</td>
+<td>11:00:03</td>
+<td>20230908_110003_PNEO-04_1_1</td>
+<td>[{'composite': 'RGB', 'tile_link': 'https://ti...</td>
+<td>0.3</td>
+<td>Pleiades-NEO</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>POLYGON ((4.75111 52.49500, 4.75172 52.49499, ...</td>
+<td>2023-08-16</td>
+<td>11:08:11</td>
+<td>20230816_110811_PNEO-03_1_1</td>
+<td>[{'composite': 'IRG', 'tile_link': 'https://ti...</td>
+<td>0.3</td>
+<td>Pleiades-NEO</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<p>Zoals je kunt zien bevat dit informatie over de de datum en tijd van acquisitie, naam van de sensor en de resolutie die toebehoort tot de resolutie en bevat het een kolom met layers. Deze layers koppelen we aan onze gewenste tegel. De tegel definieren we met behulp van onze 🌍 <em>Locatie</em> en 🔍 <em>Zoomlevel</em>. We maken hierbij gebruik van de WebMercatorQuad tegelschema, zoals gezegd in de sectie over de 🔲 <em>Tegel definitie</em>.</p>
+<p>Daarnaast heeft het satellietdataportaal twee mogelijkheden voor een 🎨 <em>Kleuren composiet</em>. In ons geval maken wij gebruik van het vals kleuren composiet, waarbij we wel gebruiken maken van de nabij-infrarode band, rode band, en groene band, maar niet van de blauwe band. In het satellietdataportaal heet dit 🎨 <em>Kleuren composiet</em> <code>IRG</code>. Laten we onze opgevraagde layers verder opwerken om de gewenste 📑 <em>Collectie tegels</em> aan te maken.</p>
+<div id="d497225a-a612-4961-82f4-6cd36a85b238" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tile_collection(df, tile, composite):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"layers"</span> <span class="kw">in</span> df.columns:</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        df[<span class="st">"tile_link"</span>] <span class="op">=</span> [<span class="bu">next</span>((layer[<span class="st">"tile_link"</span>] <span class="cf">for</span> layer <span class="kw">in</span> layers <span class="cf">if</span> layer[<span class="st">"composite"</span>] <span class="op">==</span> composite), <span class="va">None</span>) <span class="cf">for</span> layers <span class="kw">in</span> df[<span class="st">"layers"</span>]]</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        df[<span class="st">"image"</span>] <span class="op">=</span> [uri.<span class="bu">format</span>(z<span class="op">=</span>tile.z, x<span class="op">=</span>tile.x, y<span class="op">=</span><span class="ss">f'</span><span class="sc">{</span>tile<span class="sc">.</span>y<span class="sc">}</span><span class="ss">.png'</span>) <span class="cf">for</span> uri <span class="kw">in</span> df[<span class="st">"tile_link"</span>]]</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> df[[<span class="st">"id"</span>, <span class="st">"acquisitiondate"</span>, <span class="st">"resolution"</span>, <span class="st">"sensorname"</span>, <span class="st">"image"</span>, <span class="st">"tile_link"</span>]]</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code><button title="Kopieer naar klembord" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We maken gebruik van een <code>tile_collection</code> functie. Dit retourneert een pandas DataFrame gegeven de GeoDataFrame met layers, een 🔲 <em>Tegel definitie</em>, en het gewenste 🎨 <em>Kleuren composiet</em>.</p>
+<div id="78af1473-db52-4a8d-93d8-4c880fed42a5" class="cell page-columns page-full" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mercantile</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>composite <span class="op">=</span> <span class="st">'IRG'</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>tile <span class="op">=</span> mercantile.tile(longitude, latitude, zoom<span class="op">=</span><span class="dv">17</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>df_tiles <span class="op">=</span> tile_collection(gdf_layers, tile, composite)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>df_tiles.head()</span></code><button title="Kopieer naar klembord" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display column-screen" data-execution_count="7">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">acquisitiondate</th>
+<th data-quarto-table-cell-role="th">resolution</th>
+<th data-quarto-table-cell-role="th">sensorname</th>
+<th data-quarto-table-cell-role="th">image</th>
+<th data-quarto-table-cell-role="th">tile_link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>20240119_110736_PNEO-03_1_1</td>
+<td>2024-01-19</td>
+<td>0.3</td>
+<td>Pleiades-NEO</td>
+<td>https://tiles1.geoserve.eu/Pleiades-NEO_NRG/ti...</td>
+<td>https://tiles1.geoserve.eu/Pleiades-NEO_NRG/ti...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>20231128_110759_PNEO-03_1_1</td>
+<td>2023-11-28</td>
+<td>0.3</td>
+<td>Pleiades-NEO</td>
+<td>https://tiles1.geoserve.eu/Pleiades-NEO_NRG/ti...</td>
+<td>https://tiles1.geoserve.eu/Pleiades-NEO_NRG/ti...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>20230918_105226_PNEO-04_1_39</td>
+<td>2023-09-18</td>
+<td>0.3</td>
+<td>Pleiades-NEO</td>
+<td>https://tiles1.geoserve.eu/Pleiades-NEO_NRG/ti...</td>
+<td>https://tiles1.geoserve.eu/Pleiades-NEO_NRG/ti...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>20230908_110003_PNEO-04_1_1</td>
+<td>2023-09-08</td>
+<td>0.3</td>
+<td>Pleiades-NEO</td>
+<td>https://tiles1.geoserve.eu/Pleiades-NEO_NRG/ti...</td>
+<td>https://tiles1.geoserve.eu/Pleiades-NEO_NRG/ti...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>20230816_110811_PNEO-03_1_1</td>
+<td>2023-08-16</td>
+<td>0.3</td>
+<td>Pleiades-NEO</td>
+<td>https://tiles1.geoserve.eu/Pleiades-NEO_NRG/ti...</td>
+<td>https://tiles1.geoserve.eu/Pleiades-NEO_NRG/ti...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<p>Onze 📑 <em>Collectie tegels</em> in de vorm van een pandas DataFrame geven we weer met een Vega-Altair grafiek.</p>
+<div id="871a12d7-74bb-4b8a-a893-5ae5d0e4251e" class="cell page-columns page-full" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>highlight <span class="op">=</span> alt.selection_point(on<span class="op">=</span><span class="st">'mouseover'</span>, empty<span class="op">=</span><span class="va">False</span>, nearest<span class="op">=</span><span class="va">False</span>, encodings<span class="op">=</span>[<span class="st">'x'</span>])</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> alt.Chart(df_tiles, height<span class="op">=</span><span class="dv">75</span>, width<span class="op">=</span>alt.Step(<span class="dv">15</span>)).mark_bar(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    opacity<span class="op">=</span><span class="dv">1</span>, </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    strokeWidth<span class="op">=</span><span class="dv">2</span>, </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    cursor<span class="op">=</span><span class="st">'pointer'</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    cornerRadius<span class="op">=</span><span class="dv">15</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>).encode(</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'acquisitiondate:N'</span>).axis(formatType<span class="op">=</span><span class="st">'time'</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st">'</span>).title(<span class="va">None</span>),</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    fill<span class="op">=</span>alt.Fill(<span class="st">'sensor_resolution:N'</span>).legend(orient<span class="op">=</span><span class="st">'top'</span>).sort(field<span class="op">=</span><span class="st">'resolution'</span>, op<span class="op">=</span><span class="st">'max'</span>, order<span class="op">=</span><span class="st">'ascending'</span>),</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    stroke<span class="op">=</span>alt.condition(highlight, alt.value(<span class="st">'black'</span>), alt.value(<span class="st">'transparent'</span>)), </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    tooltip<span class="op">=</span>alt.Tooltip([<span class="st">'image'</span>]),</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    order<span class="op">=</span>alt.Order(<span class="st">'resolution:Q'</span>),</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>).transform_calculate(</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    sensor_resolution<span class="op">=</span>alt.datum.sensorname <span class="op">+</span> <span class="st">" ("</span> <span class="op">+</span> alt.datum.resolution <span class="op">+</span> <span class="st">"m)"</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>).add_params(</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    highlight</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>chart</span></code><button title="Kopieer naar klembord" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display column-screen" data-execution_count="8">
+
+<style>
+  #altair-viz-e75350f2b7294a50bc899a4d381e30a6.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-e75350f2b7294a50bc899a4d381e30a6.vega-embed details,
+  #altair-viz-e75350f2b7294a50bc899a4d381e30a6.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-e75350f2b7294a50bc899a4d381e30a6"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-e75350f2b7294a50bc899a4d381e30a6") {
+      outputDiv = document.getElementById("altair-viz-e75350f2b7294a50bc899a4d381e30a6");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.17.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.17.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-553d1f1cd960529706a21df46748ef8b"}, "mark": {"type": "bar", "cornerRadius": 15, "cursor": "pointer", "opacity": 1, "strokeWidth": 2}, "encoding": {"fill": {"field": "sensor_resolution", "legend": {"orient": "top"}, "sort": {"field": "resolution", "op": "max", "order": "ascending"}, "type": "nominal"}, "order": {"field": "resolution", "type": "quantitative"}, "stroke": {"condition": {"param": "param_2", "value": "black", "empty": false}, "value": "transparent"}, "tooltip": [{"field": "image", "type": "nominal"}], "x": {"axis": {"formatType": "time", "format": "%Y-%m-%d"}, "field": "acquisitiondate", "title": null, "type": "nominal"}}, "height": 75, "params": [{"name": "param_2", "select": {"type": "point", "encodings": ["x"], "nearest": false, "on": "mouseover"}}], "transform": [{"calculate": "(((datum.sensorname + ' (') + datum.resolution) + 'm)')", "as": "sensor_resolution"}], "width": {"step": 15}, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-553d1f1cd960529706a21df46748ef8b": [{"id": "20240119_110736_PNEO-03_1_1", "acquisitiondate": "2024-01-19", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20240119_110736_PNEO-03_1_1_30cm_RD_8bit_NRG_IJmuiden/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20240119_110736_PNEO-03_1_1_30cm_RD_8bit_NRG_IJmuiden/{z}/{x}/{y}"}, {"id": "20231128_110759_PNEO-03_1_1", "acquisitiondate": "2023-11-28", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20231128_110759_PNEO-03_1_1_30cm_RD_8bit_NRG_Beverwijk/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20231128_110759_PNEO-03_1_1_30cm_RD_8bit_NRG_Beverwijk/{z}/{x}/{y}"}, {"id": "20230918_105226_PNEO-04_1_39", "acquisitiondate": "2023-09-18", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230918_105226_PNEO-04_1_39_30cm_RD_8bit_NRG_IJmuiden/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230918_105226_PNEO-04_1_39_30cm_RD_8bit_NRG_IJmuiden/{z}/{x}/{y}"}, {"id": "20230908_110003_PNEO-04_1_1", "acquisitiondate": "2023-09-08", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230908_110003_PNEO-04_1_1_30cm_RD_8bit_NRG_Haarlem/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230908_110003_PNEO-04_1_1_30cm_RD_8bit_NRG_Haarlem/{z}/{x}/{y}"}, {"id": "20230816_110811_PNEO-03_1_1", "acquisitiondate": "2023-08-16", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230816_110811_PNEO-03_1_1_30cm_RD_8bit_NRG_Haarlem/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230816_110811_PNEO-03_1_1_30cm_RD_8bit_NRG_Haarlem/{z}/{x}/{y}"}, {"id": "20230813_110105_PNEO-04_1_1", "acquisitiondate": "2023-08-13", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230813_110105_PNEO-04_1_1_30cm_RD_8bit_NRG_Beverwijk/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230813_110105_PNEO-04_1_1_30cm_RD_8bit_NRG_Beverwijk/{z}/{x}/{y}"}, {"id": "20230720_104903_PNEO-03_1_1", "acquisitiondate": "2023-07-20", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230720_104903_PNEO-03_1_1_30cm_RD_8bit_NRG_SantpoortNoord/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230720_104903_PNEO-03_1_1_30cm_RD_8bit_NRG_SantpoortNoord/{z}/{x}/{y}"}, {"id": "20230713_110344_PNEO-04_1_1", "acquisitiondate": "2023-07-13", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230713_110344_PNEO-04_1_1_30cm_RD_8bit_NRG_SantpoortNood/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230713_110344_PNEO-04_1_1_30cm_RD_8bit_NRG_SantpoortNood/{z}/{x}/{y}"}, {"id": "20230623_111331_SVNEO-02", "acquisitiondate": "2023-06-23", "resolution": 0.3, "sensorname": "SuperView-NEO", "image": "https://tiles1.geoserve.eu/SuperView-NEO_NRG/tileserver/20230623_111331_SVNEO-02_30cm_RD_8bit_NRG_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView-NEO_NRG/tileserver/20230623_111331_SVNEO-02_30cm_RD_8bit_NRG_Bloemendaal/{z}/{x}/{y}"}, {"id": "20230614_111427_SVNEO-02", "acquisitiondate": "2023-06-14", "resolution": 0.3, "sensorname": "SuperView-NEO", "image": "https://tiles1.geoserve.eu/SuperView-NEO_NRG/tileserver/20230614_111427_SVNEO-02_30cm_RD_8bit_NRG_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView-NEO_NRG/tileserver/20230614_111427_SVNEO-02_30cm_RD_8bit_NRG_Zandvoort/{z}/{x}/{y}"}, {"id": "20230526_111136_SVNEO-01", "acquisitiondate": "2023-05-26", "resolution": 0.3, "sensorname": "SuperView-NEO", "image": "https://tiles1.geoserve.eu/SuperView-NEO_NRG/tileserver/20230526_111136_SVNEO-01_30cm_RD_8bit_NRG_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView-NEO_NRG/tileserver/20230526_111136_SVNEO-01_30cm_RD_8bit_NRG_Bloemendaal/{z}/{x}/{y}"}, {"id": "20230315_105612_PNEO-04_1_17", "acquisitiondate": "2023-03-15", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230315_105612_PNEO-04_1_17_30cm_RD_8bit_NRG_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230315_105612_PNEO-04_1_17_30cm_RD_8bit_NRG_Zandvoort/{z}/{x}/{y}"}, {"id": "20230313_110743_PNEO-03_1_1", "acquisitiondate": "2023-03-13", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230313_110743_PNEO-03_1_1_30cm_RD_8bit_NRG_Velsen-Zuid/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230313_110743_PNEO-03_1_1_30cm_RD_8bit_NRG_Velsen-Zuid/{z}/{x}/{y}"}, {"id": "20230313_110808_PNEO-03_1_13", "acquisitiondate": "2023-03-13", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230313_110808_PNEO-03_1_13_30cm_RD_8bit_NRG_WijkAanZee/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230313_110808_PNEO-03_1_13_30cm_RD_8bit_NRG_WijkAanZee/{z}/{x}/{y}"}, {"id": "20221123_111329_SV1-03", "acquisitiondate": "2022-11-23", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20221123_111329_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20221123_111329_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20221111_111011_SV1-04", "acquisitiondate": "2022-11-11", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20221111_111011_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20221111_111011_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20220922_110542_SV2-01", "acquisitiondate": "2022-09-22", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220922_110542_SV2-01_SV_RD_8bit_IRG_50cm_IJmuiden/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220922_110542_SV2-01_SV_RD_8bit_IRG_50cm_IJmuiden/{z}/{x}/{y}"}, {"id": "20220730_110814_SV1-04", "acquisitiondate": "2022-07-30", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220730_110814_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220730_110814_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20220719_111420_SV1-03", "acquisitiondate": "2022-07-19", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220719_111420_SV1-03_SV_RD_8bit_IRG_50cm_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220719_111420_SV1-03_SV_RD_8bit_IRG_50cm_Bloemendaal/{z}/{x}/{y}"}, {"id": "20220718_111258_SV2-01", "acquisitiondate": "2022-07-18", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220718_111258_SV2-01_SV_RD_8bit_IRG_50cm_SantpoortNood/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220718_111258_SV2-01_SV_RD_8bit_IRG_50cm_SantpoortNood/{z}/{x}/{y}"}, {"id": "20220630_101722_SV1-01", "acquisitiondate": "2022-06-30", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220630_101722_SV1-01_SV_RD_8bit_IRG_50cm_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220630_101722_SV1-01_SV_RD_8bit_IRG_50cm_Bloemendaal/{z}/{x}/{y}"}, {"id": "20220613_111417_SV1-03", "acquisitiondate": "2022-06-13", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220613_111417_SV1-03_SV_RD_8bit_IRG_50cm_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220613_111417_SV1-03_SV_RD_8bit_IRG_50cm_Bloemendaal/{z}/{x}/{y}"}, {"id": "20220602_110320_SV2-01", "acquisitiondate": "2022-06-02", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220602_110320_SV2-01_SV_RD_8bit_IRG_50cm_Velsen-Zuid/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220602_110320_SV2-01_SV_RD_8bit_IRG_50cm_Velsen-Zuid/{z}/{x}/{y}"}, {"id": "20220514_114850_SV1-02", "acquisitiondate": "2022-05-14", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220514_114850_SV1-02_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220514_114850_SV1-02_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20220302_112105_SV1-04", "acquisitiondate": "2022-03-02", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220302_112105_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220302_112105_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20211207_111033_SV1-04", "acquisitiondate": "2021-12-07", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20211207_111033_SV1-04_SV_RD_8bit_IRG_50cm_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20211207_111033_SV1-04_SV_RD_8bit_IRG_50cm_Bloemendaal/{z}/{x}/{y}"}, {"id": "20211104_111943_SV1-03", "acquisitiondate": "2021-11-04", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20211104_111943_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20211104_111943_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20210907_112014_SV1-04", "acquisitiondate": "2021-09-07", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210907_112014_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210907_112014_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20210815_111048_SV1-03", "acquisitiondate": "2021-08-15", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210815_111048_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210815_111048_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20210804_111606_SV1-04", "acquisitiondate": "2021-08-04", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210804_111606_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210804_111606_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20210603_111844_SV1-04", "acquisitiondate": "2021-06-03", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210603_111844_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210603_111844_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20210426_112145_SV1-03", "acquisitiondate": "2021-04-26", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210426_112145_SV1-03_SV_RD_8bit_IRG_50cm_Haarlem/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210426_112145_SV1-03_SV_RD_8bit_IRG_50cm_Haarlem/{z}/{x}/{y}"}, {"id": "20210423_104945_SV1-01", "acquisitiondate": "2021-04-23", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210423_104945_SV1-01_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210423_104945_SV1-01_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20210302_111243_SV1-03", "acquisitiondate": "2021-03-02", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210302_111243_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210302_111243_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20201224_105845_SV1-01", "acquisitiondate": "2020-12-24", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20201224_105845_SV1-01_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20201224_105845_SV1-01_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20201109_111054_SV1-03", "acquisitiondate": "2020-11-09", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20201109_111054_SV1-03_SV_RD_8bit_IRG_50cm_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20201109_111054_SV1-03_SV_RD_8bit_IRG_50cm_Bloemendaal/{z}/{x}/{y}"}, {"id": "20200915_112325_SV1-04", "acquisitiondate": "2020-09-15", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200915_112325_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200915_112325_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20200915_110211_SV1-01", "acquisitiondate": "2020-09-15", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200915_110211_SV1-01_SV_RD_8bit_IRG_50cm_Haarlem/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200915_110211_SV1-01_SV_RD_8bit_IRG_50cm_Haarlem/{z}/{x}/{y}"}, {"id": "20200731_111959_SV1-03", "acquisitiondate": "2020-07-31", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200731_111959_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200731_111959_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20200625_112011_SV1-03", "acquisitiondate": "2020-06-25", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200625_112011_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200625_112011_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20200508_110808_SV1-01", "acquisitiondate": "2020-05-08", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200508_110808_SV1-01_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200508_110808_SV1-01_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20200326_114319_SV1-02", "acquisitiondate": "2020-03-26", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200326_114319_SV1-02_SV_RD_8bit_IRG_50cm_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200326_114319_SV1-02_SV_RD_8bit_IRG_50cm_Bloemendaal/{z}/{x}/{y}"}, {"id": "20200323_112111_SV1-03", "acquisitiondate": "2020-03-23", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200323_112111_SV1-03_SV_RD_8bit_IRG_50cm_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200323_112111_SV1-03_SV_RD_8bit_IRG_50cm_Bloemendaal/{z}/{x}/{y}"}, {"id": "20200304_114557_SV1-02", "acquisitiondate": "2020-03-04", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200304_114557_SV1-02_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200304_114557_SV1-02_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20191130_110718_SV1-01", "acquisitiondate": "2019-11-30", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20191130_110718_SV1-01_50cm_RD_8bit_IRG_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20191130_110718_SV1-01_50cm_RD_8bit_IRG_Zandvoort/{z}/{x}/{y}"}, {"id": "20191002_111045_SV1-01", "acquisitiondate": "2019-10-02", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20191002_111045_SV1-01_50cm_RD_8bit_IRG_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20191002_111045_SV1-01_50cm_RD_8bit_IRG_Zandvoort/{z}/{x}/{y}"}, {"id": "20190903_110447_SV1-01", "acquisitiondate": "2019-09-03", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190903_110447_SV1-01_50cm_RD_8bit_IRG_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190903_110447_SV1-01_50cm_RD_8bit_IRG_Bloemendaal/{z}/{x}/{y}"}, {"id": "20190729_111525_SV1-04", "acquisitiondate": "2019-07-29", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190729_111525_SV1-04_50cm_RD_8bit_IRG_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190729_111525_SV1-04_50cm_RD_8bit_IRG_Bloemendaal/{z}/{x}/{y}"}, {"id": "20190604_111717_SV1-03", "acquisitiondate": "2019-06-04", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190604_111717_SV1-03_50cm_RD_8bit_IRG_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190604_111717_SV1-03_50cm_RD_8bit_IRG_Zandvoort/{z}/{x}/{y}"}, {"id": "20190422_111332_SV1-01", "acquisitiondate": "2019-04-22", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190422_111332_SV1-01_50cm_RD_8bit_IRG_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190422_111332_SV1-01_50cm_RD_8bit_IRG_Zandvoort/{z}/{x}/{y}"}, {"id": "20190308_111640_SV1-01", "acquisitiondate": "2019-03-08", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190308_111640_SV1-01_50cm_RD_8bit_IRG_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190308_111640_SV1-01_50cm_RD_8bit_IRG_Bloemendaal/{z}/{x}/{y}"}, {"id": "20190302_105722_SV1-01", "acquisitiondate": "2019-03-02", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190302_105722_SV1-01_50cm_RD_8bit_IRG_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190302_105722_SV1-01_50cm_RD_8bit_IRG_Bloemendaal/{z}/{x}/{y}"}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+<p>Op de x-as zien we alle datums waarop een uniek satelliet-opname beschikbaar is van de locatie. De kleuren geven aan met welke satelliet-sensor de opname gemaakt is. Recentere opnamen hebben een hogere resolutie. Op dit moment koopt GeoServe namens NSO beelden in met een ruimtelijke resolutie van 0.3 meter van Pleiades-NEO, een satelliet-constellatie van Airbus.</p>
+<p>Wanneer je met je muis over de staven heen beweegt licht er in de tooltip een afbeelding op van de tegel van de desbetreffende satelliet-opname. De afbeelding wordt on-the-fly opgehaald vanuit de ⚙️ <em>Tegel service satellietdataportaal</em>.</p>
+<p>Op deze manier is het mogelijk om met vaste tegelgrootte het tijdsverloop voor een locatie in Nederland gegeven het gewenste detailniveau.</p>
+<p>Handig wanneer je specifieke locaties in de gaten wilt houden op een bepaald verloop.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Gekopieerd!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Gekopieerd!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
