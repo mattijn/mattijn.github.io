@@ -103,6 +103,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
@@ -190,14 +193,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="de-tegeltijdportaal" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="de-tegeltijdportaal">De 🌀 <em>Tegeltijdportaal</em></h2>
 <p>Binnen de <a href="https://sandtracer-demo.hkvservices.nl/">tegeltijdportaal</a> maken we het mogelijk om het tijdsverloop van elke locatie in Nederland te zien met zeer hoge resolutie satellietdata. Dit doen we door gebruik te maken van voorgerenderde tegels vanuit het satellietdataportaal. Hiermee krijg je snel inzicht in de dynamiek van locaties. In dit artikel duiken we dieper in op welke manier we deze informatie inzichtelijk maken.</p>
-<p>Dit doen we in 3 stappen, namelijk:</p>
+<p>Dit doen we in 2 stappen, namelijk:</p>
 <ul>
 <li>Wat bedoelen we met een 🔲 <em>Tegel definitie</em>?</li>
 <li>Hoe werkt de 🌀 <em>Tegeltijdportaal</em>?</li>
-<li>Op welke manier is <img style="width:15px;" src="solara.png"> <em>Solara</em> gebruikt?</li>
 </ul>
 <section id="wat-bedoelen-we-met-een-tegel-definitie" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="wat-bedoelen-we-met-een-tegel-definitie">Wat bedoelen we met een 🔲 <em>Tegel definitie</em>?</h3>
@@ -207,12 +207,12 @@ Waar de film vooral gaat over het begrip van de machten van 10 en de relatieve v
 <p>De satellietdata welke wordt ingekocht vanuit het satellietdataportaal heeft een hoge ruimtelijke resolutie. Recente opnames hebben bijvoorbeeld al een ruimtelijke resolutie van 30 centimeter. Om deze hele hoge resolutie fotos toegankelijker te maken gaan we de beelden net als de in de docu van de <em>Power of Ten</em> op delen in vaste zoomlevels. En op elk zoomlevel maken we tegels met vaste afmetingen. Op deze manier blijft een tegel altijd een vaste afmeting hebben, maar al naar gelang het gekozen zoomlevel zie je een hogere of lagere mate van detail.</p>
 <p><img src="localtileserver.gif" alt="drawing" width="400"></p>
 <p>Het tegelschema of protocol <em>WebMercatorQuad</em> is zo’n manier om de aarde in kleine vierkante rasters of tegels te verdelen. Elke heeft een vaak een vaste afmeting van 256x256 pixels. En elk zoomlevel heeft daarmee zijn eigen vooraf gedefinieerde ruimtelijke resolutie. PDOK heeft de volgende <a href="https://api.pdok.nl/lv/bag/ogc/v1_0/tileMatrixSets/WebMercatorQuad">tabel</a> beschikbaar om hier iets meer duiding aan te geven:</p>
-<div id="349fddf9-16f9-4850-b806-f62e96ddad23" class="cell page-columns page-full" data-execution_count="2">
+<div id="6f6b8959" class="cell page-columns page-full" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> requests.get(<span class="st">'https://api.pdok.nl/lv/bag/ogc/v1_0/tileMatrixSets/WebMercatorQuad?f=json'</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>pd.DataFrame.from_dict(r.json()[<span class="st">'tileMatrices'</span>]).set_index(<span class="st">'id'</span>)[<span class="dv">15</span>:<span class="dv">21</span>]</span></code><button title="Kopieer naar klembord" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display column-screen" data-execution_count="2">
+<div class="cell-output cell-output-display column-screen" data-execution_count="1">
 <div>
 <div>
 
@@ -311,7 +311,7 @@ Waar de film vooral gaat over het begrip van de machten van 10 en de relatieve v
 <p>Ik heb hier enkel de rijen die overeenkomen met zoomlevels 15 tot en met 20 getoond. Het gaat mij vooral om kolom <code>cellSize</code> welke aangeeft wat de ruimtelijke resolutie is van een unieke pixel binnen elk zoomniveau. Hier valt bijvoorbeeld te zien dat op zoomlevel 17 de ruimtelijke resolutie van een enkele pixel ~1.19 meter is en zoomlevel 19 de ruimtelijke resolutie van een enkele pixel ~0.29 is.</p>
 <p>Meer info over deze 2 dimensionale tile matrix set standaard is ook te vinden via <a href="https://docs.ogc.org/is/17-083r2/17-083r2.html">de website van OGC</a>. En daarnaast <a href="https://www.youtube.com/watch?v=1hiPoTFn1CA">deze video-presentatie</a> van Jachym hoe je om kan gaan met grote hoeveelheden raster data via tegel definities met onder andere open source sofware.</p>
 <p>Om iets meer gevoel te krijgen met het effect van de zoom niveaus kan je de slider in het volgende figuur heen en weer bewegen. Het laat, gegeven een zoom level, zien hoe groot een tegel is voor het inliggende coordinaat van 🌍 <em>Locatie</em> HKV in Amersfoort.</p>
-<div id="fa72aca9-648c-4ee8-a14a-1ea73cda6094" class="cell page-columns page-full" data-execution_count="3">
+<div id="26114d5e" class="cell page-columns page-full" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -337,26 +337,26 @@ Waar de film vooral gaat over het begrip van de machten van 10 en de relatieve v
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    alt.Chart(gdf_tile).mark_geoshape(clip<span class="op">=</span><span class="va">True</span>, filled<span class="op">=</span><span class="va">False</span>, stroke<span class="op">=</span><span class="st">'black'</span>, strokeWidth<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>).project(<span class="bu">type</span><span class="op">=</span><span class="st">'mercator'</span>, fit<span class="op">=</span>extent_NL).add_params(<span class="bu">filter</span>)</span>
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>chart</span></code><button title="Kopieer naar klembord" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display column-screen" data-execution_count="3">
+<div class="cell-output cell-output-display column-screen" data-execution_count="2">
 
 <style>
-  #altair-viz-e32246ea759b4d1f8faa8acb615579ba.vega-embed {
+  #altair-viz-454648e8ce4946c996389154067b6d87.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-e32246ea759b4d1f8faa8acb615579ba.vega-embed details,
-  #altair-viz-e32246ea759b4d1f8faa8acb615579ba.vega-embed details summary {
+  #altair-viz-454648e8ce4946c996389154067b6d87.vega-embed details,
+  #altair-viz-454648e8ce4946c996389154067b6d87.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-e32246ea759b4d1f8faa8acb615579ba"></div>
+<div id="altair-viz-454648e8ce4946c996389154067b6d87"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-e32246ea759b4d1f8faa8acb615579ba") {
-      outputDiv = document.getElementById("altair-viz-e32246ea759b4d1f8faa8acb615579ba");
+    if (outputDiv.id !== "altair-viz-454648e8ce4946c996389154067b6d87") {
+      outputDiv = document.getElementById("altair-viz-454648e8ce4946c996389154067b6d87");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -415,7 +415,12 @@ Waar de film vooral gaat over het begrip van de machten van 10 en de relatieve v
 <h3 class="anchored" data-anchor-id="hoe-werkt-de-tegeltijdportaal">Hoe werkt de 🌀 <em>Tegeltijdportaal</em>?</h3>
 <p>Nu we weten wat een 🔲 <em>Tegel definitie</em> is, laten we iets meer ingaan op welke manier we dit koppelen aan de services binnen het satellietdataportaal. We beginnen met een schematische weergave van de de applicatie, die we vervolgens in stapjes, met bijbehorende code uitwerken.</p>
 <p>De applicatie werkt als volgt (voor simplificatie negeren we de quadkey als invoer):</p>
-<pre class="mermaid"><code>graph TB
+<div class="cell page-columns page-full" data-layout-align="default">
+<div class="cell-output-display column-screen">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TB
     style invoer fill:#f0f0f0,stroke:#333,stroke-width:2px
     style tussenstap fill:#f0f0f0,stroke:#333,stroke-width:2px
     style uitvoer fill:#f0f0f0,stroke:#333,stroke-width:2px
@@ -433,25 +438,25 @@ Waar de film vooral gaat over het begrip van de machten van 10 en de relatieve v
 
     subgraph invoer
 
-        in1[🌍 Locatie]
-        in2[📏 Sensor resolutie]
-        in3[🔍 Zoomlevel]
-        in4[🎨 Kleuren composiet]  
+        in1["🌍 Locatie"]
+        in2["📏 Sensor resolutie"]
+        in3["🔍 Zoomlevel"]
+        in4["🎨 Kleuren composiet"]  
     
     end
    
     subgraph tussenstap
         
-        int1[⚙️ Index service satellietdataportaal]
-        int2[🔲 Tegel definitie]
-        int3[⏱️ Beschikbaarheid opnamen]
-        int4[📑 Collectie tegels]
+        int1["⚙️ Index service satellietdataportaal"]
+        int2["🔲 Tegel definitie"]
+        int3["⏱️ Beschikbaarheid opnamen"]
+        int4["📑 Collectie tegels"]
     end
   
     subgraph uitvoer
         
-        out1[📊 Tegeltijdgrafiek]
-        out2[⚙️ Tegel service satellietdataportaal]
+        out1["📊 Tegeltijdgrafiek"]
+        out2["⚙️ Tegel service satellietdataportaal"]
     end
     in1 --&gt; int1
     in2 --&gt; int1
@@ -465,43 +470,49 @@ Waar de film vooral gaat over het begrip van de machten van 10 en de relatieve v
     int3 --&gt; int4    
     int4 --&gt; out1
 
-    out1 --&gt; out2 --&gt; out1   </code></pre>
+    out1 --&gt; out2 --&gt; out1   
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 <p>Laten we beginnen met het bevragen van de ⚙️ <em>Index service satellietdataportaal</em> met de 🌍 <em>Locatie</em> en de 📏 <em>Sensor resolutie</em> input.</p>
-<div id="75ca42bf-1687-4bc2-b933-db36d1fee4f6" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> index_service_satellietdataportaal(longitude, latitude, resolutions):</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="st">"https://www.satellietdataportaal.nl/wp-admin/admin-ajax.php"</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    post_data <span class="op">=</span> [</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'action'</span>, <span class="st">'sdp_api'</span>), </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'searchObject[geometry][type]'</span>, <span class="st">'Point'</span>),</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'searchObject[geometry][coordinates][]'</span>, longitude),</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'searchObject[geometry][coordinates][]'</span>, latitude)       </span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> resolution <span class="kw">in</span> resolutions:</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        post_data.append((<span class="st">'searchObject[properties][filters][resolutionfilter][eq][]'</span>, resolution))</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    headers <span class="op">=</span> {<span class="st">'content-type'</span>: <span class="st">'application/x-www-form-urlencoded;charset=UTF-8'</span>}</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> requests.post(url<span class="op">=</span>url, data<span class="op">=</span>post_data, headers<span class="op">=</span>headers)</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    feats <span class="op">=</span> r.json()[<span class="st">'data'</span>][<span class="st">'features'</span>]</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> feats:</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> gpd.GeoDataFrame()    </span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    gdf <span class="op">=</span> gpd.GeoDataFrame.from_features(feats)</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> gdf</span></code><button title="Kopieer naar klembord" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4109f6e5" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> index_service_satellietdataportaal(longitude, latitude, resolutions):</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="st">"https://www.satellietdataportaal.nl/wp-admin/admin-ajax.php"</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    post_data <span class="op">=</span> [</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'action'</span>, <span class="st">'sdp_api'</span>), </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'searchObject[geometry][type]'</span>, <span class="st">'Point'</span>),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'searchObject[geometry][coordinates][]'</span>, longitude),</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'searchObject[geometry][coordinates][]'</span>, latitude)       </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> resolution <span class="kw">in</span> resolutions:</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        post_data.append((<span class="st">'searchObject[properties][filters][resolutionfilter][eq][]'</span>, resolution))</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    headers <span class="op">=</span> {<span class="st">'content-type'</span>: <span class="st">'application/x-www-form-urlencoded;charset=UTF-8'</span>}</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> requests.post(url<span class="op">=</span>url, data<span class="op">=</span>post_data, headers<span class="op">=</span>headers)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    feats <span class="op">=</span> r.json()[<span class="st">'data'</span>][<span class="st">'features'</span>]</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> feats:</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> gpd.GeoDataFrame()    </span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    gdf <span class="op">=</span> gpd.GeoDataFrame.from_features(feats)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> gdf</span></code><button title="Kopieer naar klembord" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We maken gebruik van een <code>index_service_satellietdataportaal</code> functie. Dit retourneert een geopandas GeoDataFrame gegeven een input op basis van longitude, latitude en gewenste resoluties. De 🌍 <em>Locatie</em> geven we op in decimale graden en de 📏 <em>Sensor resolutie</em> in meters.</p>
-<div id="f5f9738f-ef14-4655-b134-9e51a065b014" class="cell page-columns page-full" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>longitude <span class="op">=</span> <span class="fl">5.3790</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>latitude <span class="op">=</span> <span class="fl">52.1515</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>resolutions <span class="op">=</span> [<span class="fl">0.3</span>, <span class="fl">0.5</span>]</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>gdf_layers <span class="op">=</span> index_service_satellietdataportaal(longitude, latitude, resolutions)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>gdf_layers.head()</span></code><button title="Kopieer naar klembord" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display column-screen" data-execution_count="5">
+<div id="a5cc1544" class="cell page-columns page-full" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>longitude <span class="op">=</span> <span class="fl">5.3790</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>latitude <span class="op">=</span> <span class="fl">52.1515</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>resolutions <span class="op">=</span> [<span class="fl">0.3</span>, <span class="fl">0.5</span>]</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>gdf_layers <span class="op">=</span> index_service_satellietdataportaal(longitude, latitude, resolutions)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>gdf_layers.head()</span></code><button title="Kopieer naar klembord" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display column-screen" data-execution_count="4">
 <div>
 <div>
 
@@ -522,53 +533,53 @@ Waar de film vooral gaat over het begrip van de machten van 10 en de relatieve v
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>POLYGON ((4.43776 52.62078, 4.56662 52.61387, ...</td>
-<td>2024-01-19</td>
-<td>11:07:36</td>
-<td>20240119_110736_PNEO-03_1_1</td>
+<td>POLYGON ((5.22457 52.27334, 5.28787 52.27151, ...</td>
+<td>2024-01-28</td>
+<td>10:42:34</td>
+<td>20240128_104234_PNEO-03_1_1</td>
 <td>[{'composite': 'IRG', 'tile_link': 'https://ti...</td>
 <td>0.3</td>
 <td>Pleiades-NEO</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>POLYGON ((4.50446 52.59804, 4.74804 52.59910, ...</td>
-<td>2023-11-28</td>
-<td>11:07:59</td>
-<td>20231128_110759_PNEO-03_1_1</td>
+<td>POLYGON ((5.45336 52.26890, 5.45380 52.26890, ...</td>
+<td>2024-01-20</td>
+<td>10:38:07</td>
+<td>20240120_103807_PNEO-04_1_1</td>
 <td>[{'composite': 'RGB', 'tile_link': 'https://ti...</td>
 <td>0.3</td>
 <td>Pleiades-NEO</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>POLYGON ((4.56333 52.50745, 4.56340 52.50726, ...</td>
-<td>2023-09-18</td>
-<td>10:52:26</td>
-<td>20230918_105226_PNEO-04_1_39</td>
+<td>POLYGON ((5.44198 52.26726, 5.44268 52.26726, ...</td>
+<td>2024-01-18</td>
+<td>10:49:13</td>
+<td>20240118_104913_PNEO-03_1_1</td>
 <td>[{'composite': 'IRG', 'tile_link': 'https://ti...</td>
 <td>0.3</td>
 <td>Pleiades-NEO</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>POLYGON ((4.51417 52.44402, 4.61988 52.44304, ...</td>
-<td>2023-09-08</td>
-<td>11:00:03</td>
-<td>20230908_110003_PNEO-04_1_1</td>
-<td>[{'composite': 'RGB', 'tile_link': 'https://ti...</td>
+<td>POLYGON ((5.31342 52.16357, 5.50502 52.12998, ...</td>
+<td>2023-09-06</td>
+<td>11:14:14</td>
+<td>20230906_111414_SVNEO-01</td>
+<td>[{'composite': 'IRG', 'tile_link': 'https://ti...</td>
 <td>0.3</td>
-<td>Pleiades-NEO</td>
+<td>SuperView-NEO</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>POLYGON ((4.75111 52.49500, 4.75172 52.49499, ...</td>
-<td>2023-08-16</td>
-<td>11:08:11</td>
-<td>20230816_110811_PNEO-03_1_1</td>
+<td>POLYGON ((5.36459 52.27320, 5.55662 52.23953, ...</td>
+<td>2023-09-06</td>
+<td>11:14:12</td>
+<td>20230906_111412_SVNEO-01</td>
 <td>[{'composite': 'IRG', 'tile_link': 'https://ti...</td>
 <td>0.3</td>
-<td>Pleiades-NEO</td>
+<td>SuperView-NEO</td>
 </tr>
 </tbody>
 </table>
@@ -579,23 +590,23 @@ Waar de film vooral gaat over het begrip van de machten van 10 en de relatieve v
 </div>
 <p>Zoals je kunt zien bevat dit informatie over de de datum en tijd van acquisitie, naam van de sensor en de resolutie die toebehoort tot de resolutie en bevat het een kolom met layers. Deze layers koppelen we aan onze gewenste tegel. De tegel definieren we met behulp van onze 🌍 <em>Locatie</em> en 🔍 <em>Zoomlevel</em>. We maken hierbij gebruik van de WebMercatorQuad tegelschema, zoals gezegd in de sectie over de 🔲 <em>Tegel definitie</em>.</p>
 <p>Daarnaast heeft het satellietdataportaal twee mogelijkheden voor een 🎨 <em>Kleuren composiet</em>. In ons geval maken wij gebruik van het vals kleuren composiet, waarbij we wel gebruiken maken van de nabij-infrarode band, rode band, en groene band, maar niet van de blauwe band. In het satellietdataportaal heet dit 🎨 <em>Kleuren composiet</em> <code>IRG</code>. Laten we onze opgevraagde layers verder opwerken om de gewenste 📑 <em>Collectie tegels</em> aan te maken.</p>
-<div id="d497225a-a612-4961-82f4-6cd36a85b238" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tile_collection(df, tile, composite):</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"layers"</span> <span class="kw">in</span> df.columns:</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        df[<span class="st">"tile_link"</span>] <span class="op">=</span> [<span class="bu">next</span>((layer[<span class="st">"tile_link"</span>] <span class="cf">for</span> layer <span class="kw">in</span> layers <span class="cf">if</span> layer[<span class="st">"composite"</span>] <span class="op">==</span> composite), <span class="va">None</span>) <span class="cf">for</span> layers <span class="kw">in</span> df[<span class="st">"layers"</span>]]</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        df[<span class="st">"image"</span>] <span class="op">=</span> [uri.<span class="bu">format</span>(z<span class="op">=</span>tile.z, x<span class="op">=</span>tile.x, y<span class="op">=</span><span class="ss">f'</span><span class="sc">{</span>tile<span class="sc">.</span>y<span class="sc">}</span><span class="ss">.png'</span>) <span class="cf">for</span> uri <span class="kw">in</span> df[<span class="st">"tile_link"</span>]]</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> df[[<span class="st">"id"</span>, <span class="st">"acquisitiondate"</span>, <span class="st">"resolution"</span>, <span class="st">"sensorname"</span>, <span class="st">"image"</span>, <span class="st">"tile_link"</span>]]</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code><button title="Kopieer naar klembord" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b805f1f5" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tile_collection(df, tile, composite):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"layers"</span> <span class="kw">in</span> df.columns:</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        df[<span class="st">"tile_link"</span>] <span class="op">=</span> [<span class="bu">next</span>((layer[<span class="st">"tile_link"</span>] <span class="cf">for</span> layer <span class="kw">in</span> layers <span class="cf">if</span> layer[<span class="st">"composite"</span>] <span class="op">==</span> composite), <span class="va">None</span>) <span class="cf">for</span> layers <span class="kw">in</span> df[<span class="st">"layers"</span>]]</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        df[<span class="st">"image"</span>] <span class="op">=</span> [uri.<span class="bu">format</span>(z<span class="op">=</span>tile.z, x<span class="op">=</span>tile.x, y<span class="op">=</span><span class="ss">f'</span><span class="sc">{</span>tile<span class="sc">.</span>y<span class="sc">}</span><span class="ss">.png'</span>) <span class="cf">for</span> uri <span class="kw">in</span> df[<span class="st">"tile_link"</span>]]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> df[[<span class="st">"id"</span>, <span class="st">"acquisitiondate"</span>, <span class="st">"resolution"</span>, <span class="st">"sensorname"</span>, <span class="st">"image"</span>, <span class="st">"tile_link"</span>]]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code><button title="Kopieer naar klembord" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We maken gebruik van een <code>tile_collection</code> functie. Dit retourneert een pandas DataFrame gegeven de GeoDataFrame met layers, een 🔲 <em>Tegel definitie</em>, en het gewenste 🎨 <em>Kleuren composiet</em>.</p>
-<div id="78af1473-db52-4a8d-93d8-4c880fed42a5" class="cell page-columns page-full" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mercantile</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>composite <span class="op">=</span> <span class="st">'IRG'</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>tile <span class="op">=</span> mercantile.tile(longitude, latitude, zoom<span class="op">=</span><span class="dv">17</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>df_tiles <span class="op">=</span> tile_collection(gdf_layers, tile, composite)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>df_tiles.head()</span></code><button title="Kopieer naar klembord" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display column-screen" data-execution_count="7">
+<div id="03422630" class="cell page-columns page-full" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mercantile</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>composite <span class="op">=</span> <span class="st">'IRG'</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>tile <span class="op">=</span> mercantile.tile(longitude, latitude, zoom<span class="op">=</span><span class="dv">17</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>df_tiles <span class="op">=</span> tile_collection(gdf_layers, tile, composite)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>df_tiles.head()</span></code><button title="Kopieer naar klembord" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display column-screen" data-execution_count="6">
 <div>
 <div>
 
@@ -615,8 +626,8 @@ Waar de film vooral gaat over het begrip van de machten van 10 en de relatieve v
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>20240119_110736_PNEO-03_1_1</td>
-<td>2024-01-19</td>
+<td>20240128_104234_PNEO-03_1_1</td>
+<td>2024-01-28</td>
 <td>0.3</td>
 <td>Pleiades-NEO</td>
 <td>https://tiles1.geoserve.eu/Pleiades-NEO_NRG/ti...</td>
@@ -624,8 +635,8 @@ Waar de film vooral gaat over het begrip van de machten van 10 en de relatieve v
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>20231128_110759_PNEO-03_1_1</td>
-<td>2023-11-28</td>
+<td>20240120_103807_PNEO-04_1_1</td>
+<td>2024-01-20</td>
 <td>0.3</td>
 <td>Pleiades-NEO</td>
 <td>https://tiles1.geoserve.eu/Pleiades-NEO_NRG/ti...</td>
@@ -633,8 +644,8 @@ Waar de film vooral gaat over het begrip van de machten van 10 en de relatieve v
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>20230918_105226_PNEO-04_1_39</td>
-<td>2023-09-18</td>
+<td>20240118_104913_PNEO-03_1_1</td>
+<td>2024-01-18</td>
 <td>0.3</td>
 <td>Pleiades-NEO</td>
 <td>https://tiles1.geoserve.eu/Pleiades-NEO_NRG/ti...</td>
@@ -642,21 +653,21 @@ Waar de film vooral gaat over het begrip van de machten van 10 en de relatieve v
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>20230908_110003_PNEO-04_1_1</td>
-<td>2023-09-08</td>
+<td>20230906_111414_SVNEO-01</td>
+<td>2023-09-06</td>
 <td>0.3</td>
-<td>Pleiades-NEO</td>
-<td>https://tiles1.geoserve.eu/Pleiades-NEO_NRG/ti...</td>
-<td>https://tiles1.geoserve.eu/Pleiades-NEO_NRG/ti...</td>
+<td>SuperView-NEO</td>
+<td>https://tiles1.geoserve.eu/SuperView-NEO_NRG/t...</td>
+<td>https://tiles1.geoserve.eu/SuperView-NEO_NRG/t...</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>20230816_110811_PNEO-03_1_1</td>
-<td>2023-08-16</td>
+<td>20230906_111412_SVNEO-01</td>
+<td>2023-09-06</td>
 <td>0.3</td>
-<td>Pleiades-NEO</td>
-<td>https://tiles1.geoserve.eu/Pleiades-NEO_NRG/ti...</td>
-<td>https://tiles1.geoserve.eu/Pleiades-NEO_NRG/ti...</td>
+<td>SuperView-NEO</td>
+<td>https://tiles1.geoserve.eu/SuperView-NEO_NRG/t...</td>
+<td>https://tiles1.geoserve.eu/SuperView-NEO_NRG/t...</td>
 </tr>
 </tbody>
 </table>
@@ -666,46 +677,46 @@ Waar de film vooral gaat over het begrip van de machten van 10 en de relatieve v
 </div>
 </div>
 <p>Onze 📑 <em>Collectie tegels</em> in de vorm van een pandas DataFrame geven we weer met een Vega-Altair grafiek.</p>
-<div id="871a12d7-74bb-4b8a-a893-5ae5d0e4251e" class="cell page-columns page-full" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>highlight <span class="op">=</span> alt.selection_point(on<span class="op">=</span><span class="st">'mouseover'</span>, empty<span class="op">=</span><span class="va">False</span>, nearest<span class="op">=</span><span class="va">False</span>, encodings<span class="op">=</span>[<span class="st">'x'</span>])</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> alt.Chart(df_tiles, height<span class="op">=</span><span class="dv">75</span>, width<span class="op">=</span>alt.Step(<span class="dv">15</span>)).mark_bar(</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    opacity<span class="op">=</span><span class="dv">1</span>, </span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    strokeWidth<span class="op">=</span><span class="dv">2</span>, </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    cursor<span class="op">=</span><span class="st">'pointer'</span>,</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    cornerRadius<span class="op">=</span><span class="dv">15</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>).encode(</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'acquisitiondate:N'</span>).axis(formatType<span class="op">=</span><span class="st">'time'</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st">'</span>).title(<span class="va">None</span>),</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    fill<span class="op">=</span>alt.Fill(<span class="st">'sensor_resolution:N'</span>).legend(orient<span class="op">=</span><span class="st">'top'</span>).sort(field<span class="op">=</span><span class="st">'resolution'</span>, op<span class="op">=</span><span class="st">'max'</span>, order<span class="op">=</span><span class="st">'ascending'</span>),</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    stroke<span class="op">=</span>alt.condition(highlight, alt.value(<span class="st">'black'</span>), alt.value(<span class="st">'transparent'</span>)), </span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    tooltip<span class="op">=</span>alt.Tooltip([<span class="st">'image'</span>]),</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    order<span class="op">=</span>alt.Order(<span class="st">'resolution:Q'</span>),</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>).transform_calculate(</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    sensor_resolution<span class="op">=</span>alt.datum.sensorname <span class="op">+</span> <span class="st">" ("</span> <span class="op">+</span> alt.datum.resolution <span class="op">+</span> <span class="st">"m)"</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>).add_params(</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    highlight</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>chart</span></code><button title="Kopieer naar klembord" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display column-screen" data-execution_count="8">
+<div id="99030d86" class="cell page-columns page-full" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>highlight <span class="op">=</span> alt.selection_point(on<span class="op">=</span><span class="st">'mouseover'</span>, empty<span class="op">=</span><span class="va">False</span>, nearest<span class="op">=</span><span class="va">False</span>, encodings<span class="op">=</span>[<span class="st">'x'</span>])</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> alt.Chart(df_tiles, height<span class="op">=</span><span class="dv">75</span>, width<span class="op">=</span>alt.Step(<span class="dv">15</span>)).mark_bar(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    opacity<span class="op">=</span><span class="dv">1</span>, </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    strokeWidth<span class="op">=</span><span class="dv">2</span>, </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    cursor<span class="op">=</span><span class="st">'pointer'</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    cornerRadius<span class="op">=</span><span class="dv">15</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>).encode(</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'acquisitiondate:N'</span>).axis(formatType<span class="op">=</span><span class="st">'time'</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st">'</span>).title(<span class="va">None</span>),</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    fill<span class="op">=</span>alt.Fill(<span class="st">'sensor_resolution:N'</span>).legend(orient<span class="op">=</span><span class="st">'top'</span>).sort(field<span class="op">=</span><span class="st">'resolution'</span>, op<span class="op">=</span><span class="st">'max'</span>, order<span class="op">=</span><span class="st">'ascending'</span>),</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    stroke<span class="op">=</span>alt.condition(highlight, alt.value(<span class="st">'black'</span>), alt.value(<span class="st">'transparent'</span>)), </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    tooltip<span class="op">=</span>alt.Tooltip([<span class="st">'image'</span>]),</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    order<span class="op">=</span>alt.Order(<span class="st">'resolution:Q'</span>),</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>).transform_calculate(</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    sensor_resolution<span class="op">=</span>alt.datum.sensorname <span class="op">+</span> <span class="st">" ("</span> <span class="op">+</span> alt.datum.resolution <span class="op">+</span> <span class="st">"m)"</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>).add_params(</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    highlight</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>chart</span></code><button title="Kopieer naar klembord" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display column-screen" data-execution_count="7">
 
 <style>
-  #altair-viz-e75350f2b7294a50bc899a4d381e30a6.vega-embed {
+  #altair-viz-9214b460787d48a2ae08225caf1eac6f.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-e75350f2b7294a50bc899a4d381e30a6.vega-embed details,
-  #altair-viz-e75350f2b7294a50bc899a4d381e30a6.vega-embed details summary {
+  #altair-viz-9214b460787d48a2ae08225caf1eac6f.vega-embed details,
+  #altair-viz-9214b460787d48a2ae08225caf1eac6f.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-e75350f2b7294a50bc899a4d381e30a6"></div>
+<div id="altair-viz-9214b460787d48a2ae08225caf1eac6f"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-e75350f2b7294a50bc899a4d381e30a6") {
-      outputDiv = document.getElementById("altair-viz-e75350f2b7294a50bc899a4d381e30a6");
+    if (outputDiv.id !== "altair-viz-9214b460787d48a2ae08225caf1eac6f") {
+      outputDiv = document.getElementById("altair-viz-9214b460787d48a2ae08225caf1eac6f");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -751,7 +762,7 @@ Waar de film vooral gaat over het begrip van de machten van 10 en de relatieve v
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-553d1f1cd960529706a21df46748ef8b"}, "mark": {"type": "bar", "cornerRadius": 15, "cursor": "pointer", "opacity": 1, "strokeWidth": 2}, "encoding": {"fill": {"field": "sensor_resolution", "legend": {"orient": "top"}, "sort": {"field": "resolution", "op": "max", "order": "ascending"}, "type": "nominal"}, "order": {"field": "resolution", "type": "quantitative"}, "stroke": {"condition": {"param": "param_2", "value": "black", "empty": false}, "value": "transparent"}, "tooltip": [{"field": "image", "type": "nominal"}], "x": {"axis": {"formatType": "time", "format": "%Y-%m-%d"}, "field": "acquisitiondate", "title": null, "type": "nominal"}}, "height": 75, "params": [{"name": "param_2", "select": {"type": "point", "encodings": ["x"], "nearest": false, "on": "mouseover"}}], "transform": [{"calculate": "(((datum.sensorname + ' (') + datum.resolution) + 'm)')", "as": "sensor_resolution"}], "width": {"step": 15}, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-553d1f1cd960529706a21df46748ef8b": [{"id": "20240119_110736_PNEO-03_1_1", "acquisitiondate": "2024-01-19", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20240119_110736_PNEO-03_1_1_30cm_RD_8bit_NRG_IJmuiden/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20240119_110736_PNEO-03_1_1_30cm_RD_8bit_NRG_IJmuiden/{z}/{x}/{y}"}, {"id": "20231128_110759_PNEO-03_1_1", "acquisitiondate": "2023-11-28", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20231128_110759_PNEO-03_1_1_30cm_RD_8bit_NRG_Beverwijk/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20231128_110759_PNEO-03_1_1_30cm_RD_8bit_NRG_Beverwijk/{z}/{x}/{y}"}, {"id": "20230918_105226_PNEO-04_1_39", "acquisitiondate": "2023-09-18", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230918_105226_PNEO-04_1_39_30cm_RD_8bit_NRG_IJmuiden/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230918_105226_PNEO-04_1_39_30cm_RD_8bit_NRG_IJmuiden/{z}/{x}/{y}"}, {"id": "20230908_110003_PNEO-04_1_1", "acquisitiondate": "2023-09-08", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230908_110003_PNEO-04_1_1_30cm_RD_8bit_NRG_Haarlem/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230908_110003_PNEO-04_1_1_30cm_RD_8bit_NRG_Haarlem/{z}/{x}/{y}"}, {"id": "20230816_110811_PNEO-03_1_1", "acquisitiondate": "2023-08-16", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230816_110811_PNEO-03_1_1_30cm_RD_8bit_NRG_Haarlem/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230816_110811_PNEO-03_1_1_30cm_RD_8bit_NRG_Haarlem/{z}/{x}/{y}"}, {"id": "20230813_110105_PNEO-04_1_1", "acquisitiondate": "2023-08-13", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230813_110105_PNEO-04_1_1_30cm_RD_8bit_NRG_Beverwijk/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230813_110105_PNEO-04_1_1_30cm_RD_8bit_NRG_Beverwijk/{z}/{x}/{y}"}, {"id": "20230720_104903_PNEO-03_1_1", "acquisitiondate": "2023-07-20", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230720_104903_PNEO-03_1_1_30cm_RD_8bit_NRG_SantpoortNoord/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230720_104903_PNEO-03_1_1_30cm_RD_8bit_NRG_SantpoortNoord/{z}/{x}/{y}"}, {"id": "20230713_110344_PNEO-04_1_1", "acquisitiondate": "2023-07-13", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230713_110344_PNEO-04_1_1_30cm_RD_8bit_NRG_SantpoortNood/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230713_110344_PNEO-04_1_1_30cm_RD_8bit_NRG_SantpoortNood/{z}/{x}/{y}"}, {"id": "20230623_111331_SVNEO-02", "acquisitiondate": "2023-06-23", "resolution": 0.3, "sensorname": "SuperView-NEO", "image": "https://tiles1.geoserve.eu/SuperView-NEO_NRG/tileserver/20230623_111331_SVNEO-02_30cm_RD_8bit_NRG_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView-NEO_NRG/tileserver/20230623_111331_SVNEO-02_30cm_RD_8bit_NRG_Bloemendaal/{z}/{x}/{y}"}, {"id": "20230614_111427_SVNEO-02", "acquisitiondate": "2023-06-14", "resolution": 0.3, "sensorname": "SuperView-NEO", "image": "https://tiles1.geoserve.eu/SuperView-NEO_NRG/tileserver/20230614_111427_SVNEO-02_30cm_RD_8bit_NRG_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView-NEO_NRG/tileserver/20230614_111427_SVNEO-02_30cm_RD_8bit_NRG_Zandvoort/{z}/{x}/{y}"}, {"id": "20230526_111136_SVNEO-01", "acquisitiondate": "2023-05-26", "resolution": 0.3, "sensorname": "SuperView-NEO", "image": "https://tiles1.geoserve.eu/SuperView-NEO_NRG/tileserver/20230526_111136_SVNEO-01_30cm_RD_8bit_NRG_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView-NEO_NRG/tileserver/20230526_111136_SVNEO-01_30cm_RD_8bit_NRG_Bloemendaal/{z}/{x}/{y}"}, {"id": "20230315_105612_PNEO-04_1_17", "acquisitiondate": "2023-03-15", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230315_105612_PNEO-04_1_17_30cm_RD_8bit_NRG_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230315_105612_PNEO-04_1_17_30cm_RD_8bit_NRG_Zandvoort/{z}/{x}/{y}"}, {"id": "20230313_110743_PNEO-03_1_1", "acquisitiondate": "2023-03-13", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230313_110743_PNEO-03_1_1_30cm_RD_8bit_NRG_Velsen-Zuid/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230313_110743_PNEO-03_1_1_30cm_RD_8bit_NRG_Velsen-Zuid/{z}/{x}/{y}"}, {"id": "20230313_110808_PNEO-03_1_13", "acquisitiondate": "2023-03-13", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230313_110808_PNEO-03_1_13_30cm_RD_8bit_NRG_WijkAanZee/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230313_110808_PNEO-03_1_13_30cm_RD_8bit_NRG_WijkAanZee/{z}/{x}/{y}"}, {"id": "20221123_111329_SV1-03", "acquisitiondate": "2022-11-23", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20221123_111329_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20221123_111329_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20221111_111011_SV1-04", "acquisitiondate": "2022-11-11", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20221111_111011_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20221111_111011_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20220922_110542_SV2-01", "acquisitiondate": "2022-09-22", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220922_110542_SV2-01_SV_RD_8bit_IRG_50cm_IJmuiden/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220922_110542_SV2-01_SV_RD_8bit_IRG_50cm_IJmuiden/{z}/{x}/{y}"}, {"id": "20220730_110814_SV1-04", "acquisitiondate": "2022-07-30", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220730_110814_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220730_110814_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20220719_111420_SV1-03", "acquisitiondate": "2022-07-19", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220719_111420_SV1-03_SV_RD_8bit_IRG_50cm_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220719_111420_SV1-03_SV_RD_8bit_IRG_50cm_Bloemendaal/{z}/{x}/{y}"}, {"id": "20220718_111258_SV2-01", "acquisitiondate": "2022-07-18", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220718_111258_SV2-01_SV_RD_8bit_IRG_50cm_SantpoortNood/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220718_111258_SV2-01_SV_RD_8bit_IRG_50cm_SantpoortNood/{z}/{x}/{y}"}, {"id": "20220630_101722_SV1-01", "acquisitiondate": "2022-06-30", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220630_101722_SV1-01_SV_RD_8bit_IRG_50cm_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220630_101722_SV1-01_SV_RD_8bit_IRG_50cm_Bloemendaal/{z}/{x}/{y}"}, {"id": "20220613_111417_SV1-03", "acquisitiondate": "2022-06-13", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220613_111417_SV1-03_SV_RD_8bit_IRG_50cm_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220613_111417_SV1-03_SV_RD_8bit_IRG_50cm_Bloemendaal/{z}/{x}/{y}"}, {"id": "20220602_110320_SV2-01", "acquisitiondate": "2022-06-02", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220602_110320_SV2-01_SV_RD_8bit_IRG_50cm_Velsen-Zuid/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220602_110320_SV2-01_SV_RD_8bit_IRG_50cm_Velsen-Zuid/{z}/{x}/{y}"}, {"id": "20220514_114850_SV1-02", "acquisitiondate": "2022-05-14", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220514_114850_SV1-02_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220514_114850_SV1-02_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20220302_112105_SV1-04", "acquisitiondate": "2022-03-02", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220302_112105_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220302_112105_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20211207_111033_SV1-04", "acquisitiondate": "2021-12-07", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20211207_111033_SV1-04_SV_RD_8bit_IRG_50cm_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20211207_111033_SV1-04_SV_RD_8bit_IRG_50cm_Bloemendaal/{z}/{x}/{y}"}, {"id": "20211104_111943_SV1-03", "acquisitiondate": "2021-11-04", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20211104_111943_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20211104_111943_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20210907_112014_SV1-04", "acquisitiondate": "2021-09-07", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210907_112014_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210907_112014_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20210815_111048_SV1-03", "acquisitiondate": "2021-08-15", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210815_111048_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210815_111048_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20210804_111606_SV1-04", "acquisitiondate": "2021-08-04", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210804_111606_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210804_111606_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20210603_111844_SV1-04", "acquisitiondate": "2021-06-03", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210603_111844_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210603_111844_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20210426_112145_SV1-03", "acquisitiondate": "2021-04-26", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210426_112145_SV1-03_SV_RD_8bit_IRG_50cm_Haarlem/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210426_112145_SV1-03_SV_RD_8bit_IRG_50cm_Haarlem/{z}/{x}/{y}"}, {"id": "20210423_104945_SV1-01", "acquisitiondate": "2021-04-23", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210423_104945_SV1-01_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210423_104945_SV1-01_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20210302_111243_SV1-03", "acquisitiondate": "2021-03-02", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210302_111243_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210302_111243_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20201224_105845_SV1-01", "acquisitiondate": "2020-12-24", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20201224_105845_SV1-01_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20201224_105845_SV1-01_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20201109_111054_SV1-03", "acquisitiondate": "2020-11-09", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20201109_111054_SV1-03_SV_RD_8bit_IRG_50cm_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20201109_111054_SV1-03_SV_RD_8bit_IRG_50cm_Bloemendaal/{z}/{x}/{y}"}, {"id": "20200915_112325_SV1-04", "acquisitiondate": "2020-09-15", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200915_112325_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200915_112325_SV1-04_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20200915_110211_SV1-01", "acquisitiondate": "2020-09-15", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200915_110211_SV1-01_SV_RD_8bit_IRG_50cm_Haarlem/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200915_110211_SV1-01_SV_RD_8bit_IRG_50cm_Haarlem/{z}/{x}/{y}"}, {"id": "20200731_111959_SV1-03", "acquisitiondate": "2020-07-31", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200731_111959_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200731_111959_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20200625_112011_SV1-03", "acquisitiondate": "2020-06-25", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200625_112011_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200625_112011_SV1-03_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20200508_110808_SV1-01", "acquisitiondate": "2020-05-08", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200508_110808_SV1-01_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200508_110808_SV1-01_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20200326_114319_SV1-02", "acquisitiondate": "2020-03-26", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200326_114319_SV1-02_SV_RD_8bit_IRG_50cm_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200326_114319_SV1-02_SV_RD_8bit_IRG_50cm_Bloemendaal/{z}/{x}/{y}"}, {"id": "20200323_112111_SV1-03", "acquisitiondate": "2020-03-23", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200323_112111_SV1-03_SV_RD_8bit_IRG_50cm_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200323_112111_SV1-03_SV_RD_8bit_IRG_50cm_Bloemendaal/{z}/{x}/{y}"}, {"id": "20200304_114557_SV1-02", "acquisitiondate": "2020-03-04", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200304_114557_SV1-02_SV_RD_8bit_IRG_50cm_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200304_114557_SV1-02_SV_RD_8bit_IRG_50cm_Zandvoort/{z}/{x}/{y}"}, {"id": "20191130_110718_SV1-01", "acquisitiondate": "2019-11-30", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20191130_110718_SV1-01_50cm_RD_8bit_IRG_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20191130_110718_SV1-01_50cm_RD_8bit_IRG_Zandvoort/{z}/{x}/{y}"}, {"id": "20191002_111045_SV1-01", "acquisitiondate": "2019-10-02", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20191002_111045_SV1-01_50cm_RD_8bit_IRG_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20191002_111045_SV1-01_50cm_RD_8bit_IRG_Zandvoort/{z}/{x}/{y}"}, {"id": "20190903_110447_SV1-01", "acquisitiondate": "2019-09-03", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190903_110447_SV1-01_50cm_RD_8bit_IRG_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190903_110447_SV1-01_50cm_RD_8bit_IRG_Bloemendaal/{z}/{x}/{y}"}, {"id": "20190729_111525_SV1-04", "acquisitiondate": "2019-07-29", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190729_111525_SV1-04_50cm_RD_8bit_IRG_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190729_111525_SV1-04_50cm_RD_8bit_IRG_Bloemendaal/{z}/{x}/{y}"}, {"id": "20190604_111717_SV1-03", "acquisitiondate": "2019-06-04", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190604_111717_SV1-03_50cm_RD_8bit_IRG_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190604_111717_SV1-03_50cm_RD_8bit_IRG_Zandvoort/{z}/{x}/{y}"}, {"id": "20190422_111332_SV1-01", "acquisitiondate": "2019-04-22", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190422_111332_SV1-01_50cm_RD_8bit_IRG_Zandvoort/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190422_111332_SV1-01_50cm_RD_8bit_IRG_Zandvoort/{z}/{x}/{y}"}, {"id": "20190308_111640_SV1-01", "acquisitiondate": "2019-03-08", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190308_111640_SV1-01_50cm_RD_8bit_IRG_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190308_111640_SV1-01_50cm_RD_8bit_IRG_Bloemendaal/{z}/{x}/{y}"}, {"id": "20190302_105722_SV1-01", "acquisitiondate": "2019-03-02", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190302_105722_SV1-01_50cm_RD_8bit_IRG_Bloemendaal/17/67196/43040.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190302_105722_SV1-01_50cm_RD_8bit_IRG_Bloemendaal/{z}/{x}/{y}"}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-cc6897edc46589af5cf686292e736f19"}, "mark": {"type": "bar", "cornerRadius": 15, "cursor": "pointer", "opacity": 1, "strokeWidth": 2}, "encoding": {"fill": {"field": "sensor_resolution", "legend": {"orient": "top"}, "sort": {"field": "resolution", "op": "max", "order": "ascending"}, "type": "nominal"}, "order": {"field": "resolution", "type": "quantitative"}, "stroke": {"condition": {"param": "param_2", "value": "black", "empty": false}, "value": "transparent"}, "tooltip": [{"field": "image", "type": "nominal"}], "x": {"axis": {"formatType": "time", "format": "%Y-%m-%d"}, "field": "acquisitiondate", "title": null, "type": "nominal"}}, "height": 75, "params": [{"name": "param_2", "select": {"type": "point", "encodings": ["x"], "nearest": false, "on": "mouseover"}}], "transform": [{"calculate": "(((datum.sensorname + ' (') + datum.resolution) + 'm)')", "as": "sensor_resolution"}], "width": {"step": 15}, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-cc6897edc46589af5cf686292e736f19": [{"id": "20240128_104234_PNEO-03_1_1", "acquisitiondate": "2024-01-28", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20240128_104234_PNEO-03_1_1_30cm_RD_8bit_NRG_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20240128_104234_PNEO-03_1_1_30cm_RD_8bit_NRG_Hoogland/{z}/{x}/{y}"}, {"id": "20240120_103807_PNEO-04_1_1", "acquisitiondate": "2024-01-20", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20240120_103807_PNEO-04_1_1_30cm_RD_8bit_NRG_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20240120_103807_PNEO-04_1_1_30cm_RD_8bit_NRG_Hoogland/{z}/{x}/{y}"}, {"id": "20240118_104913_PNEO-03_1_1", "acquisitiondate": "2024-01-18", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20240118_104913_PNEO-03_1_1_30cm_RD_8bit_NRG_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20240118_104913_PNEO-03_1_1_30cm_RD_8bit_NRG_Hoogland/{z}/{x}/{y}"}, {"id": "20230906_111414_SVNEO-01", "acquisitiondate": "2023-09-06", "resolution": 0.3, "sensorname": "SuperView-NEO", "image": "https://tiles1.geoserve.eu/SuperView-NEO_NRG/tileserver/20230906_111414_SVNEO-01_30cm_RD_8bit_NRG_Woudenberg/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView-NEO_NRG/tileserver/20230906_111414_SVNEO-01_30cm_RD_8bit_NRG_Woudenberg/{z}/{x}/{y}"}, {"id": "20230906_111412_SVNEO-01", "acquisitiondate": "2023-09-06", "resolution": 0.3, "sensorname": "SuperView-NEO", "image": "https://tiles1.geoserve.eu/SuperView-NEO_NRG/tileserver/20230906_111412_SVNEO-01_30cm_RD_8bit_NRG_Amersfoort/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView-NEO_NRG/tileserver/20230906_111412_SVNEO-01_30cm_RD_8bit_NRG_Amersfoort/{z}/{x}/{y}"}, {"id": "20230828_104932_PNEO-04_1_88", "acquisitiondate": "2023-08-28", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230828_104932_PNEO-04_1_88_30cm_RD_8bit_NRG_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230828_104932_PNEO-04_1_88_30cm_RD_8bit_NRG_Hoogland/{z}/{x}/{y}"}, {"id": "20230818_105715_PNEO-04_1_1", "acquisitiondate": "2023-08-18", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230818_105715_PNEO-04_1_1_30cm_RD_8bit_NRG_Doorn/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230818_105715_PNEO-04_1_1_30cm_RD_8bit_NRG_Doorn/{z}/{x}/{y}"}, {"id": "20230718_110030_PNEO-04_1_1", "acquisitiondate": "2023-07-18", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230718_110030_PNEO-04_1_1_30cm_RD_8bit_NRG_Soesterberg/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230718_110030_PNEO-04_1_1_30cm_RD_8bit_NRG_Soesterberg/{z}/{x}/{y}"}, {"id": "20230603_104555_PNEO-03_1_1", "acquisitiondate": "2023-06-03", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230603_104555_PNEO-03_1_1_30cm_RD_8bit_NRG_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230603_104555_PNEO-03_1_1_30cm_RD_8bit_NRG_Hoogland/{z}/{x}/{y}"}, {"id": "20230430_104205_PNEO-04_1_1", "acquisitiondate": "2023-04-30", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230430_104205_PNEO-04_1_1_30cm_RD_8bit_NRG_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230430_104205_PNEO-04_1_1_30cm_RD_8bit_NRG_Hoogland/{z}/{x}/{y}"}, {"id": "20230306_103434_PNEO-03_1_1", "acquisitiondate": "2023-03-06", "resolution": 0.3, "sensorname": "Pleiades-NEO", "image": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230306_103434_PNEO-03_1_1_30cm_RD_8bit_NRG_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/Pleiades-NEO_NRG/tileserver/20230306_103434_PNEO-03_1_1_30cm_RD_8bit_NRG_Hoogland/{z}/{x}/{y}"}, {"id": "20230111_105211_SV1-04", "acquisitiondate": "2023-01-11", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20230111_105211_SV1-04_SV_RD_8bit_IRG_50cm_Nijkerk/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20230111_105211_SV1-04_SV_RD_8bit_IRG_50cm_Nijkerk/{z}/{x}/{y}"}, {"id": "20221112_105316_SV1-04", "acquisitiondate": "2022-11-12", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20221112_105316_SV1-04_SV_RD_8bit_IRG_50cm_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20221112_105316_SV1-04_SV_RD_8bit_IRG_50cm_Hoogland/{z}/{x}/{y}"}, {"id": "20221004_110212_SV1-03", "acquisitiondate": "2022-10-04", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20221004_110212_SV1-03_SV_RD_8bit_IRG_50cm_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20221004_110212_SV1-03_SV_RD_8bit_IRG_50cm_Hoogland/{z}/{x}/{y}"}, {"id": "20220917_104540_SV2-01", "acquisitiondate": "2022-09-17", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220917_104540_SV2-01_SV_RD_8bit_IRG_50cm_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220917_104540_SV2-01_SV_RD_8bit_IRG_50cm_Hoogland/{z}/{x}/{y}"}, {"id": "20220718_110831_SV1-04", "acquisitiondate": "2022-07-18", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220718_110831_SV1-04_SV_RD_8bit_IRG_50cm_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220718_110831_SV1-04_SV_RD_8bit_IRG_50cm_Hoogland/{z}/{x}/{y}"}, {"id": "20220612_110321_SV1-04", "acquisitiondate": "2022-06-12", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220612_110321_SV1-04_SV_RD_8bit_IRG_50cm_Leusden/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220612_110321_SV1-04_SV_RD_8bit_IRG_50cm_Leusden/{z}/{x}/{y}"}, {"id": "20220518_110953_SV1-04", "acquisitiondate": "2022-05-18", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220518_110953_SV1-04_SV_RD_8bit_IRG_50cm_Nijkerk/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220518_110953_SV1-04_SV_RD_8bit_IRG_50cm_Nijkerk/{z}/{x}/{y}"}, {"id": "20220512_110641_SV1-04", "acquisitiondate": "2022-05-12", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220512_110641_SV1-04_SV_RD_8bit_IRG_50cm_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220512_110641_SV1-04_SV_RD_8bit_IRG_50cm_Hoogland/{z}/{x}/{y}"}, {"id": "20220311_111105_SV1-03", "acquisitiondate": "2022-03-11", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220311_111105_SV1-03_SV_RD_8bit_IRG_50cm_Woudenberg/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220311_111105_SV1-03_SV_RD_8bit_IRG_50cm_Woudenberg/{z}/{x}/{y}"}, {"id": "20220311_111103_SV1-03", "acquisitiondate": "2022-03-11", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220311_111103_SV1-03_SV_RD_8bit_IRG_50cm_Nijkerk/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220311_111103_SV1-03_SV_RD_8bit_IRG_50cm_Nijkerk/{z}/{x}/{y}"}, {"id": "20220305_110335_SV1-03", "acquisitiondate": "2022-03-05", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220305_110335_SV1-03_SV_RD_8bit_IRG_50cm_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220305_110335_SV1-03_SV_RD_8bit_IRG_50cm_Hoogland/{z}/{x}/{y}"}, {"id": "20220120_112532_SV1-02", "acquisitiondate": "2022-01-20", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220120_112532_SV1-02_SV_RD_8bit_IRG_50cm_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20220120_112532_SV1-02_SV_RD_8bit_IRG_50cm_Hoogland/{z}/{x}/{y}"}, {"id": "20211202_110447_SV1-03", "acquisitiondate": "2021-12-02", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20211202_110447_SV1-03_SV_RD_8bit_IRG_50cm_Nijkerk/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20211202_110447_SV1-03_SV_RD_8bit_IRG_50cm_Nijkerk/{z}/{x}/{y}"}, {"id": "20210907_113736_SV1-02", "acquisitiondate": "2021-09-07", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210907_113736_SV1-02_SV_RD_8bit_IRG_50cm_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210907_113736_SV1-02_SV_RD_8bit_IRG_50cm_Hoogland/{z}/{x}/{y}"}, {"id": "20210812_110013_SV1-04", "acquisitiondate": "2021-08-12", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210812_110013_SV1-04_SV_RD_8bit_IRG_50cm_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210812_110013_SV1-04_SV_RD_8bit_IRG_50cm_Hoogland/{z}/{x}/{y}"}, {"id": "20210604_110505_SV1-04", "acquisitiondate": "2021-06-04", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210604_110505_SV1-04_SV_RD_8bit_IRG_50cm_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210604_110505_SV1-04_SV_RD_8bit_IRG_50cm_Hoogland/{z}/{x}/{y}"}, {"id": "20210420_110906_SV1-03", "acquisitiondate": "2021-04-20", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210420_110906_SV1-03_SV_RD_8bit_IRG_50cm_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210420_110906_SV1-03_SV_RD_8bit_IRG_50cm_Hoogland/{z}/{x}/{y}"}, {"id": "20210401_114313_SV1-02", "acquisitiondate": "2021-04-01", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210401_114313_SV1-02_SV_RD_8bit_IRG_50cm_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210401_114313_SV1-02_SV_RD_8bit_IRG_50cm_Hoogland/{z}/{x}/{y}"}, {"id": "20210102_103259_SV1-01", "acquisitiondate": "2021-01-02", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210102_103259_SV1-01_SV_RD_8bit_IRG_50cm_Soest/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20210102_103259_SV1-01_SV_RD_8bit_IRG_50cm_Soest/{z}/{x}/{y}"}, {"id": "20201225_112616_SV1-02", "acquisitiondate": "2020-12-25", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20201225_112616_SV1-02_SV_RD_8bit_IRG_50cm_Woudenberg/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20201225_112616_SV1-02_SV_RD_8bit_IRG_50cm_Woudenberg/{z}/{x}/{y}"}, {"id": "20201225_112614_SV1-02", "acquisitiondate": "2020-12-25", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20201225_112614_SV1-02_SV_RD_8bit_IRG_50cm_Nijkerk/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20201225_112614_SV1-02_SV_RD_8bit_IRG_50cm_Nijkerk/{z}/{x}/{y}"}, {"id": "20200920_111013_SV1-03", "acquisitiondate": "2020-09-20", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200920_111013_SV1-03_SV_RD_8bit_IRG_50cm_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200920_111013_SV1-03_SV_RD_8bit_IRG_50cm_Hoogland/{z}/{x}/{y}"}, {"id": "20200914_105450_SV1-03", "acquisitiondate": "2020-09-14", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200914_105450_SV1-03_SV_RD_8bit_IRG_50cm_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200914_105450_SV1-03_SV_RD_8bit_IRG_50cm_Hoogland/{z}/{x}/{y}"}, {"id": "20200812_103734_SV1-01", "acquisitiondate": "2020-08-12", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200812_103734_SV1-01_SV_RD_8bit_IRG_50cm_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200812_103734_SV1-01_SV_RD_8bit_IRG_50cm_Hoogland/{z}/{x}/{y}"}, {"id": "20200622_110648_SV1-04", "acquisitiondate": "2020-06-22", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200622_110648_SV1-04_SV_RD_8bit_IRG_50cm_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200622_110648_SV1-04_SV_RD_8bit_IRG_50cm_Hoogland/{z}/{x}/{y}"}, {"id": "20200419_105359_SV1-04", "acquisitiondate": "2020-04-19", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200419_105359_SV1-04_SV_RD_8bit_IRG_50cm_Nijkerk/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200419_105359_SV1-04_SV_RD_8bit_IRG_50cm_Nijkerk/{z}/{x}/{y}"}, {"id": "20200331_111125_SV1-03", "acquisitiondate": "2020-03-31", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200331_111125_SV1-03_SV_RD_8bit_IRG_50cm_Nijkerk/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200331_111125_SV1-03_SV_RD_8bit_IRG_50cm_Nijkerk/{z}/{x}/{y}"}, {"id": "20200312_111701_SV1-04", "acquisitiondate": "2020-03-12", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200312_111701_SV1-04_SV_RD_8bit_IRG_50cm_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20200312_111701_SV1-04_SV_RD_8bit_IRG_50cm_Hoogland/{z}/{x}/{y}"}, {"id": "20191129_110249_SV1-03", "acquisitiondate": "2019-11-29", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20191129_110249_SV1-03_50cm_RD_8bit_IRG_Soest/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20191129_110249_SV1-03_50cm_RD_8bit_IRG_Soest/{z}/{x}/{y}"}, {"id": "20191110_112135_SV1-02", "acquisitiondate": "2019-11-10", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20191110_112135_SV1-02_50cm_RD_8bit_IRG_Amersfoort/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20191110_112135_SV1-02_50cm_RD_8bit_IRG_Amersfoort/{z}/{x}/{y}"}, {"id": "20191003_105758_SV1-01", "acquisitiondate": "2019-10-03", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20191003_105758_SV1-01_50cm_RD_8bit_IRG_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20191003_105758_SV1-01_50cm_RD_8bit_IRG_Hoogland/{z}/{x}/{y}"}, {"id": "20190726_111419_SV1-03", "acquisitiondate": "2019-07-26", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190726_111419_SV1-03_50cm_RD_8bit_IRG_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190726_111419_SV1-03_50cm_RD_8bit_IRG_Hoogland/{z}/{x}/{y}"}, {"id": "20190722_111018_SV1-04", "acquisitiondate": "2019-07-22", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190722_111018_SV1-04_50cm_RD_8bit_IRG_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190722_111018_SV1-04_50cm_RD_8bit_IRG_Hoogland/{z}/{x}/{y}"}, {"id": "20190614_110035_SV1-01", "acquisitiondate": "2019-06-14", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190614_110035_SV1-01_50cm_RD_8bit_IRG_Nijkerk/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190614_110035_SV1-01_50cm_RD_8bit_IRG_Nijkerk/{z}/{x}/{y}"}, {"id": "20190515_110448_SV1-01", "acquisitiondate": "2019-05-15", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190515_110448_SV1-01_50cm_RD_8bit_IRG_Nijkerk/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190515_110448_SV1-01_50cm_RD_8bit_IRG_Nijkerk/{z}/{x}/{y}"}, {"id": "20190429_110254_SV1-03", "acquisitiondate": "2019-04-29", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190429_110254_SV1-03_50cm_RD_8bit_IRG_Nijkerk/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190429_110254_SV1-03_50cm_RD_8bit_IRG_Nijkerk/{z}/{x}/{y}"}, {"id": "20190423_110054_SV1-01", "acquisitiondate": "2019-04-23", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190423_110054_SV1-01_50cm_RD_8bit_IRG_Soest/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190423_110054_SV1-01_50cm_RD_8bit_IRG_Soest/{z}/{x}/{y}"}, {"id": "20190410_105804_SV1-04", "acquisitiondate": "2019-04-10", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190410_105804_SV1-04_50cm_RD_8bit_IRG_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190410_105804_SV1-04_50cm_RD_8bit_IRG_Hoogland/{z}/{x}/{y}"}, {"id": "20190331_110901_SV1-01", "acquisitiondate": "2019-03-31", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190331_110901_SV1-01_50cm_RD_8bit_IRG_Soest/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190331_110901_SV1-01_50cm_RD_8bit_IRG_Soest/{z}/{x}/{y}"}, {"id": "20190327_110338_SV1-02", "acquisitiondate": "2019-03-27", "resolution": 0.5, "sensorname": "SuperView-1", "image": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190327_110338_SV1-02_50cm_RD_8bit_IRG_Hoogland/17/67494/43205.png", "tile_link": "https://tiles1.geoserve.eu/SuperView1_IRG/tileserver/20190327_110338_SV1-02_50cm_RD_8bit_IRG_Hoogland/{z}/{x}/{y}"}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -761,7 +772,6 @@ Waar de film vooral gaat over het begrip van de machten van 10 en de relatieve v
 <p>Handig wanneer je specifieke locaties in de gaten wilt houden op een bepaald verloop.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
