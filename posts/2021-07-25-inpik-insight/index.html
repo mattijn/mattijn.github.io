@@ -21,10 +21,44 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -68,6 +102,9 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -153,7 +190,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Meten is weten &amp; tracken is ontdekken. Met sport data science krijg je inzicht in je performance, worden je kernkwaliteiten zichtbaar en kan je over tijd je progressie van houding en techniek onderbouwen.</p>
-<p>Met InpinkInsight is het mogelijk om jouw videobeelden van een wedstrijd of trainingssessie te analyseren. Wil je je eigen videobeelden door mij laten analyseren, of zie je andere mogelijkheden? Laat het me weten door een mail te sturen naar mattijn@gmail.com.</p>
+<p>Met InpinkInsight is het mogelijk om jouw videobeelden van een wedstrijd of trainingssessie te analyseren. Wil je je eigen videobeelden door mij laten analyseren, of zie je andere mogelijkheden? Laat het me weten door een mail te sturen naar mattijn [at] gmail.com.</p>
 <div class="quarto-figure quarto-figure-center page-columns page-full">
 <figure class="figure page-columns page-full">
 <p class="page-columns page-full"><img src="method.gif" class="column-screen img-fluid quarto-figure quarto-figure-center figure-img"></p>
@@ -162,6 +199,146 @@ ul.task-list li input[type="checkbox"] {
 <p>We zijn hier geinteresseerd in de positie van de pols ten opzichte van de schouder voor alle inpikken in de video. Deze zou met een juiste afstelling van de boot en een symmetrische haalbeweging gelijk moeten zijn voor links en rechts. Door wind, onrustig water en vermoeidheid is de verwachting dat deze positie niet gelijk blijft tijdens de gehele training. Deze service maakt het mogelijk om dit kwantitatief inzichtelijk te maken.</p>
 <p>Hiervoor analyseren we de 30 minuten durende video (~54k frames, ~600 roeihalen) met Computer Vision en Machine Learning. We identificeren in elk frame de hoofdgewrichten en kijken voor elke inpik naar het hoogte verschil tussen de pols en schouder onafhankelijk voor links en rechts. In de animated gif hierboven zie je hoe dat gaat voor 2 halen.</p>
 <p>De volgende Interactieve Graphic maakt de kwaliteit van inpikken kwantitatief inzichtelijk. Beweeg de slider om elke inpik an sich te analyseren.</p>
+<div id="7620274a" class="cell page-columns page-full" data-execution_count="1">
+<details class="code-fold">
+<summary>Toon de code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data_tracking <span class="op">=</span> <span class="st">'data_tracking.json'</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>data_stills <span class="op">=</span> <span class="st">'data_stills_base64.json'</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># updated to altair 5</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>slider <span class="op">=</span> alt.binding_range(<span class="bu">min</span><span class="op">=</span><span class="dv">0</span>, <span class="bu">max</span><span class="op">=</span><span class="dv">576</span>, step<span class="op">=</span><span class="dv">1</span>, name<span class="op">=</span><span class="st">'Inpik '</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>selector <span class="op">=</span> alt.selection_point(name<span class="op">=</span><span class="st">'Inpik'</span>, value<span class="op">=</span><span class="dv">1</span>, bind<span class="op">=</span>slider, fields<span class="op">=</span>[<span class="st">'nr'</span>])</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>area <span class="op">=</span> alt.Chart(data_tracking, width<span class="op">=</span><span class="dv">100</span>).mark_area(</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    interpolate<span class="op">=</span><span class="st">'cardinal'</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    opacity<span class="op">=</span><span class="fl">0.7</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>).encode(</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'var:N'</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'value:Q'</span>).title(<span class="va">None</span>),</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">'bin_min:Q'</span>, <span class="bu">bin</span><span class="op">=</span><span class="st">'binned'</span>).title(<span class="va">None</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>).transform_bin(</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    as_<span class="op">=</span>[<span class="st">'bin_max'</span>, <span class="st">'bin_min'</span>], </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    field<span class="op">=</span><span class="st">'val'</span>, </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">bin</span><span class="op">=</span>alt.BinParams(maxbins<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>).transform_aggregate(</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    value<span class="op">=</span><span class="st">'count()'</span>,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    groupby<span class="op">=</span>[<span class="st">'var'</span>, <span class="st">'bin_min'</span>, <span class="st">'bin_max'</span>]</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>circle <span class="op">=</span> alt.Chart(data_tracking, width<span class="op">=</span><span class="dv">100</span>).mark_circle().encode(</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span>alt.Color(<span class="st">'var:N'</span>).legend(direction<span class="op">=</span><span class="st">'horizontal'</span>, orient<span class="op">=</span><span class="st">'top-left'</span>, padding<span class="op">=</span><span class="dv">0</span>).title(<span class="va">None</span>),</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'jitter:Q'</span>, stack<span class="op">=</span><span class="st">'zero'</span>).scale(padding<span class="op">=</span><span class="dv">10</span>).axis(grid<span class="op">=</span><span class="va">False</span>, labels<span class="op">=</span><span class="va">False</span>, ticks<span class="op">=</span><span class="va">True</span>, values<span class="op">=</span>[<span class="dv">0</span>]),</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">'val:Q'</span>).title(<span class="st">"Positie pols tov schouder (schouder = 0)"</span>).scale(padding<span class="op">=</span><span class="dv">10</span>),</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    opacity<span class="op">=</span>alt.condition(<span class="st">'datum.idx === Inpik_nr'</span>, alt.value(<span class="dv">1</span>), alt.value(<span class="fl">0.2</span>)),</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span>alt.condition(<span class="st">'datum.idx === Inpik_nr'</span>, alt.value(<span class="dv">400</span>), alt.value(<span class="dv">40</span>))</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>).transform_calculate(</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    jitter<span class="op">=</span><span class="st">"1*sqrt(-6*log(random()))*cos(2*PI*random())-8"</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>).add_params(selector)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>rule <span class="op">=</span> alt.Chart().mark_rule(</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'#888888'</span>,</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    strokeDash<span class="op">=</span>[<span class="dv">10</span>, <span class="dv">4</span>]</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>).encode(</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.datum(<span class="dv">0</span>)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>chart_top <span class="op">=</span> (area <span class="op">+</span> circle <span class="op">+</span> rule).facet(</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    column<span class="op">=</span>alt.Column(<span class="st">'idx:Q'</span>, <span class="bu">bin</span><span class="op">=</span><span class="va">True</span>).header(labelPadding<span class="op">=-</span><span class="dv">5</span>).title(<span class="st">"Inpik momenten (gegroepeerd per 100 slagen)"</span>)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>image <span class="op">=</span> alt.Chart(data_stills).mark_image(</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">200</span>,</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">356</span>,</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="dv">356</span>,</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>).encode(</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>    url<span class="op">=</span><span class="st">'urls:N'</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>).transform_filter(selector)</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>alt.vconcat(</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    chart_top, </span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    image</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>).configure_view(</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>    stroke<span class="op">=</span><span class="va">None</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>).configure_axisY(</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>    titleAlign<span class="op">=</span><span class="st">'left'</span>, </span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>    titleAngle<span class="op">=</span><span class="dv">0</span>, </span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    titleX<span class="op">=-</span><span class="dv">10</span>, </span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>    titleY<span class="op">=-</span><span class="dv">10</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Kopieer naar klembord" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display column-screen" data-execution_count="2">
+
+<style>
+  #altair-viz-89da1ea2f08645cfbb1572f8ab829a16.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-89da1ea2f08645cfbb1572f8ab829a16.vega-embed details,
+  #altair-viz-89da1ea2f08645cfbb1572f8ab829a16.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-89da1ea2f08645cfbb1572f8ab829a16"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-89da1ea2f08645cfbb1572f8ab829a16") {
+      outputDiv = document.getElementById("altair-viz-89da1ea2f08645cfbb1572f8ab829a16");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.17.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.17.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": null}, "axisY": {"titleAlign": "left", "titleAngle": 0, "titleX": -10, "titleY": -10}}, "vconcat": [{"data": {"url": "data_tracking.json"}, "facet": {"column": {"bin": true, "field": "idx", "header": {"labelPadding": -5}, "title": "Inpik momenten (gegroepeerd per 100 slagen)", "type": "quantitative"}}, "spec": {"layer": [{"mark": {"type": "area", "interpolate": "cardinal", "opacity": 0.7}, "encoding": {"color": {"field": "var", "type": "nominal"}, "x": {"field": "value", "title": null, "type": "quantitative"}, "y": {"bin": "binned", "field": "bin_min", "title": null, "type": "quantitative"}}, "transform": [{"bin": {"maxbins": 50}, "field": "val", "as": ["bin_max", "bin_min"]}, {"aggregate": [{"op": "count", "as": "value"}], "groupby": ["var", "bin_min", "bin_max"]}]}, {"mark": {"type": "circle"}, "encoding": {"color": {"field": "var", "legend": {"direction": "horizontal", "orient": "top-left", "padding": 0}, "title": null, "type": "nominal"}, "opacity": {"condition": {"test": "datum.idx === Inpik_nr", "value": 1}, "value": 0.2}, "size": {"condition": {"test": "datum.idx === Inpik_nr", "value": 400}, "value": 40}, "x": {"axis": {"grid": false, "labels": false, "ticks": true, "values": [0]}, "field": "jitter", "scale": {"padding": 10}, "stack": "zero", "type": "quantitative"}, "y": {"field": "val", "scale": {"padding": 10}, "title": "Positie pols tov schouder (schouder = 0)", "type": "quantitative"}}, "name": "view_2", "transform": [{"calculate": "1*sqrt(-6*log(random()))*cos(2*PI*random())-8", "as": "jitter"}]}, {"mark": {"type": "rule", "color": "#888888", "strokeDash": [10, 4]}, "encoding": {"y": {"datum": 0}}}], "width": 100}}, {"data": {"url": "data_stills_base64.json"}, "mark": {"type": "image", "height": 200, "width": 356, "x": 356, "y": 1}, "encoding": {"url": {"field": "urls", "type": "nominal"}}, "transform": [{"filter": {"param": "Inpik"}}]}], "params": [{"name": "Inpik", "select": {"type": "point", "fields": ["nr"]}, "bind": {"input": "range", "max": 576, "min": 0, "name": "Inpik ", "step": 1}, "value": 1, "views": ["view_2"]}], "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json"}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
 
 
 
