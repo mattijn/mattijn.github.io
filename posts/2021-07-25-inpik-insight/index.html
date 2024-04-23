@@ -133,12 +133,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/mattijn"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/mattijnvhoek"> <i class="bi bi-twitter" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -199,7 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We zijn hier geinteresseerd in de positie van de pols ten opzichte van de schouder voor alle inpikken in de video. Deze zou met een juiste afstelling van de boot en een symmetrische haalbeweging gelijk moeten zijn voor links en rechts. Door wind, onrustig water en vermoeidheid is de verwachting dat deze positie niet gelijk blijft tijdens de gehele training. Deze service maakt het mogelijk om dit kwantitatief inzichtelijk te maken.</p>
 <p>Hiervoor analyseren we de 30 minuten durende video (~54k frames, ~600 roeihalen) met Computer Vision en Machine Learning. We identificeren in elk frame de hoofdgewrichten en kijken voor elke inpik naar het hoogte verschil tussen de pols en schouder onafhankelijk voor links en rechts. In de animated gif hierboven zie je hoe dat gaat voor 2 halen.</p>
 <p>De volgende Interactieve Graphic maakt de kwaliteit van inpikken kwantitatief inzichtelijk. Beweeg de slider om elke inpik an sich te analyseren.</p>
-<div id="7620274a" class="cell page-columns page-full" data-execution_count="1">
+<div id="d1adabe9" class="cell page-columns page-full" data-execution_count="1">
 <details class="code-fold">
 <summary>Toon de code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
@@ -270,26 +270,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>    titleY<span class="op">=-</span><span class="dv">10</span></span>
 <span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Kopieer naar klembord" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display column-screen" data-execution_count="2">
+<div class="cell-output cell-output-display column-screen" data-execution_count="1">
 
 <style>
-  #altair-viz-89da1ea2f08645cfbb1572f8ab829a16.vega-embed {
+  #altair-viz-0da4cb806c0f4a319962076c6429bd92.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-89da1ea2f08645cfbb1572f8ab829a16.vega-embed details,
-  #altair-viz-89da1ea2f08645cfbb1572f8ab829a16.vega-embed details summary {
+  #altair-viz-0da4cb806c0f4a319962076c6429bd92.vega-embed details,
+  #altair-viz-0da4cb806c0f4a319962076c6429bd92.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-89da1ea2f08645cfbb1572f8ab829a16"></div>
+<div id="altair-viz-0da4cb806c0f4a319962076c6429bd92"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-89da1ea2f08645cfbb1572f8ab829a16") {
-      outputDiv = document.getElementById("altair-viz-89da1ea2f08645cfbb1572f8ab829a16");
+    if (outputDiv.id !== "altair-viz-0da4cb806c0f4a319962076c6429bd92") {
+      outputDiv = document.getElementById("altair-viz-0da4cb806c0f4a319962076c6429bd92");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -335,7 +335,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": null}, "axisY": {"titleAlign": "left", "titleAngle": 0, "titleX": -10, "titleY": -10}}, "vconcat": [{"data": {"url": "data_tracking.json"}, "facet": {"column": {"bin": true, "field": "idx", "header": {"labelPadding": -5}, "title": "Inpik momenten (gegroepeerd per 100 slagen)", "type": "quantitative"}}, "spec": {"layer": [{"mark": {"type": "area", "interpolate": "cardinal", "opacity": 0.7}, "encoding": {"color": {"field": "var", "type": "nominal"}, "x": {"field": "value", "title": null, "type": "quantitative"}, "y": {"bin": "binned", "field": "bin_min", "title": null, "type": "quantitative"}}, "transform": [{"bin": {"maxbins": 50}, "field": "val", "as": ["bin_max", "bin_min"]}, {"aggregate": [{"op": "count", "as": "value"}], "groupby": ["var", "bin_min", "bin_max"]}]}, {"mark": {"type": "circle"}, "encoding": {"color": {"field": "var", "legend": {"direction": "horizontal", "orient": "top-left", "padding": 0}, "title": null, "type": "nominal"}, "opacity": {"condition": {"test": "datum.idx === Inpik_nr", "value": 1}, "value": 0.2}, "size": {"condition": {"test": "datum.idx === Inpik_nr", "value": 400}, "value": 40}, "x": {"axis": {"grid": false, "labels": false, "ticks": true, "values": [0]}, "field": "jitter", "scale": {"padding": 10}, "stack": "zero", "type": "quantitative"}, "y": {"field": "val", "scale": {"padding": 10}, "title": "Positie pols tov schouder (schouder = 0)", "type": "quantitative"}}, "name": "view_2", "transform": [{"calculate": "1*sqrt(-6*log(random()))*cos(2*PI*random())-8", "as": "jitter"}]}, {"mark": {"type": "rule", "color": "#888888", "strokeDash": [10, 4]}, "encoding": {"y": {"datum": 0}}}], "width": 100}}, {"data": {"url": "data_stills_base64.json"}, "mark": {"type": "image", "height": 200, "width": 356, "x": 356, "y": 1}, "encoding": {"url": {"field": "urls", "type": "nominal"}}, "transform": [{"filter": {"param": "Inpik"}}]}], "params": [{"name": "Inpik", "select": {"type": "point", "fields": ["nr"]}, "bind": {"input": "range", "max": 576, "min": 0, "name": "Inpik ", "step": 1}, "value": 1, "views": ["view_2"]}], "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json"}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": null}, "axisY": {"titleAlign": "left", "titleAngle": 0, "titleX": -10, "titleY": -10}}, "vconcat": [{"data": {"url": "data_tracking.json"}, "facet": {"column": {"bin": true, "field": "idx", "header": {"labelPadding": -5}, "title": "Inpik momenten (gegroepeerd per 100 slagen)", "type": "quantitative"}}, "spec": {"layer": [{"mark": {"type": "area", "interpolate": "cardinal", "opacity": 0.7}, "encoding": {"color": {"field": "var", "type": "nominal"}, "x": {"field": "value", "title": null, "type": "quantitative"}, "y": {"bin": "binned", "field": "bin_min", "title": null, "type": "quantitative"}}, "transform": [{"bin": {"maxbins": 50}, "field": "val", "as": ["bin_max", "bin_min"]}, {"aggregate": [{"op": "count", "as": "value"}], "groupby": ["var", "bin_min", "bin_max"]}]}, {"mark": {"type": "circle"}, "encoding": {"color": {"field": "var", "legend": {"direction": "horizontal", "orient": "top-left", "padding": 0}, "title": null, "type": "nominal"}, "opacity": {"condition": {"test": "datum.idx === Inpik_nr", "value": 1}, "value": 0.2}, "size": {"condition": {"test": "datum.idx === Inpik_nr", "value": 400}, "value": 40}, "x": {"axis": {"grid": false, "labels": false, "ticks": true, "values": [0]}, "field": "jitter", "scale": {"padding": 10}, "stack": "zero", "type": "quantitative"}, "y": {"field": "val", "scale": {"padding": 10}, "title": "Positie pols tov schouder (schouder = 0)", "type": "quantitative"}}, "name": "view_1", "transform": [{"calculate": "1*sqrt(-6*log(random()))*cos(2*PI*random())-8", "as": "jitter"}]}, {"mark": {"type": "rule", "color": "#888888", "strokeDash": [10, 4]}, "encoding": {"y": {"datum": 0}}}], "width": 100}}, {"data": {"url": "data_stills_base64.json"}, "mark": {"type": "image", "height": 200, "width": 356, "x": 356, "y": 1}, "encoding": {"url": {"field": "urls", "type": "nominal"}}, "transform": [{"filter": {"param": "Inpik"}}]}], "params": [{"name": "Inpik", "select": {"type": "point", "fields": ["nr"]}, "bind": {"input": "range", "max": 576, "min": 0, "name": "Inpik ", "step": 1}, "value": 1, "views": ["view_1"]}], "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json"}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
